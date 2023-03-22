@@ -1,0 +1,116 @@
+module Base
+{
+
+	model GFRollingPapers
+	{
+		mesh = WorldItems/GFRollingPapers,
+		texture = WorldItems/GFRollingPapers,
+		scale = 0.15,
+	}
+
+	model Cannabis
+	{
+		mesh = WorldItems/Chips,
+		texture = WorldItems/Cannabis,
+		scale = 0.15,
+	}
+	
+	model GFCCarton
+	{
+		mesh = WorldItems/GFCCarton,
+		texture = WorldItems/GFCCarton,
+		scale = 0.45,
+	}
+
+		model Joint
+	{
+		mesh = WorldItems/Joint,
+		texture = WorldItems/Joint_lit,
+		scale = 0.025,
+
+	}
+
+	
+	model Joint_Ground
+	{
+		mesh = WorldItems/Joint_Ground,
+		texture = WorldItems/Joint,
+		scale = 0.15,
+
+	}
+	
+	model Spliff
+	{
+		mesh = WorldItems/Joint,
+		texture = WorldItems/Joint_lit,
+		scale = 0.025,
+
+	}
+
+	model Spliff_Ground
+	{
+		mesh = WorldItems/Joint_Ground,
+		texture = WorldItems/Spliff,
+		scale = 0.15,
+
+	}
+	
+	model GFShake
+	{
+		mesh = WorldItems/GFShake,
+		texture = WorldItems/GFShake,
+		scale = 0.375,
+
+	}
+
+	model GFTabac
+	{
+		mesh = WorldItems/GFShake,
+		texture = WorldItems/GFTabac,
+		scale = 0.375,
+
+	}
+	
+	model Blunt_Ground
+	{
+		mesh = WorldItems/Blunt_Ground,
+		texture = WorldItems/Blunt,
+		scale = 0.075,
+
+	}
+
+	model Blunt
+	{
+		mesh = WorldItems/Blunt,
+		texture = WorldItems/Blunt_lit,
+		scale = 0.075,
+
+	}
+	
+		model OzCannabis
+	{
+		mesh = WorldItems/Chips,
+		texture = WorldItems/OzCannabis,
+		scale = 0.30,
+	}
+
+	model KgCannabis
+	{
+		mesh = WorldItems/GFCCase,
+		texture = WorldItems/GFKgCannabis,
+		scale = 1.35,
+	}
+
+	model CarClamp
+	{
+		mesh = Tool/Normal/CarClamp,
+		texture = item_Stripes,
+		scale = 0.3,
+		invertX = true,
+		attachment world
+		{
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 90.0000 0.0000,
+		}
+	}
+}

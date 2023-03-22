@@ -1,0 +1,4 @@
+IG_UI_IT = {
+	IGUI_NoDisassemblingAllowed = "Non è permesso disassemblare i container, boiade!",
+	IGUI_ItemCat_PynoTweaks = "Sostanza Drogante",
+}

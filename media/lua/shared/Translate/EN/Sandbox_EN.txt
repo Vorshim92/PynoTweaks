@@ -1,0 +1,9 @@
+Sandbox_EN = {
+	Sandbox_PynoTweaks = "Pyno Tweaks",
+	Sandbox_PynoTweaks_NoDisassembling = "No Disassembling",
+	Sandbox_PynoTweaks_NoDisassembling_tooltip = "Players are not allowed to disassemble containers.",
+    	Sandbox_PynoTweaks = "Vehicle Recycling",
+    	Sandbox_PynoTweaks_UninstallParts = "Parts Must Be Uninstalled Before Dismantling",
+    	Sandbox_PynoTweaks_UninstallParts_tooltip = "The following parts must be uninstalled before dismantling: hood, trunk lid, doors, windows, seats.",
+    	Sandbox_PynoTweaks_ActionTimeMultiplier = "Dismantling Time Multiplier",
+}

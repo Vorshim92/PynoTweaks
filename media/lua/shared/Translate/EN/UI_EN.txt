@@ -1,0 +1,7 @@
+UI_EN = {
+    UI_PynoTweaks_OverrideBurnt = "Dismantle Burnt Vehicles",
+    UI_PynoTweaks_OverrideSmashed = "Dismantle Smashed Vehicles",
+    UI_PynoTweaks_Override_Tooltip = "Overrides vanilla "Dismantle Car Wreck" action",
+    UI_PynoTweaks_DropJunk = "Drop Items From Containers",
+    UI_PynoTweaks_DropJunk_Tooltip = "Drop items from the vehicle's trunk, glove box, seats.",
+}

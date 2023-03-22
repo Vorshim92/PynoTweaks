@@ -1,0 +1,623 @@
+module PynoTweaks{
+	imports
+	{
+		Base, PynoTweaks
+	}
+
+	/****************************** Metalworking&Mechanics ******************************/ 
+		
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		CarvingFork=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		KitchenTongs=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		ButterKnife=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		Tongs=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		Spoon=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Kitchen Tool
+	{
+		Category	: PynoTweaks,
+		Fork=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+
+	recipe Scrap Empty Tin Can
+	{
+		Category	: PynoTweaks,
+		TinCanEmpty=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Empty Pop Can
+	{
+		Category	: PynoTweaks,
+		PopEmpty=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Empty Pop Can
+	{
+		Category	: PynoTweaks,
+		Pop2Empty=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Empty Pop Can
+	{
+		Category	: PynoTweaks,
+		Pop3Empty=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Empty Beer Can
+	{
+		Category	: PynoTweaks,
+		BeerCanEmpty=2,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Small Metal Sheet
+	{
+		Category	: PynoTweaks,
+		SmallSheetMetal=1,
+		keep Saw/GardenSaw,
+		Result 		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Metal Sheet
+	{
+		Category	: PynoTweaks,
+		SheetMetal=1,
+		keep Saw/GardenSaw,
+		Result 		: ScrapMetal=4,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Metal Pipe
+	{
+		Category	: PynoTweaks,
+		MetalPipe=1,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Scrap Metal Bar
+	{
+		Category	: PynoTweaks,
+		MetalBar=1,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapMetal=4,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Sheet Metal
+	{
+		Category	: PynoTweaks,
+		ScrapMetal=4,
+		BlowTorch=1,
+		Result 		: SheetMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Small Sheet Metal
+	{
+		Category	: PynoTweaks,
+		ScrapMetal=2,
+		BlowTorch=1,
+		Result 		: SmallSheetMetal,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Metal Pipe
+	{
+		Category	: PynoTweaks,
+		SmallSheetMetal=2,
+		BlowTorch=1,
+		Result 		: MetalPipe,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Metal Bar
+	{
+		Category	: PynoTweaks,
+		SmallSheetMetal=2,
+		BlowTorch=1,
+		Result		: MetalBar=1,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Metal Pipe
+	{
+		Category	: PynoTweaks,
+		SheetMetal=2,
+		BlowTorch=1,
+		Result 		: MetalPipe=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Metal Bar
+	{
+		Category	: PynoTweaks,
+		SheetMetal=2,
+		BlowTorch=1,
+		Result		: MetalBar=1,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Get Jar Lid
+	{
+		Category	: PynoTweaks,
+		SmallSheetMetal=1,
+		BlowTorch=1,
+		Result		: JarLid=1,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+	}
+	recipe Convert Stone to Gravel
+	{
+		Category	: PynoTweaks,
+		Stone=1,
+		EmptySandbag=1,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result		: Gravelbag,
+		Time		: 60,
+		AnimNode	: Disassemble,
+	}
+	
+	recipe Make Nails
+	{
+		Category	: PynoTweaks,
+		SheetMetal=1,
+		BlowTorch=1,
+		Result		: Nails=5,
+		Time		: 60,
+		AnimNode	: Disassemble,
+	}
+	
+	recipe Make Scrap Metal {
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		UnusableMetal=4,
+		BlowTorch=1,
+		
+		Result:ScrapMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Engine Parts {
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		ScrapMetal=4,
+		ElectronicsScrap=2,
+		BlowTorch=3,
+		
+		Result:EngineParts,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=1;Mechanics=2;Electricity=1,
+		OnGiveXP:Recipe.OnGiveXP.MakeEngineParts,
+	}
+	
+	recipe Disassemble Trunk {
+		Category	: PynoTweaks,
+		SmallTrunk1/NormalTrunk1/BigTrunk1/VanSeatsTrunk2/SmallTrunk2/NormalTrunk2/BigTrunk2/SmallTrunk3/NormalTrunk3/BigTrunk3/TrailerTrunk1/TrailerTrunk2/TrailerTrunk3,
+		BlowTorch=2,
+		Result		: SheetMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+	
+	recipe Disassemble Car Door {
+		Category	: PynoTweaks,
+		FrontCarDoor1/RearCarDoor1/RearCarDoorDouble1/FrontCarDoor2/RearCarDoor2/RearCarDoorDouble2/FrontCarDoor3/RearCarDoor3/RearCarDoorDouble3,
+		BlowTorch=1,
+		Result		: SheetMetal=1,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+		
+	recipe Disassemble Hood {
+		Category	: PynoTweaks,
+		EngineDoor1/EngineDoor2/EngineDoor3/TrunkDoor1/TrunkDoor2/TrunkDoor3,
+		BlowTorch=1,
+		Result		: SheetMetal=1,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+	
+	recipe Disassemble Brake {
+		Category	: PynoTweaks,
+		OldBrake1/NormalBrake1/ModernBrake1/OldBrake2/NormalBrake2/ModernBrake2/OldBrake3/NormalBrake3/ModernBrake3,
+		BlowTorch=1,
+		Result		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+	
+	recipe Disassemble Suspension {
+		Category	: PynoTweaks,
+		NormalSuspension1/ModernSuspension1/NormalSuspension2/ModernSuspension2/NormalSuspension3/ModernSuspension3,
+		BlowTorch=1,
+		Result		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+	
+	recipe Disassemble Gas Tank {
+		Category	: PynoTweaks,
+		SmallGasTank1/NormalGasTank1/BigGasTank1/SmallGasTank2/NormalGasTank2/BigGasTank2/SmallGasTank3/NormalGasTank3/BigGasTank3,
+		BlowTorch=1,
+		Result		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+		
+	recipe Disassemble Muffler {
+		Category	: PynoTweaks,
+		OldCarMuffler1/NormalCarMuffler1/ModernCarMuffler1/OldCarMuffler2/NormalCarMuffler2/ModernCarMuffler2/OldCarMuffler3/NormalCarMuffler3/ModernCarMuffler3,
+		BlowTorch=1,
+		Result		: ScrapMetal=2,
+       	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
+		Time 		: 60,
+		AnimNode 	: Disassemble,
+		AllowDestroyedItem:true,
+	}
+	
+	
+	
+	/****************************** Tailoring ******************************/	
+
+	
+	recipe Rip Wallet {
+		keep HuntingKnife,
+		Wallet/Wallet2/Wallet3/Wallet4,
+		
+		Result:LeatherStrips,
+        Sound:ClothesRipping,
+        Time:100.0,
+        AnimNode:RipSheets,
+		CanBeDoneFromFloor:true,
+        OnGiveXP:Recipe.OnGiveXP.RipLeather,
+	}
+
+	recipe Rip Bag {
+		keep HuntingKnife,
+		Bag_satchel/Handbag,
+
+		Result:LeatherStrips=10,
+		Sound:ClothesRipping,
+		Time:100.0,
+		AnimNode:RipSheets,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.RipLeather		
+	}	
+	
+	/****************************** Misc ******************************/	
+	
+	recipe Open Wallet {
+		Wallet/Wallet2/Wallet3/Wallet4,
+		
+		Result:Money,
+		Time: 50.0,
+		AnimNode:RipSheets,
+		RemoveResultItem:true,
+		CanBeDoneFromFloor:true,
+		OnCreate:Recipe.OnCreate.RollMoney
+	}
+
+
+	  recipe Make Bucket of Concrete
+      {
+        destroy BucketEmpty/BucketWaterFull,
+        Water=5,
+        ConcretePowder,
+
+        Result:BucketConcreteFull,
+        Time:150.0,
+        Category:Carpentry,
+        Sound:MakePlaster,
+      }
+
+
+
+	/****************************** PynoTweaks ******************************/
+	
+	recipe Tear Cannabis
+	{
+		PynoTweaks.Cannabis,
+		Result:PynoTweaks.CannabisShake,
+		OnCreate:MakeShake,
+		Category:PynoTweaks,
+		Time:120.0,
+	}
+	
+	recipe Cut Cannabis
+	{
+		PynoTweaks.Cannabis,
+		keep Scissors,
+		Result:PynoTweaks.CannabisShake,
+		Category:PynoTweaks,
+		OnCreate:MakeShake,
+		Time:60.0,
+	}
+
+	recipe Roll Joint
+	{
+		PynoTweaks.CannabisShake,
+		PynoTweaks.RollingPapers=1,
+
+		Result:PynoTweaks.Joint,
+		Category:PynoTweaks,
+		Time:60.0,
+	}
+	
+	recipe Break Joint
+	{
+		PynoTweaks.Joint,
+		
+		Result:PynoTweaks.CannabisShake=1,
+		Category:PynoTweaks,
+		Time:20.0,
+	}
+	
+	recipe Roll Blunt
+	{
+		PynoTweaks.CannabisShake=2,
+		PynoTweaks.BluntWrap,
+
+		Result:PynoTweaks.Blunt,
+		Category:PynoTweaks,
+		Time:120.0,
+	}
+
+	recipe Break Blunt
+	{
+		PynoTweaks.Blunt,
+		Result:PynoTweaks.CannabisShake=2,
+		Category:PynoTweaks,
+		OnCreate:BreakBlunt,
+		Time:15.0,
+	}
+
+	recipe Open Blunt
+	{
+		PynoTweaks.Blunt,
+		keep KitchenKnife/HuntingKnife/Scissors,
+		Result:PynoTweaks.CannabisShake=2,
+		Category:PynoTweaks,
+		OnCreate:OpenBlunt,
+		Time:20.0
+	}
+	
+	recipe Roll Mixed Blunt
+	{
+		PynoTweaks.CannabisShake,
+		PynoTweaks.Tobacco,
+		PynoTweaks.BluntWrap,
+
+		Result:PynoTweaks.MixedBlunt,
+		Category:PynoTweaks,
+		Time:120.0,
+	}
+	
+	recipe Roll Spliff
+	{
+		PynoTweaks.CannabisShake,
+		PynoTweaks.Tobacco,
+		PynoTweaks.RollingPapers=2,
+
+		Result:PynoTweaks.Spliff=2,
+		Category:PynoTweaks,
+		Time:120.0,
+	}
+	
+	recipe Open Cigarette Carton
+	{
+		PynoTweaks.GFCigaretteCarton,
+	
+		Result:PynoTweaks.GFCigarettes=10,
+		OnTest:Check_noHydrocraft,
+		Category:PynoTweaks,
+		Time:10.0,
+	}
+	
+		recipe Open Pack of Cigarettes
+	{
+		PynoTweaks.GFCigarettes,
+		Result:PynoTweaks.GFCigarette=1,
+		RemoveResultItem:true,
+		Category:PynoTweaks,
+		Time:10.0,
+		OnCreate:GF_GiveGFCigs,
+		OnTest:Check_noHydrocraft,
+	}
+	
+	recipe Place Cigarette Packs into Carton
+	{
+		PynoTweaks.GFCigarettes=10,
+	
+		Result:PynoTweaks.GFCigaretteCarton,
+		Category:PynoTweaks,
+		OnTest:Check_noHydrocraft,
+		Time:10.0,
+	}
+	
+		recipe Place Cigarettes into Pack
+	{
+		PynoTweaks.GFCigarette=20,
+		Result:PynoTweaks.GFCigarettes,
+		Category:PynoTweaks,
+		Time:10.0,
+		OnTest:Check_noHydrocraft,
+	}
+	
+			recipe Place Cigarettes into Pack
+	{
+		Cigarettes=20,
+		Result:PynoTweaks.GFCigarettes,
+		Category:PynoTweaks,
+		Time:10.0,
+		OnTest:Check_noHydrocraft,
+	}
+	
+	recipe Open Bag of Tobacco
+	{
+		PynoTweaks.PipeTobaccoBag,
+		
+		Result:PynoTweaks.Tobacco=50,
+		Category:PynoTweaks,
+		Time:20.0,
+	}
+	
+	recipe Roll Cigarette
+	{
+		PynoTweaks.Tobacco,
+		PynoTweaks.RollingPapers=1,
+
+		Result:PynoTweaks.GFCigarette,
+		Category:PynoTweaks,
+		OnTest:Check_noHydrocraft,
+		Time:120.0,
+	}
+	
+	recipe Break Cigarette
+	{
+		PynoTweaks.GFCigarette/Cigarettes,
+		
+		Result:PynoTweaks.Tobacco,
+		Category:PynoTweaks,
+		Time:20.0,
+	}
+	
+		recipe Pack Bags of Cannabis into Kilo
+	{
+		PynoTweaks.OzCannabis=37,
+		Result:KgCannabis,
+		Category:PynoTweaks,
+		Time:15.0,
+	}
+	
+	recipe Unpack Kilo of Cannabis
+	{
+		PynoTweaks.KgCannabis,
+		Result:PynoTweaks.OzCannabis=37,
+		Category:PynoTweaks,
+		Time:15.0,
+	}
+	
+		recipe Pack Cannabis into Bag
+	{
+		PynoTweaks.Cannabis=27,
+		Result:PynoTweaks.OzCannabis,
+		Category:PynoTweaks,
+		Time:15.0,
+	}
+
+	recipe Unpack Cannabis
+	{
+		PynoTweaks.OzCannabis,
+		Result:PynoTweaks.Cannabis=9,
+		Category:PynoTweaks,
+		Time:15.0,
+	}
+	
+	
+}

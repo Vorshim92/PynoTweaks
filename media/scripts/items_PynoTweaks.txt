@@ -1,0 +1,218 @@
+module PynoTweaks {
+
+	imports {
+		Base
+	}
+
+	item Joint
+	{
+		BoredomChange			= -5,
+		UnhappyChange			= -5,
+		StressChange			= -5,
+		Weight				= 0.01,
+		RequireInHandOrInventory	= Lighter/Matches,
+		Type				= Food,
+		DisplayName			= Joint,
+        	DisplayCategory = PynoTweaks,
+		Icon				= Joint,
+		Tooltip				= Tooltip_Painkillers,
+		CustomContextMenu		= Smoke,
+		CantBeFrozen			= TRUE,
+		OnEat				= OnSmoke_Cannabis,
+		CustomEatSound			= GF_LightUp,
+		StaticModel			= Joint,
+		EatType				= Cigarettes,
+        	WorldStaticModel = Joint_Ground,
+	}
+	
+		item Tobacco
+	{
+		HungerChange 	=	0,
+		Weight	=	0.01,
+		Type	=	Normal,
+		DisplayName	=	Tobacco,
+        	DisplayCategory = PynoTweaks,
+		Icon	=	Tobacco,
+        	WorldStaticModel = GFTabac,
+	}
+	
+		item PipeTobaccoBag
+	{
+		Type		=	Normal,
+		DisplayName	=	Bag of Tobacco,
+        	DisplayCategory = PynoTweaks,
+		Icon		=	TobaccoBag,
+		Weight		=	0.1,
+	}
+	
+		item Cannabis
+	{
+		HungerChange 	= 0,
+		Count		= 3,
+		Weight		= 0.01,
+		Type		= Food,
+		DisplayName	= Cannabis,
+        	DisplayCategory = PynoTweaks,
+		Icon		= CannabisBase,
+        	WorldStaticModel = Cannabis,
+	}
+	
+		item CannabisShake
+	{
+		Weight		= 0.009,
+		Type		= Normal,
+		DisplayName	= Cannabis Shake,
+        	DisplayCategory = PynoTweaks,
+		Icon		= CannabisShake,
+        	WorldStaticModel = GFShake,
+	}
+	
+		item RollingPapers
+	{
+		Weight			=	0.1,
+		Type			=	Drainable,
+		UseWhileEquipped	=	FALSE,
+		UseDelta  	 	=	0.050,
+		DisplayName		=	Rolling Papers,
+        	DisplayCategory = PynoTweaks,
+		Icon			=	RollingPapers,
+		cantBeConsolided	=	TRUE,
+        	WorldStaticModel = GFRollingPapers,
+	}
+	
+	
+	
+		item Blunt
+	{
+		BoredomChange			= -10,
+		UnhappyChange			= -10,
+		StressChange			= -13,
+		Weight				= 0.01,
+		RequireInHandOrInventory	= Lighter/Matches,
+		Type				= Food,
+		DisplayName			= Blunt,
+        	DisplayCategory = PynoTweaks,
+		Icon				= Blunt,
+		Tooltip				= Tooltip_Painkillers,
+		CustomContextMenu		= Smoke,
+		CantBeFrozen			= TRUE,
+		OnEat				= OnSmoke_Blunt,
+		CustomEatSound			= GF_LightUp,
+		StaticModel			= Blunt,
+		EatType				= Cigarettes,
+        	WorldStaticModel = Blunt_Ground,
+	}
+	
+		item MixedBlunt
+	{
+		BoredomChange			= -5,
+		UnhappyChange			= -5,
+		StressChange			= -8,
+		Weight				= 0.02,
+		RequireInHandOrInventory	= Lighter/Matches,
+		Type				= Food,
+		DisplayName			= Mixed Blunt,
+        	DisplayCategory = PynoTweaks,
+		Icon				= MixedBlunt,
+		Tooltip				= Tooltip_Painkillers,
+		CustomContextMenu		= Smoke,
+		CantBeFrozen			= TRUE,
+		OnEat				= OnSmoke_Blunt,
+		CustomEatSound			= GF_LightUp,
+		StaticModel			= Blunt,
+		EatType				= Cigarettes,
+        	WorldStaticModel = Blunt_Ground,
+	}
+	
+		item Spliff
+	{
+		BoredomChange			= -5,
+		UnhappyChange			= -5,
+		StressChange			= -7,
+		Weight				= 0.01,
+		RequireInHandOrInventory	= Lighter/Matches,
+		Type				= Food,
+		DisplayName			= Spliff,
+        	DisplayCategory = PynoTweaks,
+		Icon				= Spliff,
+		Tooltip				= Tooltip_Painkillers,
+		CustomContextMenu		= Smoke,
+		CantBeFrozen			= TRUE,
+		OnEat				= OnEat_Spliff,
+		CustomEatSound			= GF_LightUp,
+		StaticModel			= Spliff,
+		EatType				= Cigarettes,
+        	WorldStaticModel = Spliff_Ground,
+	}
+	
+		item BluntWrap
+	{
+		Weight	=	0.01,
+		Type	=	Normal,
+		DisplayName	=	Blunt Wrap,
+        	DisplayCategory = PynoTweaks,
+		Icon	=	BluntWrap,
+	}
+	
+		item GFCigarette
+	{
+		HungerChange	=	0,
+		Weight	=	0.01,
+		RequireInHandOrInventory	=	Lighter/Matches,
+		Type	=	Food,
+		DisplayName	=	Cigarette,
+        	DisplayCategory = PynoTweaks,
+		StressChange	=	-5,
+		Icon	=	IckySticks,
+		CustomContextMenu = Smoke,
+		CantBeFrozen = TRUE,
+		OnEat = OnEat_Cigarettes,
+		CustomEatSound =	GF_LightUp,
+		StaticModel = Cigarette,
+		EatType = Cigarettes,
+		WorldStaticModel = CigarettePack_Ground,
+	}
+	
+		item GFCigarettes
+	{
+		Weight	=	0.2,
+		Type	=	Normal,
+		DisplayName	=	Pack of Cigarettes,
+        	DisplayCategory = PynoTweaks,
+		Icon	=	IckySticks,
+		WorldStaticModel = CigarettePack_Ground,
+	}
+	
+		item GFCigaretteCarton
+	{
+		Weight	=	1.0,
+		Type	=	Normal,
+		DisplayName	=	Carton of Cigarettes,
+        	DisplayCategory = PynoTweaks,
+		Icon	=	GFCigaretteCarton,
+        	WorldStaticModel = GFCCarton,
+	}
+	
+	item KgCannabis
+	{
+		Weight		= 1.0,
+		Type		= Normal,
+		DisplayName	= Kilo of Cannabis,
+        	DisplayCategory = GreenFireItem,
+		Icon		= KgCannabis,
+        	WorldStaticModel = KgCannabis,
+	}
+	
+		item CarClamp
+	{
+		Type				=	Normal,
+		DisplayCategory		= 	Tool,
+        Weight				=	2.5,
+		UseWhileEquipped	=	TRUE,
+		DisplayName			=	CarClamp,
+		Icon				=	CarClamp,
+		ToolTip				=	Tooltip_CarClamp,
+		StaticModel			=   CarClamp,
+		WorldStaticModel	=   CarClamp,
+	}
+}

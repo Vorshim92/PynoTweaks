@@ -1,0 +1,11 @@
+Recipes_IT = {
+	Recipe_Make_Unusable_Metal = "Crea Metallo di Scarto",
+	Recipe_Make_Scrap_Metal = "Crea Scarti Metallici",
+	Recipe_Make_Engine_Parts = "Crea Parti di ricambio del Motore",
+	Recipe_Rip_Shoes = "Strappa Scarpe",
+	Recipe_Rip_Boots = "Strappa Stivali",
+	Recipe_Rip_Wallet = "Strappa Portafogli",
+	Recipe_Open_Wallet = "Apri Portafogli",
+	Recipe_Make_Bucket_of_Concrete = "Fai Secchio di Cemento"
+    
+}

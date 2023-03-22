@@ -1,0 +1,6 @@
+Tooltip_IT = {
+    Tooltip_PynoTweaks = "Smantellare un veicolo o un rimorchio con una torcia al propano permette di recuperare materiali metallici ed elettrici. <LINE> Livelli più alti di lavorazione metalli faranno guadagnare più pezzi.",
+    Tooltip_PynoTweaks_Uninstall = "Smonta:",
+    Tooltip_PynoTweaks_Passengers = "Non posso smontare un veicolo passeggeri dentro, boiade!",
+	Tooltip_CarClamp = "Usa il menu radiale fuori dalla macchina per bloccarla.",
+}

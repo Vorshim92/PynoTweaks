@@ -1,0 +1,5 @@
+Sandbox_IT = {
+	Sandbox_PynoTweaks = "Pyno Tweaks",
+	Sandbox_PynoTweaks_NoDisassembling = "Disabilita disassemblaggio",
+	Sandbox_PynoTweaks_NoDisassembling_tooltip = "I giocatori non potranno disasemblare container.",
+}

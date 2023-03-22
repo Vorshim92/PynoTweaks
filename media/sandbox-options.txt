@@ -1,0 +1,21 @@
+VERSION = 1,
+
+option PynoTweaks.NoDisassembling = {
+
+	type = boolean,
+	default = true,
+	page = PynoTweaks,
+	translation = PynoTweaks_NoDisassembling,
+}
+
+option PynoTweaks.UninstallParts
+{
+	type = boolean, default = false,
+	page = PynoTweaks, translation = PynoTweaks_UninstallParts,
+}
+
+option PynoTweaks.ActionTimeMultiplier
+{
+	type = integer, min = 1, max = 100, default = 1,
+	page = PynoTweaks, translation = PynoTweaks_ActionTimeMultiplier,
+}
