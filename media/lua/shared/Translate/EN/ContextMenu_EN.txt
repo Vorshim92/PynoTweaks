@@ -1,4 +1,5 @@
 ContextMenu_EN = {
     ContextMenu_PynoTweaks_RemoveVehicle = "Dismantle Vehicle",
     ContextMenu_PynoTweaks_RemoveTrailer = "Dismantle Trailer",
+    ContextMenu_Remove = "Delete"
 }

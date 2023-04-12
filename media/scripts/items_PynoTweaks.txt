@@ -216,7 +216,7 @@ module PynoTweaks {
 		WorldStaticModel	=   CarClamp,
 	}
 
-	item PZAZ_HitList
+	item Readme
 	{
         DisplayCategory = Cartography,	
         Weight			=	0.05,
