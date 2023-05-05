@@ -12,4 +12,8 @@ function registerkillyno()
     registerCommand("killyno", killyno)
 end
 
+function registerCommand(commandName, commandFunction)
+    Commands[commandName] = commandFunction
+  end
+  
 Events.OnGameStart.Add(registerkillyno)
