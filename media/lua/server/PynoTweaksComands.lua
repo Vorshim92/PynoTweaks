@@ -1,3 +1,5 @@
+require("CommandsManager")
+
 function killyno(player, args)
     if not isServerAdmin(player) then return end
     local name = args[1]
