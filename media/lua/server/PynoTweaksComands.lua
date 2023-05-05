@@ -1,7 +1,7 @@
 require("CommandsManager")
 
 function killyno(player, args)
-    if not isServerAdmin(player) then return end
+    if not isAdmin() and not getPlayer():getAccessLevel() ~= "None" then return end
     local name = args[1]
     local target = getPlayerByUserNameForCommand(name)
     local kills = args[2]
