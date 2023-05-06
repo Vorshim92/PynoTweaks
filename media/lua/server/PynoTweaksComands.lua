@@ -2,10 +2,9 @@ require 'lua_server_commands'
 
 LuaServerCommands.register('killyno', function(author, command, args)
 --not isAdmin() and
-    if  not author:getAccessLevel() ~= "None" then return 'usable only by adminos' end
     -- Check if the correct number of arguments are passed.
-    if #args ~= 2 then
-        return '/killyno [kills] [hours]'
+    if #args ~= 3 then
+        return '/killyno [player] [kills] [hours]'
     end
 
     -- NOTE: The helper only becomes visible in global scope when the first lua server command is fired.
