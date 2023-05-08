@@ -12,7 +12,7 @@ LuaServerCommands.register('killyno', function(author, command, args)
 
     -- Check admin
     local admin = helper.getPlayerByUsername(author)
-    if admin:getAccessLevel() ~= "Admin" then return 'Voleeeviii' end
+    --if admin:getAccessLevel() ~= "Admin" then return 'Voleeeviii' end
 
     -- Attempt to resolve the player using the helper method.
     local username = args[1]
@@ -23,7 +23,7 @@ LuaServerCommands.register('killyno', function(author, command, args)
     if kills == nil or kills < 0 then return 'Invalid kills: '..tostring(args[2]) end
     local lifeTime = tonumber(args[3])
     if lifeTime == nil or lifeTime < 0 then return 'Invalid hours: '..tostring(args[3]) end
-    local steamID = player:getSteamID()
+    local steamID = player:getOnlineID()
 
     local packet = {}
     packet.kills = kills
