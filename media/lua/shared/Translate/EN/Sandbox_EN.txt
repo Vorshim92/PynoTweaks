@@ -6,4 +6,5 @@ Sandbox_EN = {
     	Sandbox_PynoTweaks_UninstallParts = "Parts Must Be Uninstalled Before Dismantling",
     	Sandbox_PynoTweaks_UninstallParts_tooltip = "The following parts must be uninstalled before dismantling: hood, trunk lid, doors, windows, seats.",
     	Sandbox_PynoTweaks_ActionTimeMultiplier = "Dismantling Time Multiplier",
+		Sandbox_PynoTweaks_SyncRewards = "Sync Kill&Hours on /killyno (SurivvalRewards)",
 }

@@ -19,3 +19,9 @@ option PynoTweaks.ActionTimeMultiplier
 	type = integer, min = 1, max = 100, default = 1,
 	page = PynoTweaks, translation = PynoTweaks_ActionTimeMultiplier,
 }
+
+option PynoTweaks.SyncRewards
+{
+	type = boolean, default = false,
+	page = PynoTweaks, translation = PynoTweaks_SyncRewards,
+}
