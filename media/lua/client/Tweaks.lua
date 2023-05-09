@@ -138,7 +138,7 @@ TweakItem("Base.Ginseng","FatigueChange", -5);
 
 ---- cappello dello zio sam
 
-TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 25);
+TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
 
 
 
