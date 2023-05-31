@@ -140,6 +140,10 @@ TweakItem("Base.Ginseng","FatigueChange", -5);
 
 TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
 
+---- PROVA ARMI DA FUOCO CATEGORIA
+
+TweakItem("Base.Pistol2","SubCategory", "Firearms");
+
 
 
 
