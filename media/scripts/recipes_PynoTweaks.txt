@@ -575,6 +575,7 @@ module PynoTweaks{
 		Result:PynoTweaks.GFCigarette,
 		Category:PynoTweaks,
 		OnTest:Check_noHydrocraft,
+		OnGiveXP:Recipe.OnGiveXP.Empty,
 		Time:120.0,
 	}
 	

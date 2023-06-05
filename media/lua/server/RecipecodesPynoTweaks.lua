@@ -1,5 +1,6 @@
-
-
+function Recipe.OnGiveXP.Empty(recipe, ingredients, result, player)
+	-- hehe hoho
+end
 function Recipe.OnGiveXP.RipLeather(recipe, ingredients, result, player)
 	 player:getXp():AddXP(Perks.Tailoring, 1);
 end
