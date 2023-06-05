@@ -145,6 +145,11 @@ TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
 TweakItem("Base.Pistol2","SubCategory", "Firearms");
 
 
+---- UCCELLACCI
+
+TweakItem("Base.DeadBird","Weight", 0.8);
+
+
 
 
 
