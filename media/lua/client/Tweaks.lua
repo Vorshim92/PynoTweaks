@@ -122,6 +122,7 @@ TweakItem("Radio.RadioMakeShift","UseDelta", 0.00001);
 
 TweakItem("EHE.ProteinBar","HungerChange", -10);
 TweakItem("EHE.ProteinBar","UnhappyChange", -5);
+TweakItem("EHE.ProteinBar","Calories", 25);
 
 
 -------------cibo sushi
@@ -140,14 +141,23 @@ TweakItem("Base.Ginseng","FatigueChange", -5);
 
 TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
 
----- PROVA ARMI DA FUOCO CATEGORIA
 
-TweakItem("Base.Pistol2","SubCategory", "Firearms");
+
 
 
 ---- UCCELLACCI
 
-TweakItem("Base.DeadBird","Weight", 0.8);
+
+
+TweakItem("Base.DeadBird","Weight", 0.6);
+
+
+
+----- PESCI ESCA ECC
+
+TweakItem("Base.BaitFish","Proteins", 4.0);
+TweakItem("Base.FishStrips","Proteins", 25.0);
+TweakItem("Base.DeadRabbit","Proteins", 220.0);
 
 
 
