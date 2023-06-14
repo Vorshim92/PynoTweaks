@@ -3,4 +3,6 @@ Tooltip_EN = {
     Tooltip_PynoTweaks_Uninstall = "Uninstall:",
     Tooltip_PynoTweaks_Passengers = "Can't dismantle a vehicle with passengers inside.",
 	Tooltip_CarClamp = "Use the outside car radial menu in order to block the vehicle",
+    Tooltip_PynoTweaks_CarClampUninstall = "CARCLAMPYNO",
+    Tooltip_PynoTweaks_MetalWeldingLevel = "Metal Wielding: %1/2",
 }

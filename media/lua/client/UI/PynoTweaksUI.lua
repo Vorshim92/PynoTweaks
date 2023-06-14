@@ -179,6 +179,18 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
         end
     end
 
+    -- check for car clamp mod
+    if vehicle:getMass() >= constants.vehicleLockMass then
+        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_CarClampUninstall")
+        notAvailable = true
+    end
+    -- che for metal wielding level
+    level = player:getPerkLevel(Perks.MetalWelding)
+    if level < 2 then
+        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" .. level)
+        notAvailable = true
+    end
+
     toolTip.description = text
     option.notAvailable = notAvailable
 end
