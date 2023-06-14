@@ -179,17 +179,28 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
         end
     end
 
-    -- check for car clamp mod
-    if vehicle:getMass() >= constants.vehicleLockMass then
+	if CarClampStorageExists(vehicle) and CarClampStorage.Data.CarClamp[tostring(GetCarClampIdByVehicle(vehicle))] then
         text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_CarClampUninstall")
         notAvailable = true
     end
     -- che for metal wielding level
     level = player:getPerkLevel(Perks.MetalWelding)
     if level < 2 then
-        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" .. level)
+        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
         notAvailable = true
+    else
+        text = text .. " <LINE> <LINE> <RGB:1,1,1> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
     end
+
+    -- check for player survival time (96 h)
+    if player:getHoursSurvived() < 96 then
+        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived())/24)
+        notAvailable = true
+    else
+        text = text .. " <LINE> <LINE> <RGB:1,1,1> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived())/24)
+    end
+
+    -- check for player survival time ()
 
     toolTip.description = text
     option.notAvailable = notAvailable
@@ -204,4 +215,12 @@ end
 function ISVehicleMenu.FillMenuOutsideVehicle(player, context, vehicle, test)
     PynoTweaks.UI.defaultMenuOutsideVehicle(player, context, vehicle, test)
     PynoTweaks.UI.addOptionToMenuOutsideVehicle(getSpecificPlayer(player), context, vehicle)
+end
+
+function CarClampStorageExists(vehicle)
+    if not vehicle then return false end
+	if CarClampStorage.Data.CarClamp == nil then return false end
+	if CarClampStorage.Data.CarClamp == {} then return false end
+	if type(CarClampStorage.Data.CarClamp) ~= "table" then return false end
+    return true
 end
