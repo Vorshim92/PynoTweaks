@@ -236,8 +236,6 @@ end
 
 function onEnterVehicle(character)
 	Events.OnPlayerUpdate.Add(onPlayerUpdate)
-	local vehicle = character:getVehicle()	
-	processCarClampConstraints(vehicle, true)
 end
 
 function onExitVehicle(character)
@@ -249,7 +247,7 @@ Events.OnEnterVehicle.Add(onEnterVehicle)
 function onPlayerUpdate(playerObj)
 	if updateTime + 150 < getTimestampMs() then
 		local vehicle = playerObj:getVehicle()
-		if vehicle then
+		if vehicle and vehicle:getSpeed2D() > 0.1 then
 			processCarClampConstraints(vehicle, false)
 		end
 	end	

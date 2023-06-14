@@ -1,3 +1,3 @@
 constants = { 
-	vehicleLockMass = 9000000 
+	vehicleLockMass = 10000 
 }

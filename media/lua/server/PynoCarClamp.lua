@@ -52,34 +52,3 @@ local function initGlobalModData(isNewGame)
 end
 
 Events.OnInitGlobalModData.Add(initGlobalModData);
-
-local function processCarClampConstraints(vehicle)
-	if CarClampStorage.Data.CarClamp == nil then return false end
-	if CarClampStorage.Data.CarClamp == {} then return false end
-	if type(CarClampStorage.Data.CarClamp) ~= "table" then return false end
-
-	if CarClampStorage.Data.CarClamp[tostring(GetCarClampIdByVehicle(vehicle))] then
-		print("Lock vehicle engine.")
-		vehicle:setMass(constants.vehicleLockMass)
-		return true
-	else
-		local vehicleTowing = vehicle:getVehicleTowing()
-		if vehicleTowing and CarClampStorage.Data.CarClamp[tostring(GetCarClampIdByVehicle(vehicleTowing))] then
-			print("Lock vehicle engine.")
-			vehicle:setMass(constants.vehicleLockMass)
-			return true
-		else
-			print("Unlock vehicle engine.")
-			vehicle:setMass(vehicle:getInitialMass())
-			vehicle:updateTotalMass()
-		end
-		return false
-	end
-end
-
-function onEnterVehicle(character)
-	local vehicle = character:getVehicle()	
-	processCarClampConstraints(vehicle)
-end
-
-Events.OnEnterVehicle.Add(onEnterVehicle)
