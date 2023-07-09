@@ -123,6 +123,8 @@ TweakItem("Radio.RadioMakeShift","UseDelta", 0.00001);
 TweakItem("EHE.ProteinBar","HungerChange", -10);
 TweakItem("EHE.ProteinBar","UnhappyChange", -5);
 TweakItem("EHE.ProteinBar","Calories", 25);
+TweakItem("EHE.ProteinBar","Carbohydrates", 40);
+TweakItem("EHE.ProteinBar","Lipids", 10);
 
 
 -------------cibo sushi
@@ -157,7 +159,8 @@ TweakItem("Base.DeadBird","Weight", 0.6);
 
 TweakItem("Base.BaitFish","Proteins", 4.0);
 TweakItem("Base.FishStrips","Proteins", 25.0);
-TweakItem("Base.DeadRabbit","Proteins", 220.0);
+TweakItem("Base.DeadRabbit","Proteins", 180.0);
+TweakItem("Base.DeadRabbit","Calories", 1000.0);
 
 
 
