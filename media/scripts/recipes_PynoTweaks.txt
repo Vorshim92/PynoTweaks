@@ -423,6 +423,7 @@ module PynoTweaks{
 	recipe Tear Cannabis
 	{
 		PynoTweaks.Cannabis,
+
 		Result:PynoTweaks.CannabisShake,
 		OnCreate:MakeShake,
 		Category:PynoTweaks,
@@ -434,6 +435,7 @@ module PynoTweaks{
 	{
 		PynoTweaks.Cannabis,
 		keep Scissors,
+
 		Result:PynoTweaks.CannabisShake,
 		Category:PynoTweaks,
 		OnCreate:MakeShake,
@@ -476,6 +478,7 @@ module PynoTweaks{
 	recipe Break Blunt
 	{
 		PynoTweaks.Blunt,
+
 		Result:PynoTweaks.CannabisShake=2,
 		Category:PynoTweaks,
 		OnCreate:BreakBlunt,
@@ -486,6 +489,7 @@ module PynoTweaks{
 	recipe Open Blunt
 	{
 		PynoTweaks.Blunt,
+
 		keep KitchenKnife/HuntingKnife/Scissors,
 		Result:PynoTweaks.CannabisShake=2,
 		Category:PynoTweaks,
@@ -531,6 +535,7 @@ module PynoTweaks{
 		recipe Open Pack of Cigarettes
 	{
 		PynoTweaks.GFCigarettes,
+
 		Result:PynoTweaks.GFCigarette=1,
 		RemoveResultItem:true,
 		Category:PynoTweaks,
@@ -554,6 +559,7 @@ module PynoTweaks{
 		recipe Place Cigarettes into Pack
 	{
 		PynoTweaks.GFCigarette=20,
+
 		Result:PynoTweaks.GFCigarettes,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
 		Category:PynoTweaks,
@@ -564,6 +570,7 @@ module PynoTweaks{
 			recipe Place Cigarettes into Pack
 	{
 		Cigarettes=20,
+
 		Result:PynoTweaks.GFCigarettes,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
 		Category:PynoTweaks,
@@ -606,7 +613,8 @@ module PynoTweaks{
 		recipe Pack Bags of Cannabis into Kilo
 	{
 		PynoTweaks.OzCannabis=37,
-		Result:KgCannabis,
+
+		Result:PynoTweaks.KgCannabis,
 		Category:PynoTweaks,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
 		Time:15.0,
@@ -615,6 +623,7 @@ module PynoTweaks{
 	recipe Unpack Kilo of Cannabis
 	{
 		PynoTweaks.KgCannabis,
+
 		Result:PynoTweaks.OzCannabis=37,
 		Category:PynoTweaks,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
@@ -624,6 +633,7 @@ module PynoTweaks{
 		recipe Pack Cannabis into Bag
 	{
 		PynoTweaks.Cannabis=27,
+
 		Result:PynoTweaks.OzCannabis,
 		Category:PynoTweaks,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
@@ -633,6 +643,7 @@ module PynoTweaks{
 	recipe Unpack Cannabis
 	{
 		PynoTweaks.OzCannabis,
+
 		Result:PynoTweaks.Cannabis=9,
 		Category:PynoTweaks,
 		OnGiveXP:Recipe.OnGiveXP.Empty,
