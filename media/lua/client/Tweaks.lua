@@ -151,8 +151,8 @@ TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
 
 
 
-TweakItem("Base.DeadBird","Weight", 1.0);
-TweakItem("Base.DeadBird","HungerChange", -7);
+TweakItem("Base.DeadBird","Weight", 0.8);
+TweakItem("Base.DeadBird","HungerChange", -2);
 
 
 
@@ -166,7 +166,8 @@ TweakItem("Base.FishStrips","Proteins", 25.0);
 TweakItem("Base.DeadRabbit","Proteins", 180.0);
 TweakItem("Base.DeadRabbit","Calories", 800.0);
 TweakItem("Base.DeadRabbit","Lipids", 15.0);
-TweakItem("Base.DeadRabbit","HungerChange", -20);
+TweakItem("Base.DeadRabbit","HungerChange", -15);
+TweakItem("Base.DeadRabbit","Weight", 1.3);
 
 
 
