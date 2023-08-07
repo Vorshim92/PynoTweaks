@@ -166,7 +166,7 @@ module PynoTweaks{
 	recipe Get Sheet Metal
 	{
 		Category	: PynoTweaks,
-		ScrapMetal=4,
+		ScrapMetal=8,
 		BlowTorch=1,
 		Result 		: SheetMetal,
        	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
@@ -176,7 +176,7 @@ module PynoTweaks{
 	recipe Get Small Sheet Metal
 	{
 		Category	: PynoTweaks,
-		ScrapMetal=2,
+		ScrapMetal=4,
 		BlowTorch=1,
 		Result 		: SmallSheetMetal,
        	OnGiveXP:Recipe.OnGiveXP.MetalWelding2,
@@ -365,30 +365,7 @@ module PynoTweaks{
 	
 	/****************************** Tailoring ******************************/	
 
-	
-	recipe Rip Wallet {
-		keep HuntingKnife,
-		Wallet/Wallet2/Wallet3/Wallet4,
-		
-		Result:LeatherStrips,
-        Sound:ClothesRipping,
-        Time:100.0,
-        AnimNode:RipSheets,
-		CanBeDoneFromFloor:true,
-        OnGiveXP:Recipe.OnGiveXP.RipLeather,
-	}
 
-	recipe Rip Bag {
-		keep HuntingKnife,
-		Bag_satchel/Handbag,
-
-		Result:LeatherStrips=10,
-		Sound:ClothesRipping,
-		Time:100.0,
-		AnimNode:RipSheets,
-		CanBeDoneFromFloor:true,
-		OnGiveXP:Recipe.OnGiveXP.RipLeather		
-	}	
 	
 	/****************************** Misc ******************************/	
 	

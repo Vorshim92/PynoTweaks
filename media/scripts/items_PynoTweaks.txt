@@ -6,9 +6,9 @@ module PynoTweaks {
 
 	item Joint
 	{
-		BoredomChange			= -5,
-		UnhappyChange			= -5,
-		StressChange			= -5,
+		BoredomChange			= -20,
+		UnhappyChange			= -20,
+		StressChange			= -25,
 		Weight				= 0.01,
 		RequireInHandOrInventory	= Lighter/Matches,
 		Type				= Food,
@@ -84,9 +84,9 @@ module PynoTweaks {
 	
 		item Blunt
 	{
-		BoredomChange			= -10,
-		UnhappyChange			= -10,
-		StressChange			= -13,
+		BoredomChange			= -40,
+		UnhappyChange			= -40,
+		StressChange			= -45,
 		Weight				= 0.01,
 		RequireInHandOrInventory	= Lighter/Matches,
 		Type				= Food,
@@ -105,9 +105,9 @@ module PynoTweaks {
 	
 		item MixedBlunt
 	{
-		BoredomChange			= -5,
-		UnhappyChange			= -5,
-		StressChange			= -8,
+		BoredomChange			= -20,
+		UnhappyChange			= -20,
+		StressChange			= -25,
 		Weight				= 0.02,
 		RequireInHandOrInventory	= Lighter/Matches,
 		Type				= Food,
@@ -126,9 +126,9 @@ module PynoTweaks {
 	
 		item Spliff
 	{
-		BoredomChange			= -5,
-		UnhappyChange			= -5,
-		StressChange			= -7,
+		BoredomChange			= -20,
+		UnhappyChange			= -20,
+		StressChange			= -22,
 		Weight				= 0.01,
 		RequireInHandOrInventory	= Lighter/Matches,
 		Type				= Food,
