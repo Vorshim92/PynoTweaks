@@ -136,8 +136,9 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
     local text = getText("Tooltip_PynoTweaks") .. " <LINE> "
     local notAvailable = false
 
+
     if player:getInventory():containsTypeRecurse("WeldingMask") then
-        text = text .. " <LINE> <RGB:1,1,1> " .. getItemNameFromFullType("Base.WeldingMask")
+        text = text .. " <LINE> <RGB:0,1,0> " .. getItemNameFromFullType("Base.WeldingMask")
     else
         text = text .. " <LINE> <RGB:1,0,0> " .. getItemNameFromFullType("Base.WeldingMask")
         notAvailable = true
@@ -147,7 +148,7 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
     if blowTorch then
         local blowTorchUsesLeft = blowTorch:getDrainableUsesInt()
         if blowTorchUsesLeft >= propaneNeeded then
-            text = text .. " <LINE> <RGB:1,1,1> " .. getItemNameFromFullType("Base.BlowTorch") .. " " .. getText("ContextMenu_Uses") .. " " .. blowTorchUsesLeft .. "/" .. propaneNeeded
+            text = text .. " <LINE> <RGB:0,1,0> " .. getItemNameFromFullType("Base.BlowTorch") .. " " .. getText("ContextMenu_Uses") .. " " .. blowTorchUsesLeft .. "/" .. propaneNeeded
         else
             text = text .. " <LINE> <RGB:1,0,0> " .. getItemNameFromFullType("Base.BlowTorch") .. " " .. getText("ContextMenu_Uses") .. " " .. blowTorchUsesLeft .. "/" .. propaneNeeded
             notAvailable = true
@@ -186,21 +187,27 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
     -- che for metal wielding level
     level = player:getPerkLevel(Perks.MetalWelding)
     if level < 2 then
-        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
+        text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
         notAvailable = true
     else
-        text = text .. " <LINE> <LINE> <RGB:1,1,1> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
+        text = text .. " <LINE> <RGB:0,1,0> " .. getText("Tooltip_PynoTweaks_MetalWeldingLevel" , level)
     end
 
     -- check for player survival time (96 h)
     if player:getHoursSurvived() < 96 then
-        text = text .. " <LINE> <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived())/24)
+        text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24))
         notAvailable = true
     else
-        text = text .. " <LINE> <LINE> <RGB:1,1,1> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived())/24)
+        text = text .. " <LINE> <RGB:0,1,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24))
     end
 
-    -- check for player survival time ()
+    -- check for player is not melting a claimed vehicle (AVCS mod)
+	local checkResult = AVCS.checkPermission(player, vehicle)
+	if type(checkResult) ~= "boolean" then
+	    if checkResult.permissions == false then
+            text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_VehicleClaimed")
+        end
+    end
 
     toolTip.description = text
     option.notAvailable = notAvailable
