@@ -206,6 +206,7 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
 	if type(checkResult) ~= "boolean" then
 	    if checkResult.permissions == false then
             text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_VehicleClaimed")
+            notAvailable = true
         end
     end
 
