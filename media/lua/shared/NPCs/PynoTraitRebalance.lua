@@ -1,6 +1,6 @@
 TraitsRebalance = {}
 local TRAIT_COST = {
-	scrapwarrior = 0
+	scrapwarrior = 0,
 	GenExp = 3,
 	Athletic = 20,
 	Strong = 20,

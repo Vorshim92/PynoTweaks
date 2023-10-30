@@ -198,7 +198,7 @@ module PynoTweaks {
 		Weight		= 1.0,
 		Type		= Normal,
 		DisplayName	= Kilo of Cannabis,
-        	DisplayCategory = GreenFireItem,
+        	DisplayCategory = PynoTweaks,
 		Icon		= KgCannabis,
         	WorldStaticModel = KgCannabis,
 	}
