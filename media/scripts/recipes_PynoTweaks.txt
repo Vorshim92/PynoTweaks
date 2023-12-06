@@ -626,6 +626,32 @@ module PynoTweaks{
 		OnGiveXP:Recipe.OnGiveXP.Empty,
 		Time:15.0,
 	}
-	
+
+	recipe Open Purse {
+		Purse,
+
+		Result:PynoTweaks.WCoin,
+		Time: 50.0,
+		AnimNode:RipSheets,
+		RemoveResultItem:true,
+		CanBeDoneFromFloor:true,
+		OnCreate:Recipe.OnCreate.RollWCoin
+	}
+
+	recipe Stack 50 WCoins {
+		PynoTweaks.WCoin = 50,
+
+		Result: PynoTweaks.WStack,
+		Category:PynoTweaks,
+		Time:50.0
+  	}
+
+	recipe Recover 50 Money {
+		PynoTweaks.WStack,
+
+		Result : PynoTweaks.WCoin = 50,
+		Category:PynoTweaks,
+		Time:50.0
+  	}
 	
 }

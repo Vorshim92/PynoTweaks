@@ -21,3 +21,7 @@ end
 function RollMoneyBag(items, result, player)
 	player:getInventory():AddItems("Base.Money", ZombRand(20)+1);
 end
+
+function Recipe.OnCreate.RollWCoin(items, result, player)
+	player:getInventory():AddItems("PynoTweaks.WCoin", ZombRand(3)+1);
+end
