@@ -233,7 +233,7 @@ module PynoTweaks {
 		Weight = 0.01,
 		Type = Normal,
 		DisplayName = W Coin,
-		Icon = PokerChips,
+		Icon = WCoin,
 		WorldStaticModel = PokerChips_Ground
 	}
 
@@ -243,7 +243,7 @@ module PynoTweaks {
 		Weight = 0.3,
 		Type = Normal,
 		DisplayName = W Stack,
-		Icon = PokerChips,
+		Icon = WStack,
 		WorldStaticModel = PokerChips_Ground
 	}
 	
