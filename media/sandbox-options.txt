@@ -25,3 +25,21 @@ option PynoTweaks.SyncRewards
 	type = boolean, default = false,
 	page = PynoTweaks, translation = PynoTweaks_SyncRewards,
 }
+
+option PynoTweaks.EnableFuelLimitation
+{
+	type = boolean, default = false,
+	page = PynoTweaks, translation = PynoTweaks_EnableFuelLimitation,
+}
+
+option PynoTweaks.FuelLimitationFactionName
+{
+	type = string, default = "admin",
+	page = PynoTweaks, translation = PynoTweaks_FuelLimitationFactionName,
+}
+
+option PynoTweaks.SeedsRequiredMultiplier
+{
+	type = integer, min = 1, max = 100, default = 3,
+	page = PynoTweaks, translation = PynoTweaks_SeedsRequiredMultiplier,
+}

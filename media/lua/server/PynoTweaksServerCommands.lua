@@ -1,9 +1,10 @@
 require 'lua_server_commands'
+require "Server"
 
 LuaServerCommands.register('killyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
     if #args ~= 3 then
-        return '/killyno [player] [kills] [hours]'
+        return '/luacmd killyno [player] [kills] [hours]'
     end
 
     -- NOTE: The helper only becomes visible in global scope when the first lua server command is fired.
@@ -30,6 +31,18 @@ LuaServerCommands.register('killyno', function(author, command, args)
     packet.hours = lifeTime
     packet.steamID = steamID
     sendServerCommand(player, "Pyno", "killyno", packet)
+    
+    -- fix per la leaderboard di ashen
+    if SandboxVars.PynoTweaks.SyncRewards then
+        local k = getTotalKills(username)
+        if k and k >= kills then
+            setTotalKills(username, k - kills)
+        end
+        local deaths = getDeaths(username)
+        if deaths and deaths > 0 then
+            setDeaths(username, deaths - 1)
+        end
+    end
 
     return 'Kills and Survived hours set!'
 end)

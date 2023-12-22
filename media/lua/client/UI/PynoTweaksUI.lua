@@ -214,15 +214,41 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
     option.notAvailable = notAvailable
 end
 
+function PynoTweaks.UI.changeFillFuelMenu(source, player, context)
+    if not SandboxVars.PynoTweaks.EnableFuelLimitation then return end
+    local option = context:getOptionFromName(getText("ContextMenu_TakeGasFromPump"))
+    if not option then return end
+
+    local faction = Faction.getPlayerFaction(player)
+    if not faction or faction:getName() ~= SandboxVars.PynoTweaks.FuelLimitationFactionName then
+        option.subOption = nil
+        option.notAvailable = true
+        local tooltip = ISWorldObjectContextMenu.addToolTip()
+        tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
+        tooltip.description = getText("ContextMenu_FuelLimitationDescription", SandboxVars.PynoTweaks.FuelLimitationFactionName)
+        option.toolTip = tooltip
+        return
+    end
+end
+
 -- Wrap the original function
 if not PynoTweaks.UI.defaultMenuOutsideVehicle then
     PynoTweaks.UI.defaultMenuOutsideVehicle = ISVehicleMenu.FillMenuOutsideVehicle
+end
+
+if not PynoTweaks.UI.defaultDoFillFuelMenu then
+    PynoTweaks.UI.defaultDoFillFuelMenu = ISWorldObjectContextMenu.doFillFuelMenu
 end
 
 -- Override the original function
 function ISVehicleMenu.FillMenuOutsideVehicle(player, context, vehicle, test)
     PynoTweaks.UI.defaultMenuOutsideVehicle(player, context, vehicle, test)
     PynoTweaks.UI.addOptionToMenuOutsideVehicle(getSpecificPlayer(player), context, vehicle)
+end
+
+function ISWorldObjectContextMenu.doFillFuelMenu(source, playerNum, context)
+    PynoTweaks.UI.defaultDoFillFuelMenu(source, playerNum, context)
+    PynoTweaks.UI.changeFillFuelMenu(source, getSpecificPlayer(playerNum), context)
 end
 
 function CarClampStorageExists(vehicle)

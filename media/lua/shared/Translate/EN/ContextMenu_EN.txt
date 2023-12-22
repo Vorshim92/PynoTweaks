@@ -1,5 +1,7 @@
 ContextMenu_EN = {
     ContextMenu_PynoTweaks_RemoveVehicle = "Dismantle Vehicle",
     ContextMenu_PynoTweaks_RemoveTrailer = "Dismantle Trailer",
-    ContextMenu_Remove = "Delete"
+    ContextMenu_Remove = "Delete",
+    ContextMenu_FuelLimitationTitle = "<RGB:1,0,0> Action Disabled",
+    ContextMenu_FuelLimitationDescription = " Only players from the faction <RGB:1,0,0> %1 <RGB:1,1,1> can refuel from gas pumps.",
 }
