@@ -219,6 +219,22 @@ function PynoTweaks.UI.changeFillFuelMenu(source, player, context)
     local option = context:getOptionFromName(getText("ContextMenu_TakeGasFromPump"))
     if not option then return end
 
+    if SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
+        local factions = player:getModData().missionProgress.Factions
+        if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
+            option.subOption = nil
+            option.notAvailable = true
+            local tooltip = ISWorldObjectContextMenu.addToolTip()
+            local tiername = getText("IGUI_Factions_Template_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
+            tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
+            tooltip.description = getText("ContextMenu_FuelLimitationDescriptionTier", tiername)
+            option.toolTip = tooltip
+            return
+        end
+    end
+    
+    if SandboxVars.PynoTweaks.FuelLimitationFactionName == "off" then return end
+
     local faction = Faction.getPlayerFaction(player)
     if not faction or faction:getName() ~= SandboxVars.PynoTweaks.FuelLimitationFactionName then
         option.subOption = nil

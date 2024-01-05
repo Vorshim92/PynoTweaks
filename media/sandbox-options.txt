@@ -34,8 +34,14 @@ option PynoTweaks.EnableFuelLimitation
 
 option PynoTweaks.FuelLimitationFactionName
 {
-	type = string, default = "admin",
+	type = string, default = off,
 	page = PynoTweaks, translation = PynoTweaks_FuelLimitationFactionName,
+}
+
+option PynoTweaks.FuelLimitationFactionTier
+{
+	type = integer, min = 0, max = 10, default = 0,
+	page = PynoTweaks, translation = PynoTweaks_FuelLimitationFactionTier,
 }
 
 option PynoTweaks.SeedsRequiredMultiplier
