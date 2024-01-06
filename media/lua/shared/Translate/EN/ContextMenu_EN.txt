@@ -4,5 +4,6 @@ ContextMenu_EN = {
     ContextMenu_Remove = "Delete",
     ContextMenu_FuelLimitationTitle = "<RGB:1,0,0> Action Disabled",
     ContextMenu_FuelLimitationDescription = " Only players from the faction <RGB:1,0,0> %1 <RGB:1,1,1> can refuel from gas pumps.",
-    ContextMenu_FuelLimitationDescriptionTier = " Only players with reputation tier <RGB:1,0,0> %1 <RGB:1,1,1> or higher can refuel from gas pumps.",
+    ContextMenu_FuelLimitationDescriptionTier = " Only players with reputation tier [ <RGB:1,0,0> %1 <RGB:1,1,1> ] or higher can refuel from gas pumps.",
+    ContextMenu_FuelLimitationDescriptionTierRadial = "Faction Tier %1 required.",
 }

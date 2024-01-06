@@ -1,9 +1,5 @@
 require "Vehicles/ISUI/ISVehicleMenu"
 
-local function predicateWeldingMask(item)
-	return item:hasTag("WeldingMask") or item:getType() == "WeldingMask"
-end
-
 local function predicatePetrol(item)
 	return (item:hasTag("Petrol") or item:getType() == "PetrolCan") and item:getUsedDelta() > 0
 end
@@ -14,32 +10,6 @@ end
 
 local function predicatePetrolNotFull(item)
 	return (item:hasTag("Petrol") or item:getType() == "PetrolCan") and item:getUsedDelta() < 1 
-end
-
-local function predicateBlowTorch(item)
-	return (item:hasTag("BlowTorch") or item:getType() == "BlowTorch") and item:getDrainableUsesInt() >= 10
-end
-
-local function distanceToPassengerPosition(seat)
-	local script = SORTVARS.vehicle:getScript()
-	local outside = SORTVARS.vehicle:getPassengerPosition(seat, "outside")
-	local worldPos = SORTVARS.vehicle:getWorldPos(outside:getOffset(), SORTVARS.pos)
-	return SORTVARS.playerObj:DistTo(worldPos:x(), worldPos:y())
-end
-
-local function getClosestSeat(playerObj, vehicle, seats)
-	if #seats == 0 then
-		return nil
-	end
-	-- Sort by distance from the player to the 'outside' position.
-	SORTVARS.playerObj = playerObj
-	SORTVARS.vehicle = vehicle
-	table.sort(seats, function(a,b)
-		local distA = distanceToPassengerPosition(a)
-		local distB = distanceToPassengerPosition(b)
-		return distA < distB
-	end)
-	return seats[1]
 end
 
 function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
@@ -77,6 +47,8 @@ function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
                             if SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
                                 local factions = playerObj:getModData().missionProgress.Factions
                                 if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
+                                    local tiername = getText("IGUI_Factions_Template_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
+                                    slice:addSlice(getText("ContextMenu_FuelLimitationDescriptionTierRadial", tiername), getTexture("media/ui/vehicles/vehicle_refuel_from_pump.png"), nil, playerObj, part)
                                     return
                                 end
                             end
