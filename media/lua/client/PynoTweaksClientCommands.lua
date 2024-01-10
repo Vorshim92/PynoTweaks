@@ -23,8 +23,36 @@ local function OnServerCommand(module, command, arguments)
                     end
                 end
             end
-            player:Say("Lesgoo")
-         end
+            player:Say("Lesgoo") 
+        elseif command == "reppyno" then
+            local setOrAdd = arguments.setOrAdd
+            local amount = arguments.amount
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
+
+            if setOrAdd == "set" then
+                player:getModData().missionProgress.Factions[1].reputation = amount
+            else
+                SF_MissionPanel:awardReputation("LaResistenza", amount)
+            end
+            
+            player:Say("Reputazione aggiornata! Nuovo totale: "..player:getModData().missionProgress.Factions[1].reputation.."!")
+            SF_MissionPanel.instance.needsUpdate = true
+            SF_MissionPanel.instance.needsBackup = true
+        elseif command == "questyno" then
+            local addOrComplete = arguments.addOrComplete
+            local questID = arguments.questID
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
+
+            if addOrComplete == "add" then
+                SF_MissionPanel:unlockQuest(questID)
+            else
+                SF_MissionPanel:completeQuest(player, questID)
+            end
+
+            player:Say("Missione aggiornata!")
+        end
     end
 end
 
