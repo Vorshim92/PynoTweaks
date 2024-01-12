@@ -247,4 +247,14 @@ module PynoTweaks {
 		WorldStaticModel = PokerChips_Ground
 	}
 	
+    item CardID
+    {
+        DisplayCategory = Documentation,
+        Weight	=	0.01,
+        Type	=	Normal,
+        DisplayName	=	Card ID,
+        Icon	=	CardID,
+        WorldStaticModel = CardID,
+        Tags = WalletItem,
+    }
 }

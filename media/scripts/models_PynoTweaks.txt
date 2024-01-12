@@ -113,4 +113,11 @@ module Base
 				rotate = 0.0000 90.0000 0.0000,
 		}
 	}
+
+	    model CardID
+	{
+		mesh = WorldItems/CreditCard,
+		texture = WorldItems/CardID,
+		scale = 0.6,
+	}
 }
