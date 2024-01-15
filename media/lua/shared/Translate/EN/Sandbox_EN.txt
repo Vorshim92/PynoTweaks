@@ -7,4 +7,7 @@ Sandbox_EN = {
     	Sandbox_PynoTweaks_UninstallParts_tooltip = "The following parts must be uninstalled before dismantling: hood, trunk lid, doors, windows, seats.",
     	Sandbox_PynoTweaks_ActionTimeMultiplier = "Dismantling Time Multiplier",
 		Sandbox_PynoTweaks_SyncRewards = "Sync Kill&Hours on /killyno (SurivvalRewards)",
+		PynoTweaks_EnableFuelLimitation = "Enable Fuel Limitation",
+		PynoTweaks_FuelLimitationFactionName = "Fuel Limitation Faction Name",
+		PynoTweaks_FuelLimitationFactionTier = "Fuel Limitation Faction Tier (Questyno)",
 }

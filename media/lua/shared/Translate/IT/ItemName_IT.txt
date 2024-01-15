@@ -1,3 +1,4 @@
 DisplayName_IT = {
 	ItemName_VoldarGames.CarClamp = "Ganascya",	
+	ItemName_PynoTweaks.CardID = "Carta d'identità",
 }

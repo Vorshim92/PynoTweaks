@@ -1,5 +1,8 @@
 ContextMenu_IT = {
     ContextMenu_PynoTweaks_RemoveVehicle = "Smantella Veicolo",
     ContextMenu_PynoTweaks_RemoveTrailer = "Smantella Trailer",
-    ContextMenu_Remove = "Rimuovi"
+    ContextMenu_Remove = "Rimuovi",
+    ContextMenu_FuelLimitationTitle = "Azione Disabilitata",
+    ContextMenu_FuelLimitationDescriptionTier = "L'accesso alle pompe di benzina è riservato ai sopravvissuti con rango [ <RGB:1,0,0> %1 <RGB:1,1,1> ] o superiore.",
+    ContextMenu_FuelLimitationDescriptionTierRadial = "Benzinaio riservato ai ranghi %1 o superiore.",
 }

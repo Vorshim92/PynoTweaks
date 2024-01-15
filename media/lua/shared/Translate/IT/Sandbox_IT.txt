@@ -1,5 +1,8 @@
 Sandbox_IT = {
 	Sandbox_PynoTweaks = "Pyno Tweaks",
 	Sandbox_PynoTweaks_NoDisassembling = "Disabilita disassemblaggio",
-	Sandbox_PynoTweaks_NoDisassembling_tooltip = "I giocatori non potranno disasemblare container.",
+	Sandbox_PynoTweaks_NoDisassembling_tooltip = "I giocatori non potranno disassemblare container.",
+	Sandbox_PynoTweaks_EnableFuelLimitation = "Limita Prelievo Carburante",
+	Sandbox_PynoTweaks_FuelLimitationFactionName = "Whitelist Fazione Prelievo Carburante",
+	Sandbox_PynoTweaks_SeedsRequiredMultiplier = "Moltiplicatore Semi Richiesti",
 }
