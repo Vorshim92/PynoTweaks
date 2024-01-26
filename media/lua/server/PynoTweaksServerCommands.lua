@@ -19,6 +19,8 @@ LuaServerCommands.register('killyno', function(author, command, args)
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
     if player == nil then return 'Player not found: '..tostring(username) end
+    local access_level = player:getAccessLevel()
+    if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local kills = tonumber(args[2])
     if kills == nil or kills < 0 then return 'Invalid kills: '..tostring(args[2]) end
@@ -46,6 +48,8 @@ LuaServerCommands.register('reppyno', function(author, command, args)
     local player = helper.getPlayerByUsername(username)
 
     if player == nil then return 'Player not found: '..tostring(username) end
+    local access_level = player:getAccessLevel()
+    if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local setOrAdd = args[2]
     if setOrAdd ~= "set" and setOrAdd ~= "add" then return 'Invalid set/add: '..tostring(setOrAdd) end
@@ -73,6 +77,8 @@ LuaServerCommands.register('questyno', function(author, command, args)
     local player = helper.getPlayerByUsername(username)
 
     if player == nil then return 'Player not found: '..tostring(username) end
+    local access_level = player:getAccessLevel()
+    if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local addOrComplete = args[2]
     if addOrComplete ~= "add" and addOrComplete ~= "complete" then return 'Invalid add/complete: '..tostring(addOrComplete) end
