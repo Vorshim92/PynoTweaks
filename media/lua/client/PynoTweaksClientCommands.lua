@@ -32,8 +32,10 @@ local function OnServerCommand(module, command, arguments)
 
             if setOrAdd == "set" then
                 player:getModData().missionProgress.Factions[1].reputation = amount
-            else
+            elseif setOrAdd == "add" then
                 SF_MissionPanel:awardReputation("LaResistenza", amount)
+            elseif setOrAdd == "remove" then
+                SF_MissionPanel:removeReputation("LaResistenza", -amount)
             end
             
             player:Say("Reputazione aggiornata! Nuovo totale: "..player:getModData().missionProgress.Factions[1].reputation.."!")

@@ -40,7 +40,7 @@ end)
 LuaServerCommands.register('reppyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
     if #args ~= 3 then
-        return '/luacmd reppyno [player] [set/add] [amount]'
+        return '/luacmd reppyno [player] [set/add/remove] [amount]'
     end
 
     local helper = LuaServerCommandHelper
@@ -52,7 +52,7 @@ LuaServerCommands.register('reppyno', function(author, command, args)
     if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local setOrAdd = args[2]
-    if setOrAdd ~= "set" and setOrAdd ~= "add" then return 'Invalid set/add: '..tostring(setOrAdd) end
+    if setOrAdd ~= "set" and setOrAdd ~= "add" and setOrAdd ~= "remove" then return 'Invalid set/add/remove: '..tostring(setOrAdd) end
 
     local amount = tonumber(args[3])
     if amount == nil or amount < 0 then return 'Invalid amount: '..tostring(args[3]) end
