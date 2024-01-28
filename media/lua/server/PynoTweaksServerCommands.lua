@@ -19,8 +19,8 @@ LuaServerCommands.register('killyno', function(author, command, args)
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
     if player == nil then return 'Player not found: '..tostring(username) end
-    local access_level = player:getAccessLevel()
-    if access_level ~= "Admin" then return 'Voleeeviii' end
+    --local access_level = player:getAccessLevel()
+    --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local kills = tonumber(args[2])
     if kills == nil or kills < 0 then return 'Invalid kills: '..tostring(args[2]) end
