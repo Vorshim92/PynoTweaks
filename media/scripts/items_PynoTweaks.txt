@@ -249,7 +249,7 @@ module PynoTweaks {
 	
     item CardID
     {
-        DisplayCategory = Documentation,
+        DisplayCategory = Junk,
         Weight	=	0.01,
         Type	=	Normal,
         DisplayName	=	Card ID,
