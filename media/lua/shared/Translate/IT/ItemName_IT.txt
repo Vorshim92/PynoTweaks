@@ -1,4 +1,18 @@
 DisplayName_IT = {
-	ItemName_VoldarGames.CarClamp = "Ganascya",	
-	ItemName_PynoTweaks.CardID = "Carta d'identit‡†",
+	ItemName_PynoTweaks.CarClamp = "Ganascya",	
+	ItemName_PynoTweaks.CardID = "Carta d'identit√†",
+	ItemName_PynoTweaks.GFCigaretteCarton = "Stecca di sigarette",
+	ItemName_PynoTweaks.GFCigarette = "Sigaretta",
+	ItemName_PynoTweaks.GFCigarettes = "Pacchetto di sigarette",
+	ItemName_PynoTweaks.Cigarette = "Sigaretta",
+	ItemName_PynoTweaks.BluntWrap = "Foglia di tabacco",
+	ItemName_PynoTweaks.Spliff = "Spinello con droga",
+	ItemName_PynoTweaks.MixedBlunt = "Blunt mix",
+	ItemName_PynoTweaks.Blunt = "Blunt purino",
+	ItemName_PynoTweaks.RollingPapers = "Cartine",
+	ItemName_PynoTweaks.RCannabisShake = "Cannabis tritata",
+	ItemName_PynoTweaks.PipeTobaccoBag = "Confezione di tabacco",
+	ItemName_PynoTweaks.Tobacco = "Tabacco",
+	
+
 }
