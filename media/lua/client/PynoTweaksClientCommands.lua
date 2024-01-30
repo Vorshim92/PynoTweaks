@@ -39,7 +39,7 @@ local function OnServerCommand(module, command, arguments)
                 SF_MissionPanel:removeReputation(factioncode, amount)
             end
             
-            player:Say("Reputazione aggiornata! Nuovo totale: "..player:getModData().missionProgress.Factions[1].reputation.."!")
+            player:Say("Reputazione aggiornata!")
             SF_MissionPanel.instance.needsUpdate = true
             SF_MissionPanel.instance.needsBackup = true
         elseif command == "questyno" then
