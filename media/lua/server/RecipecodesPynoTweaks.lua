@@ -15,7 +15,7 @@ function Recipe.OnGiveXP.MetalWelding2(recipe, ingredients, result, player)
 end
 
 function Recipe.OnCreate.RollMoney(items, result, player)
-	player:getInventory():AddItems("Base.Money", ZombRand(5)+2);
+	player:getInventory():AddItems("Base.Money", ZombRand(6)+2);
 end
 
 function RollMoneyBag(items, result, player)
