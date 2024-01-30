@@ -298,6 +298,7 @@ module PynoTweaks {
         MinDamage	=	0.9,
         MaxDamage	=	2.0,
         BaseSpeed = 0.7,
-        AttachmentType = Shovel,
+        AttachmentType = Shovel,        
+		Tags = CutPlant;SharpKnife;ChopTree;Hammer;Crowbar;RemoveBarricade;ClearAshes;DigGrave;DigPlow;TakeDirt;FishingSpear;Sledgehammer;Scissors;Write;RedPen;BluePen;Pen;Pencil;Erase;Screwdriver;RemoveBullet;RemoveGlass;SewingNeedle;Saw;CanOpener,
     }
 }
