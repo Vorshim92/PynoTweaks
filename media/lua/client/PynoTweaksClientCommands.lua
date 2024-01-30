@@ -49,8 +49,10 @@ local function OnServerCommand(module, command, arguments)
 
             if addOrComplete == "add" then
                 SF_MissionPanel:unlockQuest(questID)
-            else
+            elseif addOrComplete == "complete" then
                 SF_MissionPanel:completeQuest(player, questID)
+            elseif addOrComplete == "backup" then
+                SF_MissionPanel:forceBackupData()
             end
 
             player:Say("Missione aggiornata!")
