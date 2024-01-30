@@ -1,7 +1,7 @@
 TraitsRebalance = {}
 local TRAIT_COST = {
     Graceful = 2,
-    Dextrous = 4,
+    AllThumbs = 4,
     Clumsy = -2,
 	AdrenalineJunkie = 3,
     Organized = 4,
