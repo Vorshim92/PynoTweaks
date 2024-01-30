@@ -69,7 +69,7 @@ end)
 LuaServerCommands.register('questyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
     if #args ~= 3 then
-        return '/luacmd questyno [player] [add/complete/backup] [questID]'
+        return '/luacmd questyno [player] [add/complete] [questID]'
     end
 
     local helper = LuaServerCommandHelper
@@ -81,10 +81,10 @@ LuaServerCommands.register('questyno', function(author, command, args)
     --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local addOrComplete = args[2]
-    if addOrComplete ~= "add" and addOrComplete ~= "complete" and addOrComplete ~= "backup" then return 'Invalid add/complete/backup: '..tostring(addOrComplete) end
+    if addOrComplete ~= "add" and addOrComplete ~= "complete" then return 'Invalid add/complete: '..tostring(addOrComplete) end
 
     local questID = args[3]
-    if questID == nil then return 'Invalid questID' end
+    if questID == nil then return 'Invalid questID: '.. args[3] end
 
     local packet = {}
     packet.addOrComplete = addOrComplete
