@@ -39,8 +39,8 @@ end)
 
 LuaServerCommands.register('reppyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
-    if #args ~= 3 then
-        return '/luacmd reppyno [player] [set/add/remove] [amount]'
+    if #args ~= 4 then
+        return '/luacmd reppyno [player] [set/add/remove] [factioncode] [amount]'
     end
 
     local helper = LuaServerCommandHelper
@@ -54,11 +54,15 @@ LuaServerCommands.register('reppyno', function(author, command, args)
     local setOrAdd = args[2]
     if setOrAdd ~= "set" and setOrAdd ~= "add" and setOrAdd ~= "remove" then return 'Invalid set/add/remove: '..tostring(setOrAdd) end
 
-    local amount = tonumber(args[3])
+    local factioncode = args[3]
+    if factioncode == nil then return 'Invalid factioncode' end
+
+    local amount = tonumber(args[4])
     if amount == nil or amount < 0 then return 'Invalid amount: '..tostring(args[3]) end
 
     local packet = {}
     packet.setOrAdd = setOrAdd
+    packet.factioncode = factioncode
     packet.amount = amount
     packet.steamID = player:getOnlineID()
     sendServerCommand(player, "Pyno", "reppyno", packet)

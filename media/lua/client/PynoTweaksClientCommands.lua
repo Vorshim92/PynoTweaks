@@ -26,6 +26,7 @@ local function OnServerCommand(module, command, arguments)
             player:Say("Lesgoo") 
         elseif command == "reppyno" then
             local setOrAdd = arguments.setOrAdd
+            local factioncode = arguments.factioncode
             local amount = arguments.amount
             local steamID = arguments.steamID
             local player = getPlayerByOnlineID(steamID)
@@ -33,9 +34,9 @@ local function OnServerCommand(module, command, arguments)
             if setOrAdd == "set" then
                 player:getModData().missionProgress.Factions[1].reputation = amount
             elseif setOrAdd == "add" then
-                SF_MissionPanel:awardReputation("LaResistenza", amount)
+                SF_MissionPanel:awardReputation(factioncode, amount)
             elseif setOrAdd == "remove" then
-                SF_MissionPanel:removeReputation("LaResistenza", amount)
+                SF_MissionPanel:removeReputation(factioncode, amount)
             end
             
             player:Say("Reputazione aggiornata! Nuovo totale: "..player:getModData().missionProgress.Factions[1].reputation.."!")
