@@ -62,12 +62,6 @@ local TRAIT_COST = {
 	Accmetabolism = 0,
 	MSTAllergic = -1,
 	AMCook = 2,
-	
-	
-	
-	
-	
-
 }
 TraitsRebalance.TRAIT_COST = TRAIT_COST
 

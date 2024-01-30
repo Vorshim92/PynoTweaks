@@ -13,14 +13,12 @@ LuaServerCommands.register('killyno', function(author, command, args)
 
     -- Check admin
     local admin = helper.getPlayerByUsername(author)
-    --if admin:getAccessLevel() ~= "Admin" then return 'Voleeeviii' end
+    if admin:getAccessLevel() ~= "Admin" then return 'Tonno cattivo' end
 
     -- Attempt to resolve the player using the helper method.
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
     if player == nil then return 'Player not found: '..tostring(username) end
-    --local access_level = player:getAccessLevel()
-    --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local kills = tonumber(args[2])
     if kills == nil or kills < 0 then return 'Invalid kills: '..tostring(args[2]) end
@@ -44,6 +42,11 @@ LuaServerCommands.register('reppyno', function(author, command, args)
     end
 
     local helper = LuaServerCommandHelper
+
+    -- Check admin
+    local admin = helper.getPlayerByUsername(author)
+    if admin:getAccessLevel() ~= "Admin" then return 'Tonno cattivo' end
+
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
 
@@ -73,10 +76,15 @@ end)
 LuaServerCommands.register('questyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
     if #args ~= 3 then
-        return '/luacmd questyno [player] [add/complete] [questID]'
+        return '/luacmd questyno [player] [add/complete/backup] [questID]'
     end
 
     local helper = LuaServerCommandHelper
+    
+    -- Check admin
+    local admin = helper.getPlayerByUsername(author)
+    if admin:getAccessLevel() ~= "Admin" then return 'Tonno cattivo' end
+
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
 
@@ -85,10 +93,10 @@ LuaServerCommands.register('questyno', function(author, command, args)
     --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local addOrComplete = args[2]
-    if addOrComplete ~= "add" and addOrComplete ~= "complete" then return 'Invalid add/complete: '..tostring(addOrComplete) end
+    if addOrComplete ~= "add" and addOrComplete ~= "complete" and addOrComplete ~= "backup" then return 'Invalid add/complete/backup: '..tostring(addOrComplete) end
 
     local questID = args[3]
-    if questID == nil then return 'Invalid questID: '.. args[3] end
+    if questID == nil then return 'Invalid questID' end
 
     local packet = {}
     packet.addOrComplete = addOrComplete

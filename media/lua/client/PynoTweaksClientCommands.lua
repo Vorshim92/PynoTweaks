@@ -33,6 +33,8 @@ local function OnServerCommand(module, command, arguments)
 
             if setOrAdd == "set" then
                 player:getModData().missionProgress.Factions[1].reputation = amount
+                SF_MissionPanel.instance.needsUpdate = true
+                SF_MissionPanel.instance.needsBackup = true
             elseif setOrAdd == "add" then
                 SF_MissionPanel:awardReputation(factioncode, amount)
             elseif setOrAdd == "remove" then
@@ -40,8 +42,6 @@ local function OnServerCommand(module, command, arguments)
             end
             
             player:Say("Reputazione aggiornata!")
-            SF_MissionPanel.instance.needsUpdate = true
-            SF_MissionPanel.instance.needsBackup = true
         elseif command == "questyno" then
             local addOrComplete = arguments.addOrComplete
             local questID = arguments.questID
@@ -50,8 +50,10 @@ local function OnServerCommand(module, command, arguments)
 
             if addOrComplete == "add" then
                 SF_MissionPanel:unlockQuest(questID)
-            else
+            elseif addOrComplete == "complete" then
                 SF_MissionPanel:completeQuest(player, questID)
+            elseif addOrComplete == "backup" then
+                SF_MissionPanel:forceBackupData()
             end
 
             player:Say("Missione aggiornata!")
