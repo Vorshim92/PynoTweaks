@@ -1,8 +1,8 @@
 TraitsRebalance = {}
 local TRAIT_COST = {
-	SlowReader = 1
-	FastReader = 1
-	Herbalist = 4
+	SlowReader = 1,
+	FastReader = 1,
+	Herbalist = 4,
     Graceful = 2,
     AllThumbs = 4,
     Clumsy = -2,
