@@ -163,7 +163,7 @@ LuaServerCommands.register('zombyno', function(author, command, args)
 
     local player = helper.getPlayerByUsername(author)
 
-    if player == nil then return 'Player not found: ' .. tostring(username) end
+    if player == nil then return 'Player not found: ' .. tostring(author) end
 
     local packet = {}
     packet.command = args[1]
