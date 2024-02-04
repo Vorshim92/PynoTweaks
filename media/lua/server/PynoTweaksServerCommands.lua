@@ -18,12 +18,12 @@ LuaServerCommands.register('killyno', function(author, command, args)
     -- Attempt to resolve the player using the helper method.
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
-    if player == nil then return 'Player not found: '..tostring(username) end
+    if player == nil then return 'Player not found: ' .. tostring(username) end
 
     local kills = tonumber(args[2])
-    if kills == nil or kills < 0 then return 'Invalid kills: '..tostring(args[2]) end
+    if kills == nil or kills < 0 then return 'Invalid kills: ' .. tostring(args[2]) end
     local lifeTime = tonumber(args[3])
-    if lifeTime == nil or lifeTime < 0 then return 'Invalid hours: '..tostring(args[3]) end
+    if lifeTime == nil or lifeTime < 0 then return 'Invalid hours: ' .. tostring(args[3]) end
     local steamID = player:getOnlineID()
 
     local packet = {}
@@ -50,18 +50,21 @@ LuaServerCommands.register('reppyno', function(author, command, args)
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
 
-    if player == nil then return 'Player not found: '..tostring(username) end
+    if player == nil then return 'Player not found: ' .. tostring(username) end
     --local access_level = player:getAccessLevel()
     --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local setOrAdd = args[2]
-    if setOrAdd ~= "set" and setOrAdd ~= "add" and setOrAdd ~= "remove" then return 'Invalid set/add/remove: '..tostring(setOrAdd) end
+    if setOrAdd ~= "set" and setOrAdd ~= "add" and setOrAdd ~= "remove" then
+        return 'Invalid set/add/remove: ' ..
+            tostring(setOrAdd)
+    end
 
     local factioncode = args[3]
     if factioncode == nil then return 'Invalid factioncode' end
 
     local amount = tonumber(args[4])
-    if amount == nil or amount < 0 then return 'Invalid amount: '..tostring(args[3]) end
+    if amount == nil or amount < 0 then return 'Invalid amount: ' .. tostring(args[3]) end
 
     local packet = {}
     packet.setOrAdd = setOrAdd
@@ -80,7 +83,7 @@ LuaServerCommands.register('questyno', function(author, command, args)
     end
 
     local helper = LuaServerCommandHelper
-    
+
     -- Check admin
     local admin = helper.getPlayerByUsername(author)
     if admin:getAccessLevel() ~= "Admin" then return 'Tonno cattivo' end
@@ -88,12 +91,15 @@ LuaServerCommands.register('questyno', function(author, command, args)
     local username = args[1]
     local player = helper.getPlayerByUsername(username)
 
-    if player == nil then return 'Player not found: '..tostring(username) end
+    if player == nil then return 'Player not found: ' .. tostring(username) end
     --local access_level = player:getAccessLevel()
     --if access_level ~= "Admin" then return 'Voleeeviii' end
 
     local addOrComplete = args[2]
-    if addOrComplete ~= "add" and addOrComplete ~= "complete" and addOrComplete ~= "backup" then return 'Invalid add/complete/backup: '..tostring(addOrComplete) end
+    if addOrComplete ~= "add" and addOrComplete ~= "complete" and addOrComplete ~= "backup" then
+        return
+            'Invalid add/complete/backup: ' .. tostring(addOrComplete)
+    end
 
     local questID = args[3]
     if questID == nil then return 'Invalid questID' end
@@ -105,4 +111,64 @@ LuaServerCommands.register('questyno', function(author, command, args)
     sendServerCommand(player, "Pyno", "questyno", packet)
 
     return 'EDDAAJEE GIUSEPPEEE!!1!11!!11+1=1!1=1+11!!!'
+end)
+
+LuaServerCommands.register('fixxyno', function(author, command, args)
+    -- Check if the correct number of arguments are passed.
+    if #args ~= 2 then
+        return '/luacmd fixxyno [player] [command]'
+    end
+
+    local helper = LuaServerCommandHelper
+
+    -- Check admin
+    local admin = helper.getPlayerByUsername(author)
+    if admin:getAccessLevel() ~= "Admin" then return 'Tonno cattivo' end
+
+    local username = args[1]
+    local player = helper.getPlayerByUsername(username)
+
+    if player == nil then return 'Player not found: ' .. tostring(username) end
+    --local access_level = player:getAccessLevel()
+    --if access_level ~= "Admin" then return 'Voleeeviii' end
+    if args[2] == "loadbackup" then
+        local id = player:getUsername()
+        print("[Commands.sendData] zSOUL QUEST SYSTEM - Forcing loading backup for Player ID: " .. id);
+        local filepath = "/Backup/SFQuest_" .. id .. ".txt";
+        local filereader = getFileReader(filepath, false);
+        if filereader then
+            local temp = {};
+            local line = filereader:readLine();
+            while line ~= nil do
+                table.insert(temp, line);
+                line = filereader:readLine();
+            end
+            filereader:close();
+            local newargs = { id = id, data = temp };
+            print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.");
+            sendServerCommand('SFQuest', "setProgress", newargs);
+        end;
+    end
+    return 'Fixxyno fixxano ano fixato!'
+end)
+
+-- player cmd, kill zombies count
+LuaServerCommands.register('zombyno', function(author, command, args)
+    -- Check if the correct number of arguments are passed.
+    if #args ~= 1 then
+        return '/luacmd zombyno [conto]'
+    end
+
+    local helper = LuaServerCommandHelper
+
+    local player = helper.getPlayerByUsername(author)
+
+    if player == nil then return 'Player not found: ' .. tostring(username) end
+
+    local packet = {}
+    packet.command = args[1]
+    packet.steamID = player:getOnlineID()
+    sendServerCommand(player, "Pyno", "zombyno", packet)
+
+    return 'Comando eseguito.'
 end)

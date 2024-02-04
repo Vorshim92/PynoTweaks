@@ -57,6 +57,26 @@ local function OnServerCommand(module, command, arguments)
             end
 
             player:Say("Missione aggiornata!")
+
+        elseif command == "zombyno" then
+            local command = arguments.command
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
+            if command == "conto" then
+                if #player:getModData().missionProgress.ActionEvent == 0 then
+                    player:Say("Non ho altri zombie da ammazzare.")
+                end
+                for k, v in pairs(player:getModData().missionProgress.ActionEvent) do
+                    local zcount = tonumber(luautils.split(v.condition, ";")[2])
+                    local npcname = luautils.split(v.commands, ";")[2]
+                    -- trim numbers at the end of the string and add _Name
+                    npcname = "IGUI_SFQuest_" .. string.gsub(npcname, "%d+$", "") .. "_Name"
+                    local count = player:getZombieKills()
+                    local toKill = zcount - count
+                    npcname = getText(npcname)
+                    player:Say("Devo uccidere altri " .. toKill .. " zombie per " .. npcname .. ".")
+                end
+            end
         end
     end
 end
