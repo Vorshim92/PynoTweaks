@@ -144,7 +144,7 @@ LuaServerCommands.register('fixxyno', function(author, command, args)
                 line = filereader:readLine();
             end
             filereader:close();
-            local newargs = { id = id, data = temp };
+            local newargs = { id = id, data = temp, checkDefaults = true};
             print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.");
             sendServerCommand('SFQuest', "setProgress", newargs);
         end;
