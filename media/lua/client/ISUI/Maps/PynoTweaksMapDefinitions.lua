@@ -21,7 +21,7 @@ LootMaps.Init.PT_readme = function(mapUI)
 
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10540, 9240, 12990, 10480)
+	mapAPI:setBoundsInSquares(10540, 9240, 12190, 10480)
 	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/PT_readme.png", 1.0)
 
 end
