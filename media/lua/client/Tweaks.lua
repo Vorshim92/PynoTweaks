@@ -141,7 +141,7 @@ TweakItem("Base.Ginseng","FatigueChange", -5);
 
 ---- cappello dello zio sam
 
-TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40);
+TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 1.0);
 
 
 
@@ -272,6 +272,41 @@ TweakItem("SWeapons.ScrapPickaxe","MaxDamage", 1.5);
 ------BigScrapPickaxe
 TweakItem("SWeapons.BigScrapPickaxe","ConditionLowerChanceOneIn", 5);
 
+--- maschera da coniglio blu
+TweakItem("Base.Hat_Rabbit_Blue","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit_Blue","BiteDefense", 0);
+
+--- maschera da coniglio verde
+TweakItem("Base.Hat_Rabbit_Green","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit_Green","BiteDefense", 0);
+
+--- maschera da coniglio grigio
+TweakItem("Base.Hat_Rabbit_Grey","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit_Grey","BiteDefense", 0);
+
+--- maschera da coniglio viola
+TweakItem("Base.Hat_Rabbit_Purple","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit_Purple","BiteDefense", 0);
+
+--- maschera da coniglio rosso
+TweakItem("Base.Hat_Rabbit","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit","BiteDefense", 0);
+
+--- maschera da coniglio rosso
+TweakItem("Base.Hat_Rabbit","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit","BiteDefense", 0);
+
+--- maschera da coniglio rgiallo
+TweakItem("Base.Hat_Yellow","ScratchDefense", 0);
+TweakItem("Base.Hat_Yellow","BiteDefense", 0);
+
+--- maschera da coniglio blu
+TweakItem("Base.Hat_Blue","ScratchDefense", 0);
+TweakItem("Base.Hat_Blue","BiteDefense", 0);
+
+--- maschera da coniglio blu
+TweakItem("Base.Hat_Blue","ScratchDefense", 0);
+TweakItem("Base.Hat_Blue","BiteDefense", 0);
 
 
 
