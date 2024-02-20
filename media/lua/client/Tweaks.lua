@@ -316,10 +316,10 @@ TweakItem("Base.Hat_Blue","BiteDefense", 0);
 --- Liquidi drenanti e pillole varie consumo
 
 TweakItem("Base.PillsAntiDep","UseDelta", 0.25);
-TweakItem("Base.PillsSleepingTablets","UseDelta", 0.3);
+TweakItem("Base.PillsSleepingTablets","UseDelta", 0.25);
 TweakItem("Base.Pills","UseDelta", 0.25);
 TweakItem("Base.PillsBeta","UseDelta", 0.25);
-TweakItem("Base.PillsVitamins","UseDelta", 0.2);
+TweakItem("Base.PillsVitamins","UseDelta", 0.25);
 
 
 
