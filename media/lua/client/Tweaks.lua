@@ -272,6 +272,9 @@ TweakItem("SWeapons.ScrapPickaxe","MaxDamage", 1.5);
 ------BigScrapPickaxe
 TweakItem("SWeapons.BigScrapPickaxe","ConditionLowerChanceOneIn", 5);
 
+
+        --- maschere
+
 --- maschera da coniglio blu
 TweakItem("Base.Hat_Rabbit_Blue","ScratchDefense", 0);
 TweakItem("Base.Hat_Rabbit_Blue","BiteDefense", 0);
@@ -310,6 +313,13 @@ TweakItem("Base.Hat_Blue","BiteDefense", 0);
 
 
 
+--- Liquidi drenanti e pillole varie consumo
+
+TweakItem("Base.PillsAntiDep","UseDelta", 0.25);
+TweakItem("Base.PillsSleepingTablets","UseDelta", 0.3);
+TweakItem("Base.Pills","UseDelta", 0.25);
+TweakItem("Base.PillsBeta","UseDelta", 0.25);
+TweakItem("Base.PillsVitamins","UseDelta", 0.2);
 
 
 
