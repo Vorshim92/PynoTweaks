@@ -50,37 +50,6 @@ TweakItem("Base.MP5SD","MaxRange",7);
 TweakItem("Base.MP5SD","SoundRadius",70);
 
 
--- balestra
-
-TweakItem("KCMweapons.HandCrossbow","SoundRadius",30);
-TweakItem("KCMweapons.KCM_Compound","SoundRadius",30);
-TweakItem("KCMweapons.KCM_Handmade","SoundRadius",30);
-TweakItem("KCMweapons.KCM_Handmade02","SoundRadius",30);
-TweakItem("KCMweapons.KCM_Compound02","SoundRadius",30);
-
-TweakItem("KCMweapons.HandCrossbow","HitChance",2);
-TweakItem("KCMweapons.KCM_Compound","HitChance",2);
-TweakItem("KCMweapons.KCM_Handmade","HitChance",2);
-TweakItem("KCMweapons.KCM_Handmade02","HitChance",2);
-TweakItem("KCMweapons.KCM_Compound02","HitChance",2);
-
-TweakItem("KCMweapons.HandCrossbow","MaxRange",5);
-TweakItem("KCMweapons.KCM_Compound","MaxRange",5);
-TweakItem("KCMweapons.KCM_Handmade","MaxRange",5);
-TweakItem("KCMweapons.KCM_Handmade02","MaxRange",5);
-TweakItem("KCMweapons.KCM_Compound02","MaxRange",5);
-
-TweakItem("KCMweapons.HandCrossbow","MinDamage",0.5);
-TweakItem("KCMweapons.KCM_Compound","MinDamage",0.5);
-TweakItem("KCMweapons.KCM_Handmade","MinDamage",0.5);
-TweakItem("KCMweapons.KCM_Handmade02","MinDamage",0.5);
-TweakItem("KCMweapons.KCM_Compound02","MinDamage",0.5);
-
-TweakItem("KCMweapons.HandCrossbow","MaxDamage",0.8);
-TweakItem("KCMweapons.KCM_Compound","MaxDamage",0.8);
-TweakItem("KCMweapons.KCM_Handmade","MaxDamage",0.8);
-TweakItem("KCMweapons.KCM_Handmade02","MaxDamage",0.8);
-TweakItem("KCMweapons.KCM_Compound02","MaxDamage",0.8);
 
 
 -- Luce del minatore
@@ -300,8 +269,8 @@ TweakItem("Base.Hat_Rabbit","ScratchDefense", 0);
 TweakItem("Base.Hat_Rabbit","BiteDefense", 0);
 
 --- maschera da coniglio rgiallo
-TweakItem("Base.Hat_Yellow","ScratchDefense", 0);
-TweakItem("Base.Hat_Yellow","BiteDefense", 0);
+TweakItem("Base.Hat_Rabbit_Yellow","ScratchDefense", 0);
+TweakItem("Base.Hat_Rabbit_Yellow","BiteDefense", 0);
 
 --- maschera da coniglio blu
 TweakItem("Base.Hat_Blue","ScratchDefense", 0);
@@ -322,7 +291,54 @@ TweakItem("Base.PillsBeta","UseDelta", 0.25);
 TweakItem("Base.PillsVitamins","UseDelta", 0.25);
 
 
+--- riviste nerf 
+
+-- rivista 
+TweakItem("Base.Magazine","StressChange", -10);
+TweakItem("Base.Magazine","BoredomChange", -15);
+
+-- rivista tv
+TweakItem("Base.TVMagazine","StressChange", -10);
+TweakItem("Base.TVMagazine","BoredomChange", -15);
+
+-- rivista cruciverba  1
+TweakItem("Base.MagazineCrossword1","StressChange", -10);
+TweakItem("Base.MagazineCrossword1","BoredomChange", -15);
+
+-- rivista cruciverba  2
+TweakItem("Base.MagazineCrossword2","StressChange", -10);
+TweakItem("Base.MagazineCrossword2","BoredomChange", -15);
+
+-- rivista cruciverba parole 3
+TweakItem("Base.MagazineCrossword3","StressChange", -10);
+TweakItem("Base.MagazineCrossword3","BoredomChange", -15);
+
+-- rivista ricerca delle parole 1
+TweakItem("Base.MagazineWordsearch1","StressChange", -10);
+TweakItem("Base.MagazineWordsearch1","BoredomChange", -15);
+
+-- rivista ricerca delle parole 2
+TweakItem("Base.MagazineWordsearch2","StressChange", -10);
+TweakItem("Base.MagazineWordsearch2","BoredomChange", -15);
+
+-- rivista ricerca delle parole 3
+TweakItem("Base.MagazineWordsearch3","StressChange", -10);
+TweakItem("Base.MagazineWordsearch3","BoredomChange", -15);
 
 
+--- slip di ferro
 
-	
+TweakItem("Trelai.ThickBoxers_Hearts","ScratchDefense", 1);
+TweakItem("Trelai.ThickBoxers_Hearts","BiteDefense", 1);
+
+-- mazza da baseball di ferro
+TweakItem("SOMW.AluminumBaseballBat","Weight", 1.4);
+TweakItem("SOMW.AluminumBaseballBat","ConditionLowerChanceOneIn", 20);
+TweakItem("SOMW.AluminumBaseballBat","MinDamage", 0.7);
+TweakItem("SOMW.AluminumBaseballBat","MaxDamage", 1.2);
+
+--trelai mazza da baseball
+TweakItem("Trelai.BaseballBatTrelai","Weight", 1.6);
+TweakItem("Trelai.BaseballBatTrelai","ConditionLowerChanceOneIn", 30);
+TweakItem("Trelai.BaseballBatTrelai","MinDamage", 0.8);
+TweakItem("Trelai.BaseballBatTrelai","MaxDamage", 1.8);
