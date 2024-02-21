@@ -325,6 +325,21 @@ TweakItem("Base.MagazineWordsearch2","BoredomChange", -15);
 TweakItem("Base.MagazineWordsearch3","StressChange", -10);
 TweakItem("Base.MagazineWordsearch3","BoredomChange", -15);
 
+---libro rosso
+TweakItem("Base.Book","StressChange", -30);
+TweakItem("Base.Book","BoredomChange", -30);
+TweakItem("Base.Book","UnhappyChange", -25);
+
+---libro comic
+TweakItem("Base.ComicBook","StressChange", -20);
+TweakItem("Base.ComicBook","BoredomChange", -20);
+TweakItem("Base.ComicBook","UnhappyChange", -20);
+
+---libro comic
+TweakItem("Base.HottieZ","StressChange", -30);
+TweakItem("Base.HottieZ","BoredomChange", -30);
+
+
 
 --- slip di ferro
 
