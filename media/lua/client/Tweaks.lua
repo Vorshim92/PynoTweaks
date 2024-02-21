@@ -357,3 +357,10 @@ TweakItem("Trelai.BaseballBatTrelai","Weight", 1.6);
 TweakItem("Trelai.BaseballBatTrelai","ConditionLowerChanceOneIn", 30);
 TweakItem("Trelai.BaseballBatTrelai","MinDamage", 0.8);
 TweakItem("Trelai.BaseballBatTrelai","MaxDamage", 1.8);
+
+--magik stik pitstop
+TweakItem("Base.JeanBeanWand","Weight", 1.0);
+TweakItem("Base.JeanBeanWand","ConditionLowerChanceOneIn", 10);
+TweakItem("Base.JeanBeanWand","MinDamage", 0.8);
+TweakItem("Base.JeanBeanWand","MaxDamage", 2.8);
+TweakItem("Base.JeanBeanWand","MaxRange", 0.8);
