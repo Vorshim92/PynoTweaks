@@ -364,3 +364,19 @@ TweakItem("Base.JeanBeanWand","ConditionLowerChanceOneIn", 10);
 TweakItem("Base.JeanBeanWand","MinDamage", 0.8);
 TweakItem("Base.JeanBeanWand","MaxDamage", 2.8);
 TweakItem("Base.JeanBeanWand","MaxRange", 0.8);
+
+-- Water Bottle Az
+
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Pink_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Green_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Blue_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Cyan_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Red_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Yellow_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Purple_full","UseDelta", 0.25);
+TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
+
+-- accendini e fiammiferi usi
+TweakItem("Base.Lighter","UseDelta", 0.2);
+TweakItem("Base.Lighter","ticksPerEquipUse",11200);
+TweakItem("Base.Matches","UseDelta", 0.25);
