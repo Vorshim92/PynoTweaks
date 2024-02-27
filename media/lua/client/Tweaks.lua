@@ -377,6 +377,6 @@ TweakItem("AuthenticZLite.AuthenticAquaBottle_Purple_full","UseDelta", 0.25);
 TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
 
 -- accendini e fiammiferi usi
-TweakItem("Base.Lighter","UseDelta", 0.2);
+TweakItem("Base.Lighter","UseDelta", 0.1);
 TweakItem("Base.Lighter","ticksPerEquipUse",11200);
-TweakItem("Base.Matches","UseDelta", 0.25);
+TweakItem("Base.Matches","UseDelta", 0.15);
