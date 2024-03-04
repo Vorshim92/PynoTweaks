@@ -47,7 +47,7 @@ function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
                             if SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
                                 local factions = playerObj:getModData().missionProgress.Factions
                                 if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
-                                    local tiername = getText("IGUI_Factions_Template_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
+                                    local tiername = getText("IGUI_Factions_Resistenza_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
                                     slice:addSlice(getText("ContextMenu_FuelLimitationDescriptionTierRadial", tiername), getTexture("media/ui/vehicles/vehicle_refuel_from_pump.png"), nil, playerObj, part)
                                     return
                                 end
@@ -60,7 +60,7 @@ function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
                                 if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
                                     option.notAvailable = true
                                     local tooltip = ISWorldObjectContextMenu.addToolTip()
-                                    local tiername = getText("IGUI_Factions_Template_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
+                                    local tiername = getText("IGUI_Factions_Resistenza_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
                                     tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
                                     tooltip.description = getText("ContextMenu_FuelLimitationDescriptionTier", tiername)
                                     option.toolTip = tooltip

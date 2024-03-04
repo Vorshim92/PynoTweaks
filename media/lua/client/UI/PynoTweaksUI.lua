@@ -225,7 +225,7 @@ function PynoTweaks.UI.changeFillFuelMenu(source, player, context)
             option.subOption = nil
             option.notAvailable = true
             local tooltip = ISWorldObjectContextMenu.addToolTip()
-            local tiername = getText("IGUI_Factions_Template_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
+            local tiername = getText("IGUI_Factions_Resistenza_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
             tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
             tooltip.description = getText("ContextMenu_FuelLimitationDescriptionTier", tiername)
             option.toolTip = tooltip
