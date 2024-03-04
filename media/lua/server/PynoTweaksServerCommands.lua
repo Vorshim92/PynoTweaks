@@ -144,10 +144,18 @@ LuaServerCommands.register('fixxyno', function(author, command, args)
                 line = filereader:readLine();
             end
             filereader:close();
-            local newargs = { id = id, data = temp, checkDefaults = true};
+            local newargs = { id = id, data = temp, checkDefaults = true };
             print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.");
             sendServerCommand('SFQuest', "setProgress", newargs);
         end;
+    elseif args[2] == "rerolldaily" then
+        local packet = {}
+        packet.steamID = player:getOnlineID()
+        sendServerCommand(player, "Pyno", "rerolldaily", packet)
+    elseif args[2] == "lincolnreed" then
+        local packet = {}
+        packet.steamID = player:getOnlineID()
+        sendServerCommand(player, "Pyno", "lincolnreed", packet)
     end
     return 'Fixxyno fixxano ano fixato!'
 end)
