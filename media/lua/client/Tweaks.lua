@@ -73,18 +73,18 @@ TweakItem("Radio.WalkieTalkieMakeShift","Weight", 0.02);
 
 
 ----------consumo
-TweakItem("Radio.WalkieTalkie1","UseDelta", 0.0002);
-TweakItem("Radio.WalkieTalkie2","UseDelta", 0.0002);
-TweakItem("Radio.WalkieTalkie3","UseDelta", 0.0002);
-TweakItem("Radio.WalkieTalkie4","UseDelta", 0.0005);
-TweakItem("Radio.WalkieTalkie5","UseDelta", 0.0005);
-TweakItem("Radio.WalkieTalkieMakeShift","UseDelta", 0.0004);
-TweakItem("Radio.HamRadio1","UseDelta", 0.00001);
-TweakItem("Radio.HamRadio2","UseDelta", 0.00001);
-TweakItem("Radio.HamRadioMakeShift","UseDelta", 0.00001);
-TweakItem("Radio.RadioRed","UseDelta", 0.00001);
-TweakItem("Radio.RadioBlack","UseDelta", 0.00001);
-TweakItem("Radio.RadioMakeShift","UseDelta", 0.00001);
+TweakItem("Radio.WalkieTalkie1","UseDelta", 0.00002);
+TweakItem("Radio.WalkieTalkie2","UseDelta", 0.00002);
+TweakItem("Radio.WalkieTalkie3","UseDelta", 0.00002);
+TweakItem("Radio.WalkieTalkie4","UseDelta", 0.00005);
+TweakItem("Radio.WalkieTalkie5","UseDelta", 0.00005);
+TweakItem("Radio.WalkieTalkieMakeShift","UseDelta", 0.00004);
+TweakItem("Radio.HamRadio1","UseDelta", 0.000001);
+TweakItem("Radio.HamRadio2","UseDelta", 0.000001);
+TweakItem("Radio.HamRadioMakeShift","UseDelta", 0.000001);
+TweakItem("Radio.RadioRed","UseDelta", 0.000001);
+TweakItem("Radio.RadioBlack","UseDelta", 0.000001);
+TweakItem("Radio.RadioMakeShift","UseDelta", 0.000001);
 
 -------------cibo protein bar
 
@@ -377,9 +377,9 @@ TweakItem("AuthenticZLite.AuthenticAquaBottle_Purple_full","UseDelta", 0.25);
 TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
 
 -- accendini e fiammiferi usi
-TweakItem("Base.Lighter","UseDelta", 0.1);
+TweakItem("Base.Lighter","UseDelta", 0.125);
 TweakItem("Base.Lighter","ticksPerEquipUse",11200);
-TweakItem("Base.Matches","UseDelta", 0.15);
+TweakItem("Base.Matches","UseDelta", 0.20);
 
 --insetti
 TweakItem("Base.AmericanLadyCaterpillar","Weight", 0.02);
