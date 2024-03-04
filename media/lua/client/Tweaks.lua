@@ -53,7 +53,7 @@ TweakItem("Base.MP5SD","SoundRadius",70);
 
 
 -- Luce del minatore
-TweakItem("AuthenticZClothing.Authentic_MinerLightbulb","LightDistance",7);
+TweakItem("AuthenticZClothing.Authentic_MinerLightbulb","LightDistance",76);
 TweakItem("AuthenticZClothing.Authentic_MinerLightbulb","LightStrength",1);
 TweakItem("AuthenticZClothing.Authentic_MinerLightbulb","UseDelta",0.00055);
 
@@ -64,12 +64,12 @@ TweakItem("Base.SpiffoBig","Weight", 2);
 
 --Radio
 -------peso
-TweakItem("Radio.WalkieTalkie1","Weight", 0.2);
-TweakItem("Radio.WalkieTalkie2","Weight", 0.2);
-TweakItem("Radio.WalkieTalkie3","Weight", 0.2);
-TweakItem("Radio.WalkieTalkie4","Weight", 0.3);
-TweakItem("Radio.WalkieTalkie5","Weight", 0.3);
-TweakItem("Radio.WalkieTalkieMakeShift","Weight", 0.8);
+TweakItem("Radio.WalkieTalkie1","Weight", 0.02);
+TweakItem("Radio.WalkieTalkie2","Weight", 0.02);
+TweakItem("Radio.WalkieTalkie3","Weight", 0.02);
+TweakItem("Radio.WalkieTalkie4","Weight", 0.02);
+TweakItem("Radio.WalkieTalkie5","Weight", 0.02);
+TweakItem("Radio.WalkieTalkieMakeShift","Weight", 0.02);
 
 
 ----------consumo
@@ -380,3 +380,32 @@ TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
 TweakItem("Base.Lighter","UseDelta", 0.1);
 TweakItem("Base.Lighter","ticksPerEquipUse",11200);
 TweakItem("Base.Matches","UseDelta", 0.15);
+
+--insetti
+TweakItem("Base.AmericanLadyCaterpillar","Weight", 0.02);
+TweakItem("Base.BandedWoolyBearCaterpillar","Weight", 0.02);
+TweakItem("Base.Centipede","Weight", 0.02);
+TweakItem("Base.Centipede2","Weight", 0.02);
+TweakItem("Base.CCockroach","Weight", 0.02);
+TweakItem("Base.Cricket","Weight", 0.02);
+TweakItem("Base.Grasshopper","Weight", 0.02);
+TweakItem("Base.Maggots","Weight", 0.02);
+TweakItem("Base.Centipede2","Weight", 0.02);
+TweakItem("Base.Millipede","Weight", 0.02);
+TweakItem("Base.Millipede2","Weight", 0.02);
+TweakItem("Base.MonarchCaterpillar","Weight", 0.02);
+TweakItem("Base.Pillbug","Weight", 0.02);
+TweakItem("Base.Slug","Weight", 0.02);
+TweakItem("Base.Slug2","Weight", 0.02);
+TweakItem("Base.SilkMothCaterpillar","Weight", 0.02);
+TweakItem("Base.Snail","Weight", 0.02);
+TweakItem("Base.Termites","Weight", 0.02);
+TweakItem("Base.SawflyLarva","Weight", 0.02);
+TweakItem("Base.SwallowtailCaterpillar","Weight", 0.02);
+TweakItem("Base.Worm","Weight", 0.02);
+
+--martello di pietra
+TweakItem("SWeapons.WireBat","MaxCondition", 7);
+TweakItem("SWeapons.WireBat","ConditionLowerChanceOneIn", 7);
+TweakItem("SWeapons.WireBat","MinDamage", 0.4);
+TweakItem("SWeapons.WireBat","MaxDamage", 0.8);
