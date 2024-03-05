@@ -405,7 +405,7 @@ TweakItem("Base.SwallowtailCaterpillar","Weight", 0.02);
 TweakItem("Base.Worm","Weight", 0.02);
 
 --martello di pietra
-TweakItem("SWeapons.WireBat","MaxCondition", 7);
-TweakItem("SWeapons.WireBat","ConditionLowerChanceOneIn", 7);
-TweakItem("SWeapons.WireBat","MinDamage", 0.4);
-TweakItem("SWeapons.WireBat","MaxDamage", 0.8);
+TweakItem("Base.HammerStone","MaxCondition", 7);
+TweakItem("Base.HammerStone","ConditionLowerChanceOneIn", 7);
+TweakItem("Base.HammerStone","MinDamage", 0.4);
+TweakItem("Base.HammerStone","MaxDamage", 0.8);
