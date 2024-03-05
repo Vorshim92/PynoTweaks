@@ -25,6 +25,7 @@ local TRAIT_COST = {
 	NeedsMoreSleep = 0,
 	NeedLessSleep = 0,
 	Inconspicuous = 2,
+	Conspicuous= -2,
 	Smoker = -4,
 	Hemophobic = -5,
 	Durabile = 4,
