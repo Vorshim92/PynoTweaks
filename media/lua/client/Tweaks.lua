@@ -414,5 +414,5 @@ TweakItem("Base.HammerStone","MaxDamage", 0.8);
 TweakItem("Base.SheetRope","Weight", 0.2);
 
 --candela
-("Base.Candle","ticksPerEquipUse",9200);
+TweakItem("Base.Candle","ticksPerEquipUse", 9200 );
 
