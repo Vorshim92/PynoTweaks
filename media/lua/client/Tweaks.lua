@@ -378,7 +378,7 @@ TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
 
 -- accendini e fiammiferi usi
 TweakItem("Base.Lighter","UseDelta", 0.125);
-TweakItem("Base.Lighter","ticksPerEquipUse",11200);
+TweakItem("Base.Lighter","ticksPerEquipUse",6200);
 TweakItem("Base.Matches","UseDelta", 0.20);
 
 --insetti
@@ -412,3 +412,7 @@ TweakItem("Base.HammerStone","MaxDamage", 0.8);
 
 --corde di stracci
 TweakItem("Base.SheetRope","Weight", 0.2);
+
+--candela
+("Base.Candle","ticksPerEquipUse",9200);
+
