@@ -409,3 +409,6 @@ TweakItem("Base.HammerStone","MaxCondition", 7);
 TweakItem("Base.HammerStone","ConditionLowerChanceOneIn", 7);
 TweakItem("Base.HammerStone","MinDamage", 0.4);
 TweakItem("Base.HammerStone","MaxDamage", 0.8);
+
+--corde di stracci
+TweakItem("Base.SheetRope","Weight", 0.2);
