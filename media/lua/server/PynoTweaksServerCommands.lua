@@ -115,7 +115,7 @@ end)
 
 LuaServerCommands.register('fixxyno', function(author, command, args)
     -- Check if the correct number of arguments are passed.
-    if #args ~= 2 then
+    if #args < 2 then
         return '/luacmd fixxyno [player] [command]'
     end
 
@@ -151,11 +151,23 @@ LuaServerCommands.register('fixxyno', function(author, command, args)
     elseif args[2] == "rerolldaily" then
         local packet = {}
         packet.steamID = player:getOnlineID()
-        sendServerCommand(player, "Pyno", "rerolldaily", packet)
+        packet.command = "rerolldaily"
+        sendServerCommand(player, "Pyno", "fixxyno", packet)
     elseif args[2] == "lincolnreed" then
         local packet = {}
         packet.steamID = player:getOnlineID()
-        sendServerCommand(player, "Pyno", "lincolnreed", packet)
+        packet.command = "lincolnreed"
+        sendServerCommand(player, "Pyno", "fixxyno", packet)
+    elseif args[2] == "updatefrequency" then
+        if #args ~= 4 then
+            return '/luacmd fixxyno [player] [updatefrequency] [oldfrequency] [newfrequency]'
+        end
+        local packet = {}
+        packet.steamID = player:getOnlineID()
+        packet.command = "updatefrequency"
+        packet.oldfrequency = args[3]
+        packet.newfrequency = args[4]
+        sendServerCommand(player, "Pyno", "fixxyno", packet)
     end
     return 'Fixxyno fixxano ano fixato!'
 end)

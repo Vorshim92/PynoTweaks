@@ -87,6 +87,18 @@ local function OnServerCommand(module, command, arguments)
                 player:getModData().missionProgress.Factions = factions
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
+            elseif command == "updatefrequency" then
+                local oldfrequency = arguments.oldfrequency
+                local newfrequency = arguments.newfrequency
+                local dailyEvents = player:getModData().missionProgress.DailyEvents
+                for k, v in pairs(dailyEvents) do
+                    if v.frequency == oldfrequency then
+                        v.frequency = newfrequency
+                    end
+                end
+                player:getModData().missionProgress.DailyEvents = dailyEvents
+                SF_MissionPanel.instance.needsUpdate = true
+                SF_MissionPanel.instance.needsBackup = true
             end
         end
     end
