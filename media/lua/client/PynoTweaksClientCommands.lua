@@ -78,6 +78,8 @@ local function OnServerCommand(module, command, arguments)
                 end
             end
         elseif command == "fixxyno" then
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
             command = arguments.command
             if command == "rerolldaily" then
                 SF_MissionPanel.instance.DailyEventReroll()
@@ -88,15 +90,15 @@ local function OnServerCommand(module, command, arguments)
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
             elseif command == "updatefrequency" then
-                local oldfrequency = arguments.oldfrequency
-                local newfrequency = arguments.newfrequency
-                local dailyEvents = player:getModData().missionProgress.DailyEvents
+                local oldfrequency = tonumber(arguments.oldfrequency)
+                local newfrequency = tonumber(arguments.newfrequency)
+                local dailyEvents = player:getModData().missionProgress.DailyEvent
                 for k, v in pairs(dailyEvents) do
                     if v.frequency == oldfrequency then
                         v.frequency = newfrequency
                     end
                 end
-                player:getModData().missionProgress.DailyEvents = dailyEvents
+                player:getModData().missionProgress.DailyEvent = dailyEvents
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
             end
