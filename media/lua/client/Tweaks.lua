@@ -405,7 +405,7 @@ TweakItem("Base.SwallowtailCaterpillar","Weight", 0.02);
 TweakItem("Base.Worm","Weight", 0.02);
 
 --martello di pietra
-TweakItem("Base.HammerStone","MaxCondition", 7);
+TweakItem("Base.HammerStone","ConditionMax", 7);
 TweakItem("Base.HammerStone","ConditionLowerChanceOneIn", 7);
 TweakItem("Base.HammerStone","MinDamage", 0.4);
 TweakItem("Base.HammerStone","MaxDamage", 0.8);
@@ -415,4 +415,30 @@ TweakItem("Base.SheetRope","Weight", 0.2);
 
 --candela
 TweakItem("Base.Candle","ticksPerEquipUse", 9200 );
+
+--Lancia da asse di legno
+TweakItem("SOMW.PlankSpear","ConditionLowerChanceOneIn", 2);
+TweakItem("SOMW.PlankSpear","CriticalChance", 10);
+
+--Lancia da asse di legno con pietra
+TweakItem("SOMW.SpearChippedStone","ConditionLowerChanceOneIn", 4);
+TweakItem("SOMW.SpearChippedStone","CriticalChance", 15);
+
+--Lancia Base
+TweakItem("Base.SpearCrafted","CriticalChance", 10);
+
+-- lancia con forchetta
+TweakItem("SOMW.PlankSpearHandFork","ConditionLowerChanceOneIn", 4);
+
+-- lancia con coltello per pane
+TweakItem("SOMW.PlankSpearBreadKnife","ConditionLowerChanceOneIn", 4);
+
+--accetta di pietra
+TweakItem("Base.AxeStone","ConditionLowerChanceOneIn", 5);
+TweakItem("Base.AxeStone","ConditionMax", 6);
+
+
+
+
+
 
