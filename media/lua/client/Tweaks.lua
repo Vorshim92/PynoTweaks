@@ -437,6 +437,14 @@ TweakItem("SOMW.PlankSpearBreadKnife","ConditionLowerChanceOneIn", 4);
 TweakItem("Base.AxeStone","ConditionLowerChanceOneIn", 5);
 TweakItem("Base.AxeStone","ConditionMax", 6);
 
+--cappello da russo
+TweakItem("Base.UshankaHat","ScratchDefense", 100);
+TweakItem("Base.UshankaHat","BiteDefense", 100);
+
+--zaino rosa
+TweakItem("Base.Bag_ALICEpack_Pink","WeightReduction", 85);
+TweakItem("Base.Bag_ALICEpack_Pink","Capacity", 27);
+
 
 
 
