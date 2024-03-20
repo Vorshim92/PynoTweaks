@@ -445,6 +445,8 @@ TweakItem("Base.UshankaHat","BiteDefense", 100);
 TweakItem("Base.Bag_ALICEpack_Pink","WeightReduction", 85);
 TweakItem("Base.Bag_ALICEpack_Pink","Capacity", 27);
 
+--Batterie
+TweakItem("Base.Battery","Weight", 0.02);
 
 
 
