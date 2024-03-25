@@ -14,6 +14,12 @@ option PynoTweaks.UninstallParts
 	page = PynoTweaks, translation = PynoTweaks_UninstallParts,
 }
 
+option PynoTweaks.UninstallPartsHoursSurvived
+{
+	type = integer, min = 0, max = 10000, default = 2,
+	page = PynoTweaks, translation = PynoTweaks_UninstallPartsHoursSurvived,
+}
+
 option PynoTweaks.ActionTimeMultiplier
 {
 	type = integer, min = 1, max = 100, default = 1,

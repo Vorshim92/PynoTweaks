@@ -194,7 +194,7 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
     end
 
     -- check for player survival time (96 h)
-    if player:getHoursSurvived() < 96 then
+    if player:getHoursSurvived() < SandboxVars.PynoTweaks.UninstallPartsHoursSurvived then
         text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24))
         notAvailable = true
     else
