@@ -450,7 +450,8 @@ TweakItem("Base.Battery","Weight", 0.02);
 
 
 -- Lancia fumogena
-TweakItem("SmokeBomb","SmokeRange", 50);
+TweakItem("Base.SmokeBomb","SmokeRange", 50);
+TweakItem("Base.SmokeBomb","Weight", 0.3);
 
 
 
