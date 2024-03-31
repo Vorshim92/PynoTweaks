@@ -449,6 +449,10 @@ TweakItem("Base.Bag_ALICEpack_Pink","Capacity", 27);
 TweakItem("Base.Battery","Weight", 0.02);
 
 
+-- Lancia fumogena
+TweakItem("SmokeBomb","SmokeRange", 50);
+
+
 
 
 
