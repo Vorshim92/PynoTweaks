@@ -253,13 +253,13 @@ module PynoTweaks{
 		AnimNode	: Disassemble,
 	}
 	
-	recipe Make Scrap Metal {
+	recipe Make Unusable Metal {
 		keep [Recipe.GetItemTypes.Hammer],
 		keep WeldingMask,
-		UnusableMetal=4,
+		ScrapMetal=4,
 		BlowTorch=1,
 		
-		Result:ScrapMetal,
+		Result:UnusableMetal,
 		Time:250.0,
 		Category:Welding,
 		NeedToBeLearn:false,
