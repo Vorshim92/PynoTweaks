@@ -5,6 +5,6 @@ Tooltip_EN = {
 	Tooltip_CarClamp = "Use the outside car radial menu in order to block the vehicle",
     Tooltip_PynoTweaks_CarClampUninstall = "CARCLAMPYNO",
     Tooltip_PynoTweaks_MetalWeldingLevel = "Metalworking %1/2",
-    Tooltip_PynoTweaks_SurvivalTime = "Days Survived %1/4",
+    Tooltip_PynoTweaks_SurvivalTime = "Days Survived %1/%2",
     Tooltip_PynoTweaks_VehicleClaimed = "Vehicle claimed by somenone else",
 }

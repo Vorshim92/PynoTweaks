@@ -4,6 +4,6 @@ Tooltip_IT = {
     Tooltip_PynoTweaks_Passengers = "Non posso smontare un veicolo con passeggeri dentro, boiade!",
 	Tooltip_CarClamp = "Usa il menu radiale fuori dalla macchina per bloccarla.",
     Tooltip_PynoTweaks_MetalWeldingLevel = "Lavorazione Metalli %1/2",
-    Tooltip_PynoTweaks_SurvivalTime = "Giorni Sopravissuti %1/4",
+    Tooltip_PynoTweaks_SurvivalTime = "Giorni Sopravissuti %1/%2",
     Tooltip_PynoTweaks_VehicleClaimed = "Veicolo claimato da qualcun*",
 }
