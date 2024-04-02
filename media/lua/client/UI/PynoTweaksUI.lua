@@ -195,10 +195,10 @@ function PynoTweaks.UI.addOptionToMenuOutsideVehicle(player, context, vehicle)
 
     -- check for player survival time (96 h)
     if player:getHoursSurvived() < SandboxVars.PynoTweaks.UninstallPartsHoursSurvived then
-        text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24, SandboxVars.PynoTweaks.UninstallPartsHoursSurvived))
+        text = text .. " <LINE> <RGB:1,0,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24), math.floor(SandboxVars.PynoTweaks.UninstallPartsHoursSurvived/24))
         notAvailable = true
     else
-        text = text .. " <LINE> <RGB:0,1,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24, SandboxVars.PynoTweaks.UninstallPartsHoursSurvived))
+        text = text .. " <LINE> <RGB:0,1,0> " .. getText("Tooltip_PynoTweaks_SurvivalTime" , math.floor(player:getHoursSurvived()/24), math.floor(SandboxVars.PynoTweaks.UninstallPartsHoursSurvived/24))
     end
 
     -- check for player is not melting a claimed vehicle (AVCS mod)
