@@ -253,13 +253,13 @@ module PynoTweaks{
 		AnimNode	: Disassemble,
 	}
 	
-	recipe Make Scrap Metal {
+	recipe Make Unusable Metal {
 		keep [Recipe.GetItemTypes.Hammer],
 		keep WeldingMask,
-		UnusableMetal=4,
+		ScrapMetal=4,
 		BlowTorch=1,
 		
-		Result:ScrapMetal,
+		Result:UnusableMetal,
 		Time:250.0,
 		Category:Welding,
 		NeedToBeLearn:false,
@@ -627,31 +627,42 @@ module PynoTweaks{
 		Time:15.0,
 	}
 
-	recipe Open Purse {
-		Purse,
+	recipe Stack 50 WITCoins 
+	{
+		PynoTweaks.WITCoin = 50,
 
-		Result:PynoTweaks.WCoin,
-		Time: 50.0,
-		AnimNode:RipSheets,
+		Result: PynoTweaks.WITStack,
+		Category:PynoTweaks,
+		Time:50.0
+  	}
+
+	recipe Recover 50 WITCoins 
+	{
+		PynoTweaks.WITStack,
+
+		Result : PynoTweaks.WITCoin = 50,
+		Category:PynoTweaks,
+		Time:50.0
+  	}
+
+	recipe Convert to 10 Server Points
+    {
+        PynoTweaks.WITCoin=1,
+
+        Result:SheetPaper2,
 		RemoveResultItem:true,
-		CanBeDoneFromFloor:true,
-		OnCreate:Recipe.OnCreate.RollWCoin
+        Time:30.0,
+        OnCreate:PynoTweaks.GiveServerPoints10,
+    }
+
+	recipe Convert to 500 Server Points
+	{
+		PynoTweaks.WITStack=1,
+
+		Result:SheetPaper2,
+		RemoveResultItem:true,
+		Time:30.0,
+		OnCreate:PynoTweaks.GiveServerPoints500,
 	}
-
-	recipe Stack 50 WCoins {
-		PynoTweaks.WCoin = 50,
-
-		Result: PynoTweaks.WStack,
-		Category:PynoTweaks,
-		Time:50.0
-  	}
-
-	recipe Recover 50 Money {
-		PynoTweaks.WStack,
-
-		Result : PynoTweaks.WCoin = 50,
-		Category:PynoTweaks,
-		Time:50.0
-  	}
 	
 }
