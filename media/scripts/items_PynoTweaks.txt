@@ -227,12 +227,12 @@ module PynoTweaks {
 		WorldStaticModel = Map,
 	}
 
-	item WCoin
+	item WITCoin
 	{
 		DisplayCategory = Junk,
 		Weight = 0.01,
 		Type = Normal,
-		DisplayName = W Coin,
+		DisplayName = W Il Tonno Coin,
 		Icon = WCoin,
 		WorldStaticModel = PokerChips_Ground
 	}
@@ -240,9 +240,9 @@ module PynoTweaks {
 	item WStack
 	{
 		DisplayCategory = Junk,
-		Weight = 0.3,
+		Weight = 0.5,
 		Type = Normal,
-		DisplayName = W Stack,
+		DisplayName = W Il Tonno Stack,
 		Icon = WStack,
 		WorldStaticModel = PokerChips_Ground
 	}

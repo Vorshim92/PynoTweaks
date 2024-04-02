@@ -23,3 +23,11 @@ function PynoTweaks.Utils.getBaseArea(vehicle)
 
     return math.ceil(2 * (extX + extZ) * extY + extX * extZ) + vModifier
 end
+
+function PynoTweaks.GiveServerPoints10()
+    sendClientCommand("ServerPoints", "add", {getPlayer():getUsername(), 10})
+end
+
+function PynoTweaks.GiveServerPoints500()
+    sendClientCommand("ServerPoints", "add", {getPlayer():getUsername(), 500})
+end
