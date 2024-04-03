@@ -451,6 +451,7 @@ TweakItem("Base.Battery","Weight", 0.02);
 
 -- bomba fumogena
 TweakItem("Base.SmokeBomb","Weight", 0.3);
+TweakItem("Base.SmokeBomb","SmokeRange", 10);
 
 -- Trapano La Resistenza Pack
 TweakItem("Base.CordlessDrill","Weight", 1.0);
@@ -458,6 +459,10 @@ TweakItem("Base.CordlessDrill","MaxDamage", 0.9);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","ConditionMax", 12);
+
+
+
+
 
 
 
