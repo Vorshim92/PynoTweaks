@@ -129,50 +129,50 @@ TweakItem("Base.FishStrips","Proteins", 25.0);
 ----Armi scappabili
 ----- Lance
 ----- Savage spear
-TweakItem("SWeapons.SpearSalvaged","ConditionLowerChanceOneIn", 5);
-TweakItem("SWeapons.SpearSalvaged","ConditionMax", 10);
+TweakItem("SWeapons.SpearSalvaged","ConditionLowerChanceOneIn", 10);
+TweakItem("SWeapons.SpearSalvaged","ConditionMax", 30);
 TweakItem("SWeapons.SpearSalvaged","MinDamage", 1.2);
 TweakItem("SWeapons.SpearSalvaged","MaxDamage", 1.8);
 
 ----- Scarp spear
-TweakItem("SWeapons.ScrapSpear","ConditionLowerChanceOneIn", 3);
-TweakItem("SWeapons.ScrapSpear","ConditionMax", 8);
+TweakItem("SWeapons.ScrapSpear","ConditionLowerChanceOneIn", 10);
+TweakItem("SWeapons.ScrapSpear","ConditionMax", 25);
 TweakItem("SWeapons.ScrapSpear","MinDamage", 1.0);
 TweakItem("SWeapons.ScrapSpear","MaxDamage", 1.5);
 
 ----- Scarp spear
-TweakItem("SWeapons.ScrapSpear","ConditionLowerChanceOneIn", 3);
-TweakItem("SWeapons.ScrapSpear","ConditionMax", 8);
+TweakItem("SWeapons.ScrapSpear","ConditionLowerChanceOneIn", 10);
+TweakItem("SWeapons.ScrapSpear","ConditionMax", 25);
 TweakItem("SWeapons.ScrapSpear","MinDamage", 1.0);
 TweakItem("SWeapons.ScrapSpear","MaxDamage", 1.5);
 
 ----- Scarp spearMacete
-TweakItem("SWeapons.SpearScrapMachete","ConditionLowerChanceOneIn", 4);
-TweakItem("SWeapons.SpearScrapMachete","ConditionMax", 10);
+TweakItem("SWeapons.SpearScrapMachete","ConditionLowerChanceOneIn", 8);
+TweakItem("SWeapons.SpearScrapMachete","ConditionMax", 30);
 TweakItem("SWeapons.SpearScrapMachete","MinDamage", 1.2);
 TweakItem("SWeapons.SpearScrapMachete","MaxDamage", 1.7);
 
 ----- Scarp spearShiv
-TweakItem("SWeapons.SpearScrapShiv","ConditionLowerChanceOneIn", 3);
-TweakItem("SWeapons.SpearScrapShiv","ConditionMax", 6);
+TweakItem("SWeapons.SpearScrapShiv","ConditionLowerChanceOneIn", 6);
+TweakItem("SWeapons.SpearScrapShiv","ConditionMax", 20);
 TweakItem("SWeapons.SpearScrapShiv","MinDamage", 0.9);
 TweakItem("SWeapons.SpearScrapShiv","MaxDamage", 1.4);
 
 ----- Scarp SpearSharpenedScrewdriver
-TweakItem("SWeapons.SpearSharpenedScrewdriver","ConditionLowerChanceOneIn", 3);
-TweakItem("SWeapons.SpearSharpenedScrewdriver","ConditionMax", 6);
+TweakItem("SWeapons.SpearSharpenedScrewdriver","ConditionLowerChanceOneIn", 6);
+TweakItem("SWeapons.SpearSharpenedScrewdriver","ConditionMax", 20);
 TweakItem("SWeapons.SpearSharpenedScrewdriver","MinDamage", 0.9);
 TweakItem("SWeapons.SpearSharpenedScrewdriver","MaxDamage", 1.4);
 
 ----- Spade
 ----- SalvagedCleaver
-TweakItem("SWeapons.SalvagedCleaver","ConditionLowerChanceOneIn", 6);
+TweakItem("SWeapons.SalvagedCleaver","ConditionLowerChanceOneIn", 14);
 TweakItem("SWeapons.SalvagedCleaver","ConditionMax", 15);
 TweakItem("SWeapons.SalvagedCleaver","MinDamage", 3);
 TweakItem("SWeapons.SalvagedCleaver","MaxDamage", 6);
 
 ----- SalvagedMachete
-TweakItem("SWeapons.SalvagedMachete","ConditionConditionMax", 12);
+TweakItem("SWeapons.SalvagedMachete","ConditionConditionMax", 22);
 
 ----- SalvagedNightstick
 TweakItem("SWeapons.SalvagedNightstick","Weight", 1.8);
@@ -180,7 +180,7 @@ TweakItem("SWeapons.SalvagedNightstick","MinDamage", 0.7);
 TweakItem("SWeapons.SalvagedNightstick","MaxDamage", 1.5);
 
 ----- ScrapSword
-TweakItem("SWeapons.ScrapSword","ConditionMax", 12);
+TweakItem("SWeapons.ScrapSword","ConditionMax", 30);
 
 ----- Armi a una mano
 ------ ScrapClub
@@ -190,45 +190,45 @@ TweakItem("SWeapons.SalvagedClub","ConditionLowerChanceOneIn", 18);
 
 ----- Armi a due mani
 ------ SalvagedCrowbar
-TweakItem("SWeapons.SalvagedCrowbar","MinDamage", 0.5);
-TweakItem("SWeapons.SalvagedCrowbar","MaxDamage", 1.0);
+TweakItem("SWeapons.SalvagedCrowbar","MinDamage", 0.6);
+TweakItem("SWeapons.SalvagedCrowbar","MaxDamage", 1.2);
 
 ----- BoltBat
-TweakItem("SWeapons.BoltBat","MinDamage", 0.7);
 TweakItem("SWeapons.BoltBat","MinDamage", 0.9);
+TweakItem("SWeapons.BoltBat","MinDamage", 1.1);
 
 -----ChainBat
 TweakItem("SWeapons.ChainBat","MinDamage", 1.2);
 TweakItem("SWeapons.ChainBat","MinDamage", 1.7);
-TweakItem("SWeapons.ChainBat","BaseSpeed", 0.8);
+TweakItem("SWeapons.ChainBat","BaseSpeed", 0.96);
 
 -----SalvagedPipe
-TweakItem("SWeapons.SalvagedPipe","ConditionLowerChanceOneIn", 8);
+TweakItem("SWeapons.SalvagedPipe","ConditionLowerChanceOneIn", 30);
 
 -----TinCanClub
 TweakItem("SWeapons.TinCanClub","BaseSpeed", 0.75);
 
 ------GearMace
-TweakItem("SWeapons.GearMace","BaseSpeed", 0.8);
+TweakItem("SWeapons.GearMace","BaseSpeed", 0.9);
 
 ------WireBat
-TweakItem("SWeapons.WireBat","ConditionLowerChanceOneIn", 8);
+TweakItem("SWeapons.WireBat","ConditionLowerChanceOneIn", 30);
 TweakItem("SWeapons.WireBat","MinDamage", 0.8);
 TweakItem("SWeapons.WireBat","MaxDamage", 1.3);
 
 ------Micromaul
-TweakItem("SWeapons.Micromaul","ConditionLowerChanceOneIn", 5);
+TweakItem("SWeapons.Micromaul","ConditionLowerChanceOneIn", 10);
 TweakItem("SWeapons.Micromaul","BaseSpeed", 0.75);
 
 ----- Asce
 -----HugeScrapPickaxe
-TweakItem("SWeapons.HugeScrapPickaxe","ConditionLowerChanceOneIn", 5);
+TweakItem("SWeapons.HugeScrapPickaxe","ConditionLowerChanceOneIn", 18);
 
 ------SalvagedPipeWrench
-TweakItem("SWeapons.SalvagedPipeWrench","ConditionLowerChanceOneIn", 5);
+TweakItem("SWeapons.SalvagedPipeWrench","ConditionLowerChanceOneIn", 18);
 
 -----TireIronAxe
-TweakItem("SWeapons.TireIronAxe","ConditionLowerChanceOneIn", 7);
+TweakItem("SWeapons.TireIronAxe","ConditionLowerChanceOneIn", 12);
 
 -------PipewithScissors
 TweakItem("SWeapons.TireIronAxe","ConditionMax", 8);
@@ -239,7 +239,7 @@ TweakItem("SWeapons.ScrapPickaxe","MaxDamage", 1.5);
 
 
 ------BigScrapPickaxe
-TweakItem("SWeapons.BigScrapPickaxe","ConditionLowerChanceOneIn", 5);
+TweakItem("SWeapons.BigScrapPickaxe","ConditionLowerChanceOneIn", 20);
 
 
         --- maschere
@@ -386,7 +386,7 @@ TweakItem("Base.AmericanLadyCaterpillar","Weight", 0.02);
 TweakItem("Base.BandedWoolyBearCaterpillar","Weight", 0.02);
 TweakItem("Base.Centipede","Weight", 0.02);
 TweakItem("Base.Centipede2","Weight", 0.02);
-TweakItem("Base.CCockroach","Weight", 0.02);
+TweakItem("Base.Cockroach","Weight", 0.02);
 TweakItem("Base.Cricket","Weight", 0.02);
 TweakItem("Base.Grasshopper","Weight", 0.02);
 TweakItem("Base.Maggots","Weight", 0.02);
@@ -403,6 +403,7 @@ TweakItem("Base.Termites","Weight", 0.02);
 TweakItem("Base.SawflyLarva","Weight", 0.02);
 TweakItem("Base.SwallowtailCaterpillar","Weight", 0.02);
 TweakItem("Base.Worm","Weight", 0.02);
+
 
 --martello di pietra
 TweakItem("Base.HammerStone","ConditionMax", 7);
@@ -455,10 +456,10 @@ TweakItem("Base.SmokeBomb","SmokeRange", 10);
 
 -- Trapano La Resistenza Pack
 TweakItem("Base.CordlessDrill","Weight", 1.0);
-TweakItem("Base.CordlessDrill","MaxDamage", 0.9);
+TweakItem("Base.CordlessDrill","MaxDamage", 0.8);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
-TweakItem("Base.CordlessDrill","ConditionMax", 12);
+TweakItem("Base.CordlessDrill","ConditionMax", 10);
 
 
 
