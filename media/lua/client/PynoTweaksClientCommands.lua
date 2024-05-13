@@ -54,6 +54,63 @@ local function OnServerCommand(module, command, arguments)
                 SF_MissionPanel:completeQuest(player, questID)
             elseif addOrComplete == "backup" then
                 SF_MissionPanel:forceBackupData()
+            elseif addOrComplete == "remove" then
+                local currentTasks = player:getModData().missionProgress.Category2
+                local done = false
+                if #currentTasks > 0 then
+                    for i = 1, #currentTasks do
+                        if currentTasks[i].guid == questID then
+                            local task = currentTasks[i]
+                            if task then
+                                if task.objectives and #task.objectives > 0 then
+                                    for k=1,#task.objectives do
+                                        if task.objectives[k].oncompleted then
+                                            local oncompletedTable = luautils.split(task.objectives[k].oncompleted, ";");
+                                            local removeClickEventValue = nil
+                                            for j = 1, #oncompletedTable do
+                                                if oncompletedTable[j] == "removeclickevent" then
+                                                    removeClickEventValue = oncompletedTable[j + 1]
+                                                    for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                        local event = player:getModData().missionProgress.ClickEvent[c];
+                                                        if event.address and event.address == removeClickEventValue then
+                                                            table.remove(player:getModData().missionProgress.ClickEvent, c);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                                        if task.unlocks then
+                                            local unlocksTable = luautils.split(task.unlocks, ";");
+                                            local removeClickEventValue = nil
+                                            for j = 1, #unlocksTable do
+                                                if unlocksTable[j] == "unlockworldevent" then
+                                                    removeClickEventValue = unlocksTable[j + 2]
+                                                    for c=1,#player:getModData().missionProgress.WorldEvent do
+                                                        local event = player:getModData().missionProgress.WorldEvent[c];
+                                                        if event.dialoguecode and event.dialoguecode == removeClickEventValue then
+                                                            table.remove(player:getModData().missionProgress.WorldEvent, c);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                if task.status == "Completed" then
+                                    table.insert(player:getModData().missionProgress.Category1, task);
+                                end
+                                table.remove(player:getModData().missionProgress.Category2, i);
+                                done = true;
+                            end
+                        end
+                    end
+                end   
+                if done then
+                SF_MissionPanel.instance.needsUpdate = true
+                SF_MissionPanel.instance.needsBackup = true;
+                end
             end
 
             player:Say("Missione aggiornata!")
