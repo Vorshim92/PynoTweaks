@@ -266,6 +266,37 @@ module PynoTweaks{
 		CanBeDoneFromFloor:true,
 		SkillRequired:MetalWelding=1,
 		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+		}
+	
+	recipe Make Scrap Metal {
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		UnusableMetal=1,
+		BlowTorch=1,
+		
+		Result:ScrapMetal=2,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+		
+	}
+		recipe Make Scrap Metal {
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		Aluminum=5,
+		BlowTorch=1,
+		
+		Result:ScrapMetal=1,
+		Time:100.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+		
 	}
 	
 	recipe Make Engine Parts {
