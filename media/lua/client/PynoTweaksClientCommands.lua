@@ -62,6 +62,7 @@ local function OnServerCommand(module, command, arguments)
                         if currentTasks[i].guid == questID then
                             local task = currentTasks[i]
                             if task then
+                                -- rimozione di eventuali clickevent degli obiettivi (se presenti)
                                 if task.objectives and #task.objectives > 0 then
                                     for k=1,#task.objectives do
                                         if task.objectives[k].oncompleted then
@@ -82,25 +83,28 @@ local function OnServerCommand(module, command, arguments)
                                         end
                                     end
                                 end
-                                        if task.unlocks then
-                                            local unlocksTable = luautils.split(task.unlocks, ";");
-                                            local removeClickEventValue = nil
-                                            for j = 1, #unlocksTable do
-                                                if unlocksTable[j] == "unlockworldevent" then
-                                                    removeClickEventValue = unlocksTable[j + 2]
-                                                    for c=1,#player:getModData().missionProgress.WorldEvent do
-                                                        local event = player:getModData().missionProgress.WorldEvent[c];
-                                                        if event.dialoguecode and event.dialoguecode == removeClickEventValue then
-                                                            table.remove(player:getModData().missionProgress.WorldEvent, c);
-                                                            break;
-                                                        end
-                                                    end
+                                -- rimozione del worldevent della quest (se presente) - da fixare
+                                if task.unlocks then
+                                    local unlocksTable = luautils.split(task.unlocks, ";");
+                                    local removeClickEventValue = nil
+                                    for j = 1, #unlocksTable do
+                                        if unlocksTable[j] == "unlockworldevent" then
+                                            removeClickEventValue = unlocksTable[j + 2]
+                                            for c=1,#player:getModData().missionProgress.WorldEvent do
+                                                local event = player:getModData().missionProgress.WorldEvent[c];
+                                                if event.dialoguecode and event.dialoguecode == removeClickEventValue then
+                                                    table.remove(player:getModData().missionProgress.WorldEvent, c);
+                                                    break;
                                                 end
                                             end
                                         end
+                                    end
+                                end
+                                -- check sullo status della quest, se COMPLETED viene spostato nella categoria 1
                                 if task.status == "Completed" then
                                     table.insert(player:getModData().missionProgress.Category1, task);
                                 end
+                                -- rimozione coatta dalle quest attive xD
                                 table.remove(player:getModData().missionProgress.Category2, i);
                                 done = true;
                             end
