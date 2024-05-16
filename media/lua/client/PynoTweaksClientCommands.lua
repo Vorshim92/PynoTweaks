@@ -58,7 +58,7 @@ local function OnServerCommand(module, command, arguments)
                 local currentTasks = player:getModData().missionProgress.Category2
                 local done = false
                 if #currentTasks > 0 then
-                    for i = 1, #currentTasks do
+                    for i = #currentTasks, 1, -1 do
                         if currentTasks[i].guid == questID then
                             local task = currentTasks[i]
                             if task then
@@ -69,8 +69,8 @@ local function OnServerCommand(module, command, arguments)
                                             local oncompletedTable = luautils.split(task.objectives[k].oncompleted, ";");
                                             local removeClickEventValue = nil
                                             for j = 1, #oncompletedTable do
-                                                if oncompletedTable[j] == "removeclickevent" then
-                                                    removeClickEventValue = oncompletedTable[j + 1]
+                                                if oncompletedTable[j] == "clickevent" then
+                                                    removeClickEventValue = oncompletedTable[j + 2]
                                                     for c=1,#player:getModData().missionProgress.ClickEvent do
                                                         local event = player:getModData().missionProgress.ClickEvent[c];
                                                         if event.address and event.address == removeClickEventValue then
@@ -83,18 +83,49 @@ local function OnServerCommand(module, command, arguments)
                                         end
                                     end
                                 end
-                                -- rimozione del worldevent della quest (se presente) - da fixare
                                 if task.unlocks then
-                                    local unlocksTable = luautils.split(task.unlocks, ";");
-                                    local removeClickEventValue = nil
-                                    for j = 1, #unlocksTable do
-                                        if unlocksTable[j] == "unlockworldevent" then
-                                            removeClickEventValue = unlocksTable[j + 2]
-                                            for c=1,#player:getModData().missionProgress.WorldEvent do
-                                                local event = player:getModData().missionProgress.WorldEvent[c];
-                                                if event.dialoguecode and event.dialoguecode == removeClickEventValue then
-                                                    table.remove(player:getModData().missionProgress.WorldEvent, c);
-                                                    break;
+                                    local convertedcondition = task.unlocks:gsub(":", ";");
+                                    local unlocksTable = luautils.split(convertedcondition, ";");
+                                    if #unlocksTable > 0 then
+                                        for j = 1, #unlocksTable do
+                                            if unlocksTable[j] == "killzombies" then
+                                                if #player:getModData().missionProgress.ActionEvent > 0 then 
+                                                    for k, v in pairs(player:getModData().missionProgress.ActionEvent) do
+                                                        local commands = luautils.split(v.commands, ";");
+                                                        for g = 1, #commands do
+                                                            if commands[g] == task.guid then                                                          
+                                                                table.remove(player:getModData().missionProgress.ActionEvent, k);
+                                                                break;
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                            if unlocksTable[j] == "unlockworldevent" then
+                                                print(unlocksTable[j] .. " ESISTE")
+                                                local condition = unlocksTable[j+2]
+                                                print(condition)
+                                                if player:getModData().missionProgress.WorldEvent then
+                                                    print("mission progress exist")
+                                                    for k, v in pairs(player:getModData().missionProgress.WorldEvent) do
+                                                        print(v.dialoguecode)
+                                                        if v.dialoguecode == condition then
+                                                            print("removing")
+                                                            player:getModData().missionProgress.WorldEvent[k] = nil
+                                                            -- table.remove(player:getModData().missionProgress.WorldEvent, k);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                            if unlocksTable[j] == "clickevent" then
+                                                removeClickEventValue = unlocksTable[j + 2]
+                                                for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                    local event = player:getModData().missionProgress.ClickEvent[c];
+                                                    if event.address and event.address == removeClickEventValue then
+                                                        table.remove(player:getModData().missionProgress.ClickEvent, c);
+                                                        break;
+                                                    end
                                                 end
                                             end
                                         end
