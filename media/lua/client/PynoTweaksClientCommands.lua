@@ -131,6 +131,30 @@ local function OnServerCommand(module, command, arguments)
                                         end
                                     end
                                 end
+                                if task.onobtained then
+                                    local onObtainedTable = luautils.split(task.onobtained, ";");
+                                    if #onObtainedTable > 0 then
+                                        for j = 1, #onObtainedTable do
+                                            if onObtainedTable[j] == "unlockworldevent" then
+                                                print(onObtainedTable[j] .. " ESISTE")
+                                                local condition = onObtainedTable[j+2]
+                                                print(condition)
+                                                if player:getModData().missionProgress.WorldEvent then
+                                                    print("mission progress exist")
+                                                    for k, v in pairs(player:getModData().missionProgress.WorldEvent) do
+                                                        print(v.dialoguecode)
+                                                        if v.dialoguecode == condition then
+                                                            print("removing")
+                                                            player:getModData().missionProgress.WorldEvent[k] = nil
+                                                            -- table.remove(player:getModData().missionProgress.WorldEvent, k);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
                                 -- check sullo status della quest, se COMPLETED viene spostato nella categoria 1
                                 if task.status == "Completed" then
                                     table.insert(player:getModData().missionProgress.Category1, task);
