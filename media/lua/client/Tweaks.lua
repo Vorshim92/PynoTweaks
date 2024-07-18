@@ -172,7 +172,7 @@ TweakItem("SWeapons.SalvagedCleaver","MinDamage", 3);
 TweakItem("SWeapons.SalvagedCleaver","MaxDamage", 6);
 
 ----- SalvagedMachete
-TweakItem("SWeapons.SalvagedMachete","ConditionConditionMax", 22);
+TweakItem("SWeapons.SalvagedMachete","ConditionMax", 22);
 
 ----- SalvagedNightstick
 TweakItem("SWeapons.SalvagedNightstick","Weight", 1.8);
