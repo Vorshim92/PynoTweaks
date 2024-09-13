@@ -168,6 +168,8 @@ LuaServerCommands.register('fixxyno', function(author, command, args)
         packet.oldfrequency = args[3]
         packet.newfrequency = args[4]
         sendServerCommand(player, "Pyno", "fixxyno", packet)
+    elseif args[2] == "libryno" then
+    
     end
     return 'Fixxyno fixxano ano fixato!'
 end)
