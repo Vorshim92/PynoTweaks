@@ -1,4 +1,5 @@
 require("survivalRewards")
+local characterManagement = require('character/CharacterManagement')
 
 -- gestione dei comandi ricevuti dal server
 local function OnServerCommand(module, command, arguments)
@@ -219,7 +220,11 @@ local function OnServerCommand(module, command, arguments)
                 SF_MissionPanel.instance.needsBackup = true
             end
         elseif command == "libryno" then
-
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
+            if ModData.exists("timedBook") or ModData.exists("readOnceBook") then
+            characterManagement.removeAllModData()
+            end
         end
     end
 end

@@ -169,7 +169,8 @@ LuaServerCommands.register('fixxyno', function(author, command, args)
         packet.newfrequency = args[4]
         sendServerCommand(player, "Pyno", "fixxyno", packet)
     elseif args[2] == "libryno" then
-    
+        packet.steamID = player:getOnlineID()
+        sendServerCommand(player, "Pyno", "fixxyno", packet)
     end
     return 'Fixxyno fixxano ano fixato!'
 end)
