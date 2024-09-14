@@ -1,5 +1,5 @@
-require 'LuaCommands/LuaCommands';
-
+if isServer() then
+    require 'LuaCommands/LuaCommands';
 -- Command: killyno
 local CMD_NAME_killyno = 'killyno';
 
@@ -45,11 +45,7 @@ local function onServerCommand_killyno(author, args)
 end
 
 LuaCommands.register(CMD_NAME_killyno, function(author, command, args)
-    if isServer() then
         return onServerCommand_killyno(author, args)
-    else
-        return nil
-    end
 end)
 
 print('Registered LuaCommand: ' .. CMD_NAME_killyno);
@@ -104,11 +100,7 @@ local function onServerCommand_reppyno(author, args)
 end
 
 LuaCommands.register(CMD_NAME_reppyno, function(author, command, args)
-    if isServer() then
         return onServerCommand_reppyno(author, args)
-    else
-        return nil
-    end
 end)
 
 print('Registered LuaCommand: ' .. CMD_NAME_reppyno);
@@ -157,11 +149,7 @@ local function onServerCommand_questyno(author, args)
 end
 
 LuaCommands.register(CMD_NAME_questyno, function(author, command, args)
-    if isServer() then
         return onServerCommand_questyno(author, args)
-    else
-        return nil
-    end
 end)
 
 print('Registered LuaCommand: ' .. CMD_NAME_questyno);
@@ -242,11 +230,7 @@ local function onServerCommand_fixxyno(author, args)
 end
 
 LuaCommands.register(CMD_NAME_fixxyno, function(author, command, args)
-    if isServer() then
         return onServerCommand_fixxyno(author, args)
-    else
-        return nil
-    end
 end)
 
 print('Registered LuaCommand: ' .. CMD_NAME_fixxyno);
@@ -277,11 +261,8 @@ local function onServerCommand_zombyno(author, args)
 end
 
 LuaCommands.register(CMD_NAME_zombyno, function(author, command, args)
-    if isServer() then
         return onServerCommand_zombyno(author, args)
-    else
-        return nil
-    end
 end)
 
 print('Registered LuaCommand: ' .. CMD_NAME_zombyno);
+end
