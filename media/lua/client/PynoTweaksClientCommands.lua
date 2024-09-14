@@ -218,12 +218,12 @@ local function OnServerCommand(module, command, arguments)
                 player:getModData().missionProgress.DailyEvent = dailyEvents
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
-            end
-        elseif command == "libryno" then
-            local steamID = arguments.steamID
-            local player = getPlayerByOnlineID(steamID)
-            if ModData.exists("timedBook") or ModData.exists("readOnceBook") then
-            characterManagement.removeAllModData()
+            elseif command == "libryno" then
+                local steamID = arguments.steamID
+                local player = getPlayerByOnlineID(steamID)
+                if ModData.exists("timedBook") or ModData.exists("readOnceBook") then
+                characterManagement.removeAllModData()
+                end
             end
         end
     end
