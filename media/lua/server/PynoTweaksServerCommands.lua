@@ -219,11 +219,6 @@ if isServer() then
             packet.oldfrequency = args[3]
             packet.newfrequency = args[4]
             sendServerCommand(player, "Pyno", "fixxyno", packet)
-        elseif commandArg == "libryno" then
-            local packet = {}
-            packet.steamID = player:getOnlineID()
-            packet.command = "libryno"
-            sendServerCommand(player, "Pyno", "fixxyno", packet)
         else
             return 'Invalid command: ' .. tostring(commandArg)
         end
@@ -235,6 +230,71 @@ if isServer() then
         return onServerCommand_fixxyno(author, args)
     end)
     print('Registered LuaCommand: ' .. CMD_NAME_fixxyno);
+
+
+
+    --Command: libryno
+    local CMD_NAME_libryno = 'libryno';
+
+    local function onServerCommand_libryno(author, args)
+        -- Check if the correct number of arguments are passed.
+        if #args < 3 then
+            return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
+        end
+
+        local helper = LuaServerCommandHelper
+        local admin = helper.getPlayerByUsername(author)
+        if admin:getAccessLevel() ~= "Admin" then
+            return 'Tonno cattivo'
+        end
+
+        
+
+
+        local username = args[1]
+        local player = helper.getPlayerByUsername(username)
+
+        if player == nil then
+            return 'Player not found: ' .. tostring(username)
+        end
+
+        local commandArg = args[2]
+
+            -- Definisci le opzioni valide per modData_name
+        local validModDataNames = {
+            readOnce = true,
+            timed = true,
+            bkp1 = true,
+            bkp2 = true
+        }
+        if not validModDataNames[args[3]] then
+            return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
+        end
+
+        if commandArg == "restore" or commandArg == "delete" or commandArg == "backup" or commandArg == "check" then
+            if #args ~= 3 then
+                return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
+            end
+            local packet = {}
+            packet.steamID = player:getOnlineID()
+            packet.command = commandArg
+            packet.modData_name = args[3]
+            -- Aggiungi debug per verificare il contenuto del pacchetto
+            print("Invio comando 'libryno' a " .. player:getUsername())
+            print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "modData_name=" .. packet.modData_name)
+        
+            sendServerCommand(player, "Pyno", "libryno", packet)
+        else
+            return 'Invalid command: ' .. tostring(commandArg)
+        end
+        return 'Libryno command executed!'
+    end
+
+    LuaCommands.register(CMD_NAME_libryno, function(author, command, args)
+        return onServerCommand_libryno(author, args)
+    end)
+    print('Registered LuaCommand: ' .. CMD_NAME_libryno);
+
 
 
     -- Command: zombyno
