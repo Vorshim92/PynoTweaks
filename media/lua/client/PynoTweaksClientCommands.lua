@@ -3,7 +3,7 @@ local characterManagement
 local pageBook
 local timedBook
 local activityCalendar
-if getActivatedMods():contains("Erase&Rewind_RPGbyVorshimtest") then
+if getActivatedMods():contains("Erase&Rewind_RPGbyVorshim") then
 characterManagement = require('character/CharacterManagement')
 pageBook = require('book/PageBook')
 timedBook = require('book/TimedBook')
