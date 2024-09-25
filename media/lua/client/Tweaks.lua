@@ -377,9 +377,9 @@ TweakItem("AuthenticZLite.AuthenticAquaBottle_Purple_full","UseDelta", 0.25);
 TweakItem("AuthenticZLite.AuthenticAquaBottle_Orange_full","UseDelta", 0.25);
 
 -- accendini e fiammiferi usi
-TweakItem("Base.Lighter","UseDelta", 0.125);
+TweakItem("Base.Lighter","UseDelta", 0.2);
 TweakItem("Base.Lighter","ticksPerEquipUse",6200);
-TweakItem("Base.Matches","UseDelta", 0.20);
+TweakItem("Base.Matches","UseDelta", 0.25);
 
 --insetti
 TweakItem("Base.AmericanLadyCaterpillar","Weight", 0.02);
@@ -461,6 +461,24 @@ TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","ConditionMax", 10);
 
+--[[pipebomb
+TweakItem("Base.Aerosolbomb","ExplosionPower", 0);
+TweakItem("Base.Aerosolbomb","ExplosionRange", 0);
+
+TweakItem("Base.FlameTrap","ExplosionPower", 0);
+TweakItem("Base.FlameTrap","ExplosionRange", 0);
+TweakItem("Base.FlameTrap","FirePower", 0);
+TweakItem("Base.FlameTrap","FireRange", 0);
+
+TweakItem("Base.PipeBomb","ExplosionPower", 0);
+TweakItem("Base.PipeBomb","ExplosionRange", 0);
+
+TweakItem("AuthenticZLite.AuthenticPipeBomb","ExplosionPower", 0);
+TweakItem("AuthenticZLite.AuthenticPipeBomb","ExplosionRange", 0);
+
+TweakItem("Base.Molotov","ExplosionPower", 0);
+TweakItem("Base.Molotov","ExplosionRange", 0);
+--]]
 
 
 
