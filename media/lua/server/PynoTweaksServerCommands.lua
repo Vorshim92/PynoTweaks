@@ -1,6 +1,46 @@
 if isServer() then
         require 'LuaCommands/LuaCommands';
         require "Server"
+        local json = require("dkjson")
+
+        -- add filepath as a parameter to make function usable also for questsystem
+        local function fetchJsonBkp(filepath)
+            
+            -- Read the JSON backup file
+            local content = ""
+            local filereader = getFileReader(filepath, false)
+            if filereader then
+                local line = filereader:readLine()
+                while line ~= nil do
+                    content = content .. line .. "\n"
+                    line = filereader:readLine()
+                end
+                filereader:close()
+            end
+        
+            -- Parse the JSON data
+            local backupData, pos, err = json.decode(content)
+            if err then
+                print("[Commands.sendData] Error parsing JSON: " .. err)
+                return
+            end
+            return backupData
+        end
+
+        local function saveJsonBkp(filepath, backupData)
+            local done = false
+            local serializedData = json.encode(backupData, { indent = true })
+            local filewriter = getFileWriter(filepath, false, false) -- true, false maybe?
+            if filewriter then
+                filewriter:write(serializedData)
+                filewriter:close()
+                print("Backup file updated successfully.")
+                done = true
+            else
+                print("Unable to open file for writing.")
+            end
+            return done
+        end
 
     -- Command: killyno
     local CMD_NAME_killyno = 'killyno';
@@ -14,12 +54,7 @@ if isServer() then
         -- Reference the helper inside the command's handler function.
         local helper = LuaServerCommandHelper
 
-        -- Check admin
-        local admin = helper.getPlayerByUsername(author)
-        if admin:getAccessLevel() ~= "Admin" then
-            return 'Tonno cattivo'
-        end
-
+        
         -- Attempt to resolve the player using the helper method.
         local username = args[1]
         local player = helper.getPlayerByUsername(username)
@@ -62,12 +97,6 @@ if isServer() then
         end
 
         local helper = LuaServerCommandHelper
-
-        -- Check admin
-        local admin = helper.getPlayerByUsername(author)
-        if admin:getAccessLevel() ~= "Admin" then
-            return 'Tonno cattivo'
-        end
 
         local username = args[1]
         local player = helper.getPlayerByUsername(username)
@@ -118,12 +147,6 @@ if isServer() then
 
         local helper = LuaServerCommandHelper
 
-        -- Check admin
-        local admin = helper.getPlayerByUsername(author)
-        if admin:getAccessLevel() ~= "Admin" then
-            return 'Tonno cattivo'
-        end
-
         local username = args[1]
         local player = helper.getPlayerByUsername(username)
 
@@ -167,12 +190,6 @@ if isServer() then
 
         local helper = LuaServerCommandHelper
 
-        -- Check admin
-        local admin = helper.getPlayerByUsername(author)
-        if admin:getAccessLevel() ~= "Admin" then
-            return 'Tonno cattivo'
-        end
-
         local username = args[1]
         local player = helper.getPlayerByUsername(username)
 
@@ -186,19 +203,25 @@ if isServer() then
             local id = player:getUsername()
             print("[Commands.sendData] zSOUL QUEST SYSTEM - Forcing loading backup for Player ID: " .. id)
             local filepath = "/Backup/SFQuest_" .. id .. ".txt"
-            local filereader = getFileReader(filepath, false)
-            if filereader then
-                local temp = {}
-                local line = filereader:readLine()
-                while line ~= nil do
-                    table.insert(temp, line)
-                    line = filereader:readLine()
-                end
-                filereader:close()
-                local newargs = { id = id, data = temp, checkDefaults = true }
-                print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.")
-                sendServerCommand('SFQuest', "setProgress", newargs)
-            end
+            -- local temp = fetchJsonBkp(filepath)
+            -- local filereader = getFileReader(filepath, false)
+            -- if filereader then
+            --     local temp = {}
+            --     local line = filereader:readLine()
+            --     while line ~= nil do
+            --         table.insert(temp, line)
+            --         line = filereader:readLine()
+            --     end
+            --     filereader:close()
+            local packet = {}
+            packet.steamID = player:getOnlineID()
+            packet.command = "loadbackup"
+            packet.checkDefaults = true
+            packet.id = id
+            sendServerCommand(player, "Pyno", "fixxyno", packet)
+            print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.")
+            -- sendServerCommand(player, 'SFQuest', "setProgress", newargs)
+            -- end
         elseif commandArg == "rerolldaily" then
             local packet = {}
             packet.steamID = player:getOnlineID()
@@ -239,17 +262,12 @@ if isServer() then
     local function onServerCommand_libryno(author, args)
         -- Check if the correct number of arguments are passed.
         if #args < 3 then
-            return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
+            return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
         end
 
         local helper = LuaServerCommandHelper
         local admin = helper.getPlayerByUsername(author)
-        if admin:getAccessLevel() ~= "Admin" then
-            return 'Tonno cattivo'
-        end
-
         
-
 
         local username = args[1]
         local player = helper.getPlayerByUsername(username)
@@ -260,30 +278,126 @@ if isServer() then
 
         local commandArg = args[2]
 
-            -- Definisci le opzioni valide per modData_name
+            -- Definisci le opzioni valide per bookType
         local validModDataNames = {
-            readOnce = true,
+            readonce = true,
             timed = true,
             bkp1 = true,
             bkp2 = true
         }
         if not validModDataNames[args[3]] then
-            return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
+            return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
         end
 
-        if commandArg == "restore" or commandArg == "delete" or commandArg == "backup" or commandArg == "check" then
-            if #args ~= 3 then
-                return '/luacmd libryno [player] [restore/delete/backup/check] [readOnce/timed/bkp1/bkp2]'
-            end
-            local packet = {}
+        local bookType
+        local modData_Name
+        if args[3] == "readonce" then
+            bookType = "READ_ONCE_BOOK"
+            modData_Name = "ReadOnceBook"
+        elseif args[3] == "timed" then
+            bookType = "TIMED_BOOK"
+            modData_Name = "TimedBook"
+        elseif args[3] == "bkp1" then
+            bookType = "BKP_MOD_1"
+            modData_Name = "BKP_1"
+        elseif args[3] == "bkp2" then
+            bookType = "BKP_MOD_2"
+            modData_Name = "BKP_2"
+        else
+            print("Errore: bookType non riconosciuto - " .. tostring(args[3]))
+            return
+        end
+
+        local packet = {}
             packet.steamID = player:getOnlineID()
             packet.command = commandArg
-            packet.modData_name = args[3]
+            packet.bookType = bookType
+            packet.modDataName = modData_Name
+            local id = player:getUsername()
+        if commandArg == "restore" then
+            if #args ~= 3 then
+                return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
+            end
             -- Aggiungi debug per verificare il contenuto del pacchetto
             print("Invio comando 'libryno' a " .. player:getUsername())
-            print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "modData_name=" .. packet.modData_name)
+            print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"
+            local backupData = fetchJsonBkp(filepath)
+
+            if not backupData[modData_Name] then
+                packet.done = false
+            else
+
+                packet.done = true
+                sendServerCommand(player, "Vorshim", "restoreBackup", { tableName = modData_Name, data = backupData[modData_Name] })
+            end
+            
+            if admin then
+                sendServerCommand(admin, "Pyno", "libryno", packet)
+            end
+
+
+        elseif commandArg == "backup" then
+            if #args ~= 3 then
+                return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
+            end
+            sendServerCommand(player, "Vorshim", "attemptTranscribeBookResponse", {
+                success = true,
+                message = "il tuo libro " .. bookType .. " è stato salvato per ordine di Pyno",
+                bookType = bookType,
+                item = nil,
+                extra = nil
+            })
+            packet.success = true
+            if admin then
+                sendServerCommand(admin, "Pyno", "libryno", packet)
+            end
+
+        elseif commandArg == "check" then
+            if #args ~= 3 then
+                return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
+            end
+            
+            -- Aggiungi debug per verificare il contenuto del pacchetto
+            print("Invio comando 'libryno' a " .. player:getUsername())
+            print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"    
+            local backupData = fetchJsonBkp(filepath)
+            -- Check if the book can be transcribed
+            packet.exists = false
+            if not backupData[bookType] then
+                -- The player hasn't transcribed this book yet
+                packet.exists = false
+            else
+                -- The player has already transcribed this book
+                packet.exists = true
+            end
+
+            if admin then
+                sendServerCommand(admin, "Pyno", "libryno", packet)
+            end
+        elseif commandArg == "delete" or commandArg == "remove" then
+            if #args ~= 3 then
+                return '/luacmd libryno [player] [restore/delete or remove/backup/check] [readonce/timed/bkp1/bkp2]'
+            end
+            -- Aggiungi debug per verificare il contenuto del pacchetto
+            print("Invio comando 'libryno' a " .. player:getUsername())
+            print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
         
-            sendServerCommand(player, "Pyno", "libryno", packet)
+            packet.done = false
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"
+            local backupData = fetchJsonBkp(filepath)
+            if not backupData[bookType] and not backupData[modData_Name] then
+                packet.done = false
+            else
+                backupData[bookType] = nil
+                backupData[modData_Name] = nil
+                packet.done = saveJsonBkp(filepath, backupData)
+            end
+
+            if admin then
+                sendServerCommand(admin, "Pyno", "libryno", packet)
+            end
         else
             return 'Invalid command: ' .. tostring(commandArg)
         end
