@@ -1,6 +1,7 @@
 if isServer() then
         require 'LuaCommands/LuaCommands';
         require "Server"
+        require("BattleRoyaleSharedZone")
         local json = require("dkjson")
 
         -- add filepath as a parameter to make function usable also for questsystem
@@ -8,24 +9,50 @@ if isServer() then
             
             -- Read the JSON backup file
             local content = ""
-            local filereader = getFileReader(filepath, false)
+            local filereader = getFileReader(filepath.."json", false)
             if filereader then
-                local line = filereader:readLine()
+                local lines = {};
+                local line = filereader:readLine();
                 while line ~= nil do
-                    content = content .. line .. "\n"
-                    line = filereader:readLine()
+                    table.insert(lines, line);
+                    line = filereader:readLine();
                 end
-                filereader:close()
+                filereader:close();
+            
+                content = table.concat(lines, "\n");
+                -- Parse the JSON data
+                local backupData, pos, err = json.decode(content)
+                if err then
+                    print("[Commands.fetchJsonBkp] Error parsing JSON: " .. err)
+                    return
+                end
+                local isJson = true
+                return backupData, isJson
+            else
+                print("[Commands.fetchJsonBkp] Unable to find json file, searching for a txt version.");
+                local filepath = filepath.."txt"
+                local filereader = getFileReader(filepath, false);
+                if filereader then
+                    print("[Commands.fetchJsonBkp] Located txt backup file " );
+                    local temp = {};
+                    local line = filereader:readLine();
+                    while line ~= nil do
+                        table.insert(temp, line);
+                        line = filereader:readLine();
+                    end
+                    filereader:close();
+                    local isJson = false
+                    return temp, isJson
+                else
+                    print("[Commands.fetchJsonBkp] Unable to locate txt backup file" );
+                end
             end
-        
-            -- Parse the JSON data
-            local backupData, pos, err = json.decode(content)
-            if err then
-                print("[Commands.sendData] Error parsing JSON: " .. err)
-                return
-            end
-            return backupData
+            return nil
         end
+
+        --
+    
+        --
 
         local function saveJsonBkp(filepath, backupData)
             local done = false
@@ -197,31 +224,30 @@ if isServer() then
             return 'Player not found: ' .. tostring(username)
         end
 
+        local admin = helper.getPlayerByUsername(author)
         local commandArg = args[2]
 
         if commandArg == "loadbackup" then
             local id = player:getUsername()
-            print("[Commands.sendData] zSOUL QUEST SYSTEM - Forcing loading backup for Player ID: " .. id)
-            local filepath = "/Backup/SFQuest_" .. id .. ".txt"
-            -- local temp = fetchJsonBkp(filepath)
-            -- local filereader = getFileReader(filepath, false)
-            -- if filereader then
-            --     local temp = {}
-            --     local line = filereader:readLine()
-            --     while line ~= nil do
-            --         table.insert(temp, line)
-            --         line = filereader:readLine()
-            --     end
-            --     filereader:close()
+            print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Forcing loading backup for Player ID: " .. id)
+            local filepath = "/Backup/SFQuest_" .. id .. "."
+            local bkp, isJson = fetchJsonBkp(filepath)
             local packet = {}
-            packet.steamID = player:getOnlineID()
             packet.command = "loadbackup"
-            packet.checkDefaults = true
-            packet.id = id
-            sendServerCommand(player, "Pyno", "fixxyno", packet)
-            print("[Commands.sendData] zSOUL QUEST SYSTEM - Requested quest data for player " .. id .. " sent.")
-            -- sendServerCommand(player, 'SFQuest', "setProgress", newargs)
-            -- end
+            packet.steamID = player:getOnlineID()
+            local newargs = { id = id , data = bkp, checkDefaults = true };
+            --mettere un controllo su bkp per essere sicuri di mandare un backup non vuoto?
+            if isJson then
+                sendServerCommand(player, 'SFQuest', "setProgress", newargs);
+                print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested JSON quest data for player " .. id .. " sent.")
+            else
+                sendServerCommand(player, 'SFQuest', "setProgressTxt", newargs);
+                print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested TXT quest data for player " .. id .. " sent.")
+            end
+            
+            if admin then
+                sendServerCommand(admin, "Pyno", "fixxyno", packet)
+            end
         elseif commandArg == "rerolldaily" then
             local packet = {}
             packet.steamID = player:getOnlineID()
@@ -321,7 +347,7 @@ if isServer() then
             -- Aggiungi debug per verificare il contenuto del pacchetto
             print("Invio comando 'libryno' a " .. player:getUsername())
             print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
-            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. "."
             local backupData = fetchJsonBkp(filepath)
 
             if not backupData[modData_Name] then
@@ -361,7 +387,7 @@ if isServer() then
             -- Aggiungi debug per verificare il contenuto del pacchetto
             print("Invio comando 'libryno' a " .. player:getUsername())
             print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
-            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"    
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. "."    
             local backupData = fetchJsonBkp(filepath)
             -- Check if the book can be transcribed
             packet.exists = false
@@ -385,7 +411,7 @@ if isServer() then
             print("Packet:", "steamID=" .. tostring(packet.steamID), "command=" .. packet.command, "bookType=" .. packet.bookType)
         
             packet.done = false
-            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. ".json"
+            local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. "."
             local backupData = fetchJsonBkp(filepath)
             if not backupData[bookType] and not backupData[modData_Name] then
                 packet.done = false
@@ -417,19 +443,19 @@ if isServer() then
     local function onServerCommand_zombyno(author, args)
         -- Check if the correct number of arguments are passed.
         if #args ~= 1 then
-            return '/luacmd zombyno [conto]'
+            return '/luacmd zombyno [player]'
         end
 
         local helper = LuaServerCommandHelper
-
-        local player = helper.getPlayerByUsername(author)
+        local username = args[1]
+        local player = helper.getPlayerByUsername(username)
 
         if player == nil then
-            return 'Player not found: ' .. tostring(author)
+            return 'Player not found: ' .. tostring(username)
         end
 
         local packet = {}
-        packet.command = args[1]
+        packet.command = "conto"
         packet.steamID = player:getOnlineID()
         sendServerCommand(player, "Pyno", "zombyno", packet)
 
@@ -440,5 +466,65 @@ if isServer() then
         return onServerCommand_zombyno(author, args)
     end)
     print('Registered LuaCommand: ' .. CMD_NAME_zombyno);
+    
+    
+    -- Command: eventyno
+    local CMD_NAME_eventyno = 'eventyno';
+
+    local function onServerCommand_eventyno(author, args)
+        -- Check if the correct number of arguments are passed.
+        if #args ~= 2 then
+            return '/luacmd eventyno [nome evento] [command]'
+        end
+
+        local helper = LuaServerCommandHelper
+
+        local admin = helper.getPlayerByUsername(author)
+
+
+        local isDone = false
+        if args[1] == "Fortnite" then
+            local command = args[2]
+            if command == "reset" then
+                if ModData.exists("BattleRoyale") then
+                    ModData.remove("BattleRoyale")
+                    local md = ModData.getOrCreate("BattleRoyale")
+                    md = {}
+                    triggerEvent("BattleRoyale_onZoneDefinitionChange");
+                    print("EVENTO RESETTATO")
+                    isDone = true
+                end
+            elseif command == "stop" then
+                if ModData.exists("BattleRoyale") then
+                    local sandboxOptions = SandboxOptions.getInstance();
+                    if sandboxOptions then
+                        local option = sandboxOptions:getOptionByName("BattleRoyale.NBPlayers")
+                        if option then
+                            option:setValue(99)
+                        end
+                    end
+                    
+                    local zone = BattleRoyale.getZoneDef()
+                    zone.isInit = false
+                    triggerEvent("BattleRoyale_onZoneDefinitionChange");
+                    print("EVENTO STOPPATO")
+                    isDone = true
+                end
+            end
+        end
+
+        local packet = {}
+        packet.event = args[1]
+        packet.command = args[2]
+        packet.success = isDone
+        sendServerCommand(admin, "Pyno", "eventyno", packet)
+
+        return 'Command executed.'
+    end
+
+    LuaCommands.register(CMD_NAME_eventyno, function(author, command, args)
+        return onServerCommand_eventyno(author, args)
+    end)
+    print('Registered LuaCommand: ' .. CMD_NAME_eventyno);
 
 end

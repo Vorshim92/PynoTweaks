@@ -101,10 +101,8 @@ local function OnServerCommand(module, command, arguments)
                 SF_MissionPanel.instance.DailyEventReroll() --Expanded
 
             elseif command == "loadbackup" then
-                local flag = arguments.checkDefaults
-                if flag then
-                    sendClientCommand(player, 'SFQuest', 'sendData', {id = arguments.id})
-                end
+                local player = getPlayerByOnlineID(steamID)
+                getPlayer():Say("Backup caricato per " .. player:getUsername())
             elseif command == "lincolnreed" then
                 local factions = player:getModData().missionProgress.Factions
                 table.insert(factions, {factioncode = "LincolnReed", name = "IGUI_SFQuest_LincolnReed_Name", reputation = 99, repmax = 100, tierlevel = 3, tiername = "IGUI_SFQuest_Questyno_LincolnReed_Tier3", tiercolor = "green", itemindex = 41, height = 36, index = 41})
@@ -180,6 +178,27 @@ local function OnServerCommand(module, command, arguments)
                 getPlayer():Say(message)
             else
                 print("Errore: comando non riconosciuto - " .. tostring(subCommand))
+            end
+        elseif command == "eventyno" then --sezione per gli eventi vari
+            local event = arguments.event
+            local command = arguments.command
+            if event == "Fortnite" then -- sezione per il Battle Royale
+                if command == "reset" then
+                    if arguments.success then
+                        if ModData.exists("BattleRoyale") then
+                            ModData.remove("BattleRoyale")
+                        end
+                        getPlayer():Say("Il Battle Royale è stato resettato")
+                    else
+                        getPlayer():Say("Il Battle Royale non è stato resettato")
+                    end
+                elseif command == "stop" then
+                    if arguments.success then
+                        getPlayer():Say("Il Battle Royale è stato stoppato")
+                    else
+                        getPlayer():Say("Il Battle Royale non è stato stoppato")
+                    end
+                end
             end
         end
     end
