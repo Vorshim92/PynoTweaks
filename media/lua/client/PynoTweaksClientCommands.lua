@@ -105,8 +105,9 @@ local function OnServerCommand(module, command, arguments)
                 getPlayer():Say("Backup caricato per " .. player:getUsername())
             elseif command == "lincolnreed" then
                 local factions = player:getModData().missionProgress.Factions
-                table.insert(factions, {factioncode = "LincolnReed", name = "IGUI_SFQuest_LincolnReed_Name", reputation = 99, repmax = 100, tierlevel = 3, tiername = "IGUI_SFQuest_Questyno_LincolnReed_Tier3", tiercolor = "green", itemindex = 41, height = 36, index = 41})
+                table.insert(factions, {factioncode = "LincolnReed", name = "IGUI_SFQuest_Questyno_LincolnReed_Name", reputation = 99, repmax = 100, tierlevel = 2, tiername = "IGUI_Factions_Daily_Tier2", tiercolor = "blue", itemindex = 41, height = 36, index = 41})
                 player:getModData().missionProgress.Factions = factions
+                SF_MissionPanel:unlockQuest("Questyno_LincolnReed_Intro")
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
             elseif command == "updatefrequency" then
