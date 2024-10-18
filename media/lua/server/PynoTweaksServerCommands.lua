@@ -268,6 +268,16 @@ if isServer() then
             packet.oldfrequency = args[3]
             packet.newfrequency = args[4]
             sendServerCommand(player, "Pyno", "fixxyno", packet)
+        elseif commandArg == "changefrequency" then
+            if #args ~= 4 then
+                return '/luacmd fixxyno [player] [changefrequency] [dailycode] [newfrequency]'
+            end
+            local packet = {}
+            packet.steamID = player:getOnlineID()
+            packet.command = "changefrequency"
+            packet.dailycode = args[3]
+            packet.newfrequency = args[4]
+            sendServerCommand(player, "Pyno", "fixxyno", packet)
         else
             return 'Invalid command: ' .. tostring(commandArg)
         end

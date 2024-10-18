@@ -122,6 +122,10 @@ local function OnServerCommand(module, command, arguments)
                 player:getModData().missionProgress.DailyEvent = dailyEvents
                 SF_MissionPanel.instance.needsUpdate = true
                 SF_MissionPanel.instance.needsBackup = true
+            elseif command == "changefrequency" then
+                local dailycode = tonumber(arguments.oldfrequency)
+                local newfrequency = tonumber(arguments.newfrequency)
+                SF_MissionPanel.instance:updateFrequency(dailycode, newfrequency)
             end
         elseif command == "libryno" then
             local steamID = arguments.steamID
