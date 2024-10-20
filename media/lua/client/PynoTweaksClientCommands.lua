@@ -1,18 +1,18 @@
 require("survivalRewards")
 -- local characterManagement = {}
 local pageBook = {}
-local timedBook = {}
 -- local activityCalendar = {}
 local playerBkp = {}
 if getActivatedMods():contains("Erase&Rewind_RPGbyVorshim") then
 -- characterManagement = require('character/CharacterManagement')
 pageBook = require('book/PageBook')
--- timedBook = require('book/TimedBook')
 -- activityCalendar = require('lib/ActivityCalendar')
     if getActivatedMods():contains("Erase&Rewind_BKP") then
         playerBkp = require('CharacterPlayer')
     end
 end
+
+local isSurvivalRewards = getActivatedMods():contains("SurvivalRewards");
 
 -- gestione dei comandi ricevuti dal server
 local function OnServerCommand(module, command, arguments)
@@ -22,20 +22,29 @@ local function OnServerCommand(module, command, arguments)
             local hours = arguments.hours
             local steamID = arguments.steamID
             local player = getPlayerByOnlineID(steamID)
-            player:setZombieKills(kills)
-            player:setHoursSurvived(hours)
-            if SandboxVars.PynoTweaks.SyncRewards then
-                for i, v in ipairs(hourMilestones) do
-                    if hours >= v then
-                        player:getModData().milReached = i
+            if kills > 0 then
+                if isSurvivalRewards then --change this with getActiveMod?
+                -- prima impostiamo il kilMilReached e poi le kill aggiornate per evitare che sblocchi tutti i rewards di nuovo?
+                    for i, v in ipairs(killMilestones) do
+                        if kills >= v then
+                            player:getModData().kilMilReached = i
+                        end
                     end
                 end
-
-                for i, v in ipairs(killMilestones) do
-                    if kills >= v then
-                        player:getModData().kilMilReached = i
+                player:setZombieKills(kills)
+                
+            end
+            if hours > 0 then
+                if isSurvivalRewards then --change this with getActiveMod?
+                -- prima impostiamo il milReached e poi le ore di vita aggiornate per evitare che sblocchi tutti i rewards di nuovo?
+                    
+                    for i, v in ipairs(hourMilestones) do
+                        if hours >= v then
+                            player:getModData().milReached = i
+                        end
                     end
                 end
+                player:setHoursSurvived(hours)
             end
             player:Say("Lesgoo") 
         elseif command == "reppyno" then
@@ -237,7 +246,7 @@ local function OnServerCommand(module, command, arguments)
                 end
             end
 
-            player:Say("Missione rimossynaaaaa!!")
+            player:Say("Missione aggiornataaa!!")
 
         elseif command == "zombyno" then
             local command = arguments.command
@@ -247,7 +256,7 @@ local function OnServerCommand(module, command, arguments)
                 if #player:getModData().missionProgress.ActionEvent == 0 then
                     player:Say("Non ho altri zombie da ammazzare.")
                 end
-                for k, v in pairs(player:getModData().missionProgress.ActionEvent) do
+                for i, v in ipairs(player:getModData().missionProgress.ActionEvent) do
                     local zcount = tonumber(luautils.split(v.condition, ";")[2])
                     local npcname = luautils.split(v.commands, ";")[2]
                     -- trim numbers at the end of the string and add _Name
@@ -349,7 +358,7 @@ local function OnServerCommand(module, command, arguments)
             else
                 print("Errore: comando non riconosciuto - " .. tostring(subCommand))
             end
-        elseif command == "eventyno" then --sezione per gli eventi vari
+        elseif command == "eventyno" then --sezione per gli eventi vari (WIP)
             local event = arguments.event
             local command = arguments.command
             if event == "Fortnite" then -- sezione per il Battle Royale
