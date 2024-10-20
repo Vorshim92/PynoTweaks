@@ -69,10 +69,175 @@ local function OnServerCommand(module, command, arguments)
             elseif addOrComplete == "backup" then
                 SF_MissionPanel:forceBackupData()
             elseif addOrComplete == "remove" then
-                SF_MissionPanel.Commands.removequest(questID)
+                -- SF_MissionPanel.Commands.removequest(questID) -- use this after questyno 2.0
+                -- super funzione per rimuovere coattamente una quest e tutte le relative sottofunzioni aggiunte (se presenti)
+                local player = getPlayer();
+                local currentTasks = player:getModData().missionProgress.Category2
+                local done = false
+                if #currentTasks > 0 then
+                    for i = #currentTasks, 1, -1 do
+                        if currentTasks[i].guid == questID then
+                            local task = currentTasks[i]
+                            if task then
+                                -- rimozione di eventuali clickevent degli obiettivi (se presenti)
+                                if task.objectives and #task.objectives > 0 then
+                                    for k=1,#task.objectives do
+                                        if task.objectives[k].oncompleted then
+                                            local oncompletedTable = luautils.split(task.objectives[k].oncompleted, ";");
+                                            for j = 1, #oncompletedTable do
+                                                if oncompletedTable[j] == "removeclickevent" then
+                                                    local removeClickEventValue = oncompletedTable[j + 1]
+                                                    for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                        local event = player:getModData().missionProgress.ClickEvent[c];
+                                                        if event.address and event.address == removeClickEventValue then
+                                                            table.remove(player:getModData().missionProgress.ClickEvent, c);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                                if oncompletedTable[j] == "unlockworldevent" then
+                                                    local condition = oncompletedTable[j+2]
+                                                    if player:getModData().missionProgress.WorldEvent then
+                                                        for k, v in pairs(player:getModData().missionProgress.WorldEvent) do
+                                                            if v.dialoguecode == condition then
+                                                                if player:getModData().missionProgress.WorldEvent[k].marker             then
+                                                                    player:getModData().missionProgress.WorldEvent[k].          marker:remove();
+                                                                end
+                                                                player:getModData().missionProgress.WorldEvent[k] = nil
+                                                                break;
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                                if oncompletedTable[j] == "clickevent" then
+                                                    local removeClickEventValue = oncompletedTable[j + 2]
+                                                    for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                        local event = player:getModData().missionProgress.ClickEvent[c];
+                                                        if event.address and event.address == removeClickEventValue then
+                                                            table.remove(player:getModData().missionProgress.ClickEvent, c);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                        if task.objectives[k].onobtained then
+                                            local onObtainedTable = luautils.split(task.objectives[k].onobtained, ";");
+                                            if #onObtainedTable > 0 then
+                                                for j = 1, #onObtainedTable do
+                                                    if onObtainedTable[j] == "unlockworldevent" then
+                                                        local condition = onObtainedTable[j+2]
+                                                        if player:getModData().missionProgress.WorldEvent then
+                                                            for k, v in pairs(player:getModData().missionProgress.          WorldEvent) do
+                                                                if v.dialoguecode == condition then
+                                                                    if player:getModData().missionProgress.WorldEvent[k].           marker then
+                                                                        player:getModData().missionProgress.WorldEvent[k].          marker:remove();
+                                                                    end
+                                                                    player:getModData().missionProgress.WorldEvent[k] = nil
+                                                                    break;
+                                                                end
+                                                            end
+                                                        end
+                                                    end
+                                                    if onObtainedTable[j] == "clickevent" then
+                                                        local removeClickEventValue = onObtainedTable[j + 2]
+                                                        for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                            local event = player:getModData().missionProgress.ClickEvent[c];
+                                                            if event.address and event.address == removeClickEventValue then
+                                                                table.remove(player:getModData().missionProgress.ClickEvent,            c);
+                                                                break;
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                                if task.unlocks then
+                                    local convertedcondition = task.unlocks:gsub(":", ";");
+                                    local unlocksTable = luautils.split(convertedcondition, ";");
+                                    if #unlocksTable > 0 then
+                                        for j = 1, #unlocksTable do
+                                            if unlocksTable[j] == "killzombies" then
+                                                if player:getModData().missionProgress.ActionEvent and #player:getModData().            missionProgress.ActionEvent > 0 then
+                                                    local actionevent = player:getModData().missionProgress.ActionEvent; 
+                                                    for a=#actionevent,1,-1 do
+                                                        local commands = luautils.split(actionevent[a].commands, ";");
+                                                        if commands[1] == "killzombies" and commands[2] == task.guid            then                                                        
+                                                            table.remove(player:getModData().missionProgress.ActionEvent, a);
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                            if unlocksTable[j] == "unlockworldevent" then
+                                                local condition = unlocksTable[j+2]
+                                                if player:getModData().missionProgress.WorldEvent then
+                                                    for k, v in pairs(player:getModData().missionProgress.WorldEvent) do
+                                                        if v.dialoguecode == condition then
+                                                            if player:getModData().missionProgress.WorldEvent[k].marker then
+                                                                player:getModData().missionProgress.WorldEvent[k].          marker:remove();
+                                                            end
+                                                            player:getModData().missionProgress.WorldEvent[k] = nil
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                            if unlocksTable[j] == "clickevent" then
+                                                local removeClickEventValue = unlocksTable[j + 2]
+                                                for c=1,#player:getModData().missionProgress.ClickEvent do
+                                                    local event = player:getModData().missionProgress.ClickEvent[c];
+                                                    if event.address and event.address == removeClickEventValue then
+                                                        table.remove(player:getModData().missionProgress.ClickEvent, c);
+                                                        break;
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                                if task.onobtained then
+                                    local onObtainedTable = luautils.split(task.onobtained, ";");
+                                    if #onObtainedTable > 0 then
+                                        for j = 1, #onObtainedTable do
+                                            if onObtainedTable[j] == "unlockworldevent" then
+                                                local condition = onObtainedTable[j+2]
+                                                if player:getModData().missionProgress.WorldEvent then
+                                                    for k, v in pairs(player:getModData().missionProgress.WorldEvent) do
+                                                        if v.dialoguecode == condition then
+                                                            if player:getModData().missionProgress.WorldEvent[k].marker then
+                                                                player:getModData().missionProgress.WorldEvent[k].          marker:remove();
+                                                            end
+                                                            player:getModData().missionProgress.WorldEvent[k] = nil
+                                                            break;
+                                                        end
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                                -- check sullo status della quest, se COMPLETED viene spostato nella categoria 1
+                                if task.status == "Completed" then
+                                    table.insert(player:getModData().missionProgress.Category1, task);
+                                end
+                                -- rimozione coatta dalle quest attive xD
+                                table.remove(player:getModData().missionProgress.Category2, i);
+                                done = true;
+                            end
+                            break
+                        end
+                    end
+                end   
+                if done then
+                SF_MissionPanel.instance.needsUpdate = true
+                SF_MissionPanel.instance.needsBackup = true;
+                end
             end
 
-            player:Say("Missione aggiornata!")
+            player:Say("Missione rimossynaaaaa!!")
 
         elseif command == "zombyno" then
             local command = arguments.command
