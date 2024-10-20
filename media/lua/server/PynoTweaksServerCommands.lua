@@ -90,11 +90,11 @@ if isServer() then
         end
 
         local kills = tonumber(args[2])
-        if kills == nil or kills < 0 then
+        if kills == nil then
             return 'Invalid kills: ' .. tostring(args[2])
         end
         local lifeTime = tonumber(args[3])
-        if lifeTime == nil or lifeTime < 0 then
+        if lifeTime == nil then
             return 'Invalid hours: ' .. tostring(args[3])
         end
         local steamID = player:getOnlineID()

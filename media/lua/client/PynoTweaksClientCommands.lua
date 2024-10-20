@@ -1,4 +1,3 @@
-require("survivalRewards")
 -- local characterManagement = {}
 local pageBook = {}
 -- local activityCalendar = {}
@@ -22,10 +21,11 @@ local function OnServerCommand(module, command, arguments)
             local hours = arguments.hours
             local steamID = arguments.steamID
             local player = getPlayerByOnlineID(steamID)
-            if kills > 0 then
-                if isSurvivalRewards then --change this with getActiveMod?
-                -- prima impostiamo il kilMilReached e poi le kill aggiornate per evitare che sblocchi tutti i rewards di nuovo?
-                    for i, v in ipairs(killMilestones) do
+            if kills >= 0 then
+                if isSurvivalRewards then
+                player:setZombieKills(0)
+                player:getModData().kilMilReached = 0;
+                for i, v in ipairs(killMilestones) do
                         if kills >= v then
                             player:getModData().kilMilReached = i
                         end
@@ -34,11 +34,11 @@ local function OnServerCommand(module, command, arguments)
                 player:setZombieKills(kills)
                 
             end
-            if hours > 0 then
-                if isSurvivalRewards then --change this with getActiveMod?
-                -- prima impostiamo il milReached e poi le ore di vita aggiornate per evitare che sblocchi tutti i rewards di nuovo?
-                    
-                    for i, v in ipairs(hourMilestones) do
+            if hours >= 0 then
+                if isSurvivalRewards then
+                player:setHoursSurvived(0)    
+                player:getModData().milReached = 0    
+                for i, v in ipairs(hourMilestones) do
                         if hours >= v then
                             player:getModData().milReached = i
                         end
@@ -327,7 +327,7 @@ local function OnServerCommand(module, command, arguments)
             if subCommand == "delete" or subCommand == "remove" then
                 local message = nil
                 if arguments.done then
-                    message = "Il backup " .. bookType .. " è stato cancellato per il player " .. player:getUsername()
+                    message = "Il backup " .. bookType .. " eÌ€ stato cancellato per il player " .. player:getUsername()
                 elseif not arguments.done then
                     message = "Il libro non esiste " .. bookType .. " per il player " .. player:getUsername()
                 end
@@ -336,16 +336,16 @@ local function OnServerCommand(module, command, arguments)
             elseif subCommand == "restore" then
                 -- characterManagement.requestBackupData(modData_Name)
                 if arguments.done then
-                    getPlayer():Say("Il backup " .. bookType .. " è stato ripristinato per il player " .. player:getUsername())
+                    getPlayer():Say("Il backup " .. bookType .. " eÌ€ stato ripristinato per il player " .. player:getUsername())
                 else
-                    getPlayer():Say("Il libro  " .. bookType .. " non è stato ripristinato per il player " .. player:getUsername())
+                    getPlayer():Say("Il libro  " .. bookType .. " non Ã¨ stato ripristinato per il player " .. player:getUsername())
                 end
             elseif subCommand == "backup" then
                 -- characterManagement.writeBook(player, modData_Table, modData_Name)
             if arguments.success then
-                getPlayer():Say("Il backup " .. bookType .. " è stato salvato per il player " .. player:getUsername())
+                getPlayer():Say("Il backup " .. bookType .. " eÌ€ stato salvato per il player " .. player:getUsername())
             else 
-                getPlayer():Say("Il libro  " .. bookType .. " non è stato salvato per il player " .. player:getUsername())
+                getPlayer():Say("Il libro  " .. bookType .. " non Ã¨ stato salvato per il player " .. player:getUsername())
             end
             elseif subCommand == "check" then
                 local message = nil
@@ -367,15 +367,15 @@ local function OnServerCommand(module, command, arguments)
                         if ModData.exists("BattleRoyale") then
                             ModData.remove("BattleRoyale")
                         end
-                        getPlayer():Say("Il Battle Royale è stato resettato")
+                        getPlayer():Say("Il Battle Royale eÌ€ stato resettato")
                     else
-                        getPlayer():Say("Il Battle Royale non è stato resettato")
+                        getPlayer():Say("Il Battle Royale non Ã¨ stato resettato")
                     end
                 elseif command == "stop" then
                     if arguments.success then
-                        getPlayer():Say("Il Battle Royale è stato stoppato")
+                        getPlayer():Say("Il Battle Royale eÌ€ stato stoppato")
                     else
-                        getPlayer():Say("Il Battle Royale non è stato stoppato")
+                        getPlayer():Say("Il Battle Royale non Ã¨ stato stoppato")
                     end
                 end
             end
