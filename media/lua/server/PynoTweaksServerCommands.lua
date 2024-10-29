@@ -241,7 +241,7 @@ if isServer() then
                 sendServerCommand(player, 'SFQuest', "setProgress", newargs);
                 print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested JSON quest data for player " .. id .. " sent.")
             else
-                sendServerCommand(player, 'SFQuest', "setProgressTxt", newargs);
+                sendServerCommand(player, 'SFQuest', "setProgress", newargs);
                 print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested TXT quest data for player " .. id .. " sent.")
             end
             
