@@ -241,7 +241,7 @@ if isServer() then
                 sendServerCommand(player, 'SFQuest', "setProgress", newargs);
                 print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested JSON quest data for player " .. id .. " sent.")
             else
-                sendServerCommand(player, 'SFQuest', "setProgressTxt", newargs);
+                sendServerCommand(player, 'SFQuest', "setProgress", newargs); -- change setProgress to setProgressTxt for Questyno2.0
                 print("[Commands.loadbackup] zSOUL QUEST SYSTEM - Requested TXT quest data for player " .. id .. " sent.")
             end
             
@@ -277,6 +277,11 @@ if isServer() then
             packet.command = "changefrequency"
             packet.dailycode = args[3]
             packet.newfrequency = args[4]
+            sendServerCommand(player, "Pyno", "fixxyno", packet)
+        elseif commandArg == "zombyno" then
+            local packet = {}
+            packet.steamID = player:getOnlineID()
+            packet.command = "zombyno"
             sendServerCommand(player, "Pyno", "fixxyno", packet)
         else
             return 'Invalid command: ' .. tostring(commandArg)
@@ -447,13 +452,15 @@ if isServer() then
 
 
 
-    -- Command: zombyno
-    local CMD_NAME_zombyno = 'zombyno';
+    -- Command: playeryno
+    local CMD_NAME_playeryno = 'playeryno';
 
-    local function onServerCommand_zombyno(author, args)
+    local function onServerCommand_playeryno(author, args)
         -- Check if the correct number of arguments are passed.
-        if #args ~= 1 then
-            return '/luacmd zombyno [player]'
+
+        
+        if #args ~= 3 then
+            return '/luacmd playeryno [player] [command] [arguments]' -- commands: additems, arguments: list of items divided by commas (like Base.Axe;1,Base.GarbageBag)
         end
 
         local helper = LuaServerCommandHelper
@@ -464,18 +471,28 @@ if isServer() then
             return 'Player not found: ' .. tostring(username)
         end
 
-        local packet = {}
-        packet.command = "conto"
-        packet.steamID = player:getOnlineID()
-        sendServerCommand(player, "Pyno", "zombyno", packet)
+        local commandArg = args[2]
 
-        return 'Command executed.'
+        if commandArg ~= "additems" then
+            return 'Invalid command: ' .. tostring(commandArg)
+        end
+
+        local packet = {}
+        packet.steamID = player:getOnlineID()
+        if commandArg == "additems" then
+            packet.command = "additems"
+            packet.items = args[3]
+            sendServerCommand(player, "Pyno", "playeryno", packet)
+            print('Invio comando "additems" a ' .. player:getUsername())
+        end
+
+        return 'Playeryno Command executed.'
     end
 
-    LuaCommands.register(CMD_NAME_zombyno, function(author, command, args)
-        return onServerCommand_zombyno(author, args)
+    LuaCommands.register(CMD_NAME_playeryno, function(author, command, args)
+        return onServerCommand_playeryno(author, args)
     end)
-    print('Registered LuaCommand: ' .. CMD_NAME_zombyno);
+    print('Registered LuaCommand: ' .. CMD_NAME_playeryno);
     
     
     -- Command: eventyno
