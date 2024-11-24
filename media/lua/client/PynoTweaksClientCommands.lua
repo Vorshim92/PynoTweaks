@@ -247,26 +247,6 @@ local function OnServerCommand(module, command, arguments)
             end
 
             player:Say("Missione aggiornataaa!!")
-
-        elseif command == "zombyno" then
-            local command = arguments.command
-            local steamID = arguments.steamID
-            local player = getPlayerByOnlineID(steamID)
-            if command == "conto" then
-                if #player:getModData().missionProgress.ActionEvent == 0 then
-                    player:Say("Non ho altri zombie da ammazzare.")
-                end
-                for i, v in ipairs(player:getModData().missionProgress.ActionEvent) do
-                    local zcount = tonumber(luautils.split(v.condition, ";")[2])
-                    local npcname = luautils.split(v.commands, ";")[2]
-                    -- trim numbers at the end of the string and add _Name
-                    npcname = "IGUI_SFQuest_" .. string.gsub(npcname, "%d+$", "") .. "_Name"
-                    local count = player:getZombieKills()
-                    local toKill = zcount - count
-                    npcname = getText(npcname)
-                    player:Say("Devo uccidere altri " .. toKill .. " zombie per " .. npcname .. ".")
-                end
-            end
         elseif command == "fixxyno" then
             local steamID = arguments.steamID
             local player = getPlayerByOnlineID(steamID)
@@ -300,6 +280,20 @@ local function OnServerCommand(module, command, arguments)
                 local dailycode = tonumber(arguments.oldfrequency)
                 local newfrequency = tonumber(arguments.newfrequency)
                 SF_MissionPanel.instance:updateFrequency(dailycode, newfrequency)
+            elseif command == "zombyno" then
+                if #player:getModData().missionProgress.ActionEvent == 0 then
+                    player:Say("Non ho altri zombie da ammazzare.")
+                end
+                for i, v in ipairs(player:getModData().missionProgress.ActionEvent) do
+                    local zcount = tonumber(luautils.split(v.condition, ";")[2])
+                    local npcname = luautils.split(v.commands, ";")[2]
+                    -- trim numbers at the end of the string and add _Name
+                    npcname = "IGUI_SFQuest_" .. string.gsub(npcname, "%d+$", "") .. "_Name"
+                    local count = player:getZombieKills()
+                    local toKill = zcount - count
+                    npcname = getText(npcname)
+                    player:Say("Devo uccidere altri " .. toKill .. " zombie per " .. npcname .. ".")
+                end
             end
         elseif command == "libryno" then
             local steamID = arguments.steamID
@@ -378,6 +372,25 @@ local function OnServerCommand(module, command, arguments)
                         getPlayer():Say("Il Battle Royale non Ã¨ stato stoppato")
                     end
                 end
+            end
+        elseif command == "playeryno" then
+            local steamID = arguments.steamID
+            local player = getPlayerByOnlineID(steamID)
+            print("command " .. arguments.command .. " steamID " .. steamID .. " player " .. player:getUsername())
+            
+            local subCommand = arguments.command
+            if subCommand == "additems" then
+                local inv = player:getInventory();
+                local items = luautils.split(arguments.items, ",") --example: Base.Axe;1,Base.GarbageBag
+
+                for _, item in ipairs(items) do
+                    local itemName = luautils.split(item, ";")[1]
+                    -- la quantity non � obbligatoria, l'item potrebbe non avere la quantity specificata tipo Base.GarbageBag nell'example sopra
+                    local quantity = tonumber(luautils.split(item, ";")[2]) or 1
+                    inv:AddItems(itemName, quantity)
+                end
+            else
+                print("Errore: comando non riconosciuto - " .. tostring(subCommand))
             end
         end
     end
