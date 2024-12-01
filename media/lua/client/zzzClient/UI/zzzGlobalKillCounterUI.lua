@@ -93,16 +93,12 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
             if SandboxVars.GlobalKillCounter.Goal > 0 and toolbarButton then
                 -- print("[init] GlobalKillCounter.Goal > 0 and toolbarButton")
                 toolbarButton:setVisible(true)
-                if not GKC_Ui then
-                    toolbarButton:setImage(textureOff)
-                end
             else
                 -- print("[init] GlobalKillCounter.Goal <= 0 and toolbarButton")
                 toolbarButton:setVisible(false)
                 if GKC_Ui then
                     GKC_Ui:removeFromUIManager()
                     GKC_Ui = nil
-                    toolbarButton:setImage(textureOff)
                 end
             end
             GlobalKillCounter.DidInit = true
@@ -113,8 +109,10 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
             if SandboxVars.GlobalKillCounter.Goal > 0 and toolbarButton then
                 -- print("[reset] GlobalKillCounter.Goal > 0 and toolbarButton")
                 toolbarButton:setVisible(true)
-                if not GKC_Ui then
-                    toolbarButton:setImage(textureOff)
+                getSoundManager():PlaySound("GKC/GKC_Event", false, 1.0);
+                local chat = ISChat.instance
+                if chat then
+                    chat.serverMessageUI:setServerMessage("UN NUOVO EVENTO E' INIZIATO")
                 end
             else
                 -- print("[reset] GlobalKillCounter.Goal <= 0 and toolbarButton")
@@ -122,7 +120,6 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
                 if GKC_Ui then
                     GKC_Ui:removeFromUIManager()
                     GKC_Ui = nil
-                    toolbarButton:setImage(textureOff)
                 end
             end
             GlobalKillCounter.GlobalKills = 0
