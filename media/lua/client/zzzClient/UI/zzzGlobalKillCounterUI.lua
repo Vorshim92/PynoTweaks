@@ -1,3 +1,9 @@
+-- VORSHIM --
+-- Global Kill Counter UI overwrite by VORSHIM
+-- MOD_ID = 
+-- ID = 
+
+
 local ZedUtils = require 'asledgehammer/util/ZedUtils';
 
 -- safeUI not working
@@ -25,12 +31,12 @@ local ZedUtils = require 'asledgehammer/util/ZedUtils';
 local function adjustToolbarButtonPosition() -- mantein pvp icon in the same position, like a divider between buttons vanilla and mod
     local lastBottom = 0
     local index = 0
+    local accessLevel = getPlayer():getAccessLevel()
     -- Helper to determine starting index for repositioning buttons
     local function calculateStartIndex()
         local startIndex = 6 -- Map Button
         if isClient() then
             startIndex = startIndex + 1 -- CLIENT BUTTON
-            local accessLevel = getPlayer():getAccessLevel()
             if accessLevel ~= "" and accessLevel ~= "None" then
                 startIndex = startIndex + 1 -- ADMIN BUTTON
             end
@@ -46,8 +52,11 @@ local function adjustToolbarButtonPosition() -- mantein pvp icon in the same pos
         if getmetatable(child) == ISButton then
             index = index + 1
             -- print("index: " .. index .. " btnTitle: " .. child:getTitle())
+            -- if child == ISEquippedItem.instance.adminBtn then
+            --     print("Found the adminBtn! at index: " .. index)
+            -- end
             if index > indexToStart then
-                -- Add extra spacing for the first button to skip PVP icon
+                -- Add extra spacing for the first button to skip PVP icon (only in MP)
                 local additionalSpacing = (isClient() and index == indexToStart + 1) and 50 or 0
                 child:setY(lastBottom + additionalSpacing)
             end
@@ -93,16 +102,12 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
             if SandboxVars.GlobalKillCounter.Goal > 0 and toolbarButton then
                 -- print("[init] GlobalKillCounter.Goal > 0 and toolbarButton")
                 toolbarButton:setVisible(true)
-                if not GKC_Ui then
-                    toolbarButton:setImage(textureOff)
-                end
             else
                 -- print("[init] GlobalKillCounter.Goal <= 0 and toolbarButton")
                 toolbarButton:setVisible(false)
                 if GKC_Ui then
                     GKC_Ui:removeFromUIManager()
                     GKC_Ui = nil
-                    toolbarButton:setImage(textureOff)
                 end
             end
             GlobalKillCounter.DidInit = true
@@ -113,8 +118,10 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
             if SandboxVars.GlobalKillCounter.Goal > 0 and toolbarButton then
                 -- print("[reset] GlobalKillCounter.Goal > 0 and toolbarButton")
                 toolbarButton:setVisible(true)
-                if not GKC_Ui then
-                    toolbarButton:setImage(textureOff)
+                getSoundManager():PlaySound("GKC/GKC_Event", false, 1.0);
+                local chat = ISChat.instance
+                if chat then
+                    chat.serverMessageUI:setServerMessage(SandboxVars.GlobalKillCounter.Alert)
                 end
             else
                 -- print("[reset] GlobalKillCounter.Goal <= 0 and toolbarButton")
@@ -122,7 +129,6 @@ function GlobalKillCounter.OnServerCommandNew(module, command, args)
                 if GKC_Ui then
                     GKC_Ui:removeFromUIManager()
                     GKC_Ui = nil
-                    toolbarButton:setImage(textureOff)
                 end
             end
             GlobalKillCounter.GlobalKills = 0
@@ -141,3 +147,16 @@ Events.OnGameBoot.Add(function()
 end)
 
 
+
+
+-- function ISEquippedItem:prerender()
+--     local safetyUI = getPlayerSafetyUI(self.chr:getPlayerNum())
+--     if safetyUI ~= nil then
+--         safetyUI:setX(self.adminBtn:getX() + 6)
+--         if isVisible then
+--             safetyUI:setY(self.adminBtn:getY() + self.adminIcon:getHeightOrig() + 18)
+--         else
+--             safetyUI:setY(self.adminBtn:getY() + 12)
+--         end
+--     end
+-- end
