@@ -12,7 +12,4 @@ Sandbox_EN = {
 		PynoTweaks_EnableFuelLimitation = "Enable Fuel Limitation",
 		PynoTweaks_FuelLimitationFactionName = "Fuel Limitation Faction Name",
 		PynoTweaks_FuelLimitationFactionTier = "Fuel Limitation Faction Tier (Questyno)",
-		
-	Sandbox_GlobalKillCounter.Alert = "Alert Message",
-    Sandbox_GlobalKillCounter.Alert_tooltip = "The Alert message to display.",
 }
