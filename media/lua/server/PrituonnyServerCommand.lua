@@ -2,7 +2,7 @@ local Commands = {}
 function Commands.onSendPrituonny(player, args)
     local clickedPlayer = getPlayerByOnlineID(args.player)
     local prituonnyList = ModData.getOrCreate("Prituonny")
-    prituonnyList[clickedPlayer:getOnlineID()] = true
+    prituonnyList[clickedPlayer:getUsername()] = true
     ModData.add("Prituonny", prituonnyList)
     ModData.transmit("Prituonny")
     sendServerCommand(clickedPlayer, "Prituonny", "onSendPrituonny", args)
@@ -11,7 +11,7 @@ end
 function Commands.onRemovePrituonny(player, args)
     local clickedPlayer = getPlayerByOnlineID(args.player)
     local prituonnyList = ModData.getOrCreate("Prituonny")
-    prituonnyList[clickedPlayer:getOnlineID()] = false
+    prituonnyList[clickedPlayer:getUsername()] = false
     ModData.add("Prituonny", prituonnyList)
     ModData.transmit("Prituonny")
     sendServerCommand(clickedPlayer, "Prituonny", "onRemovePrituonny", args)

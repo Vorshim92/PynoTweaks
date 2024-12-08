@@ -28,7 +28,7 @@ Prituonny.OnFillWorldObjectContextMenu = function(player, context, worldobjects,
 
     if clickedPlayer and clickedPlayer ~= playerObj and isClient() then
         local prituonnyList = ModData.getOrCreate("Prituonny")
-        if not prituonnyList[clickedPlayer:getOnlineID()] then
+        if not prituonnyList[clickedPlayer:getUsername()] then
             local option = context:addOption(getText("ContextMenu_SendPrituonny", clickedPlayer:getDisplayName()), clickedPlayer, Prituonny.onSendPrituonny)
         else 
             local option = context:addOption(getText("ContextMenu_RemovePrituonny", clickedPlayer:getDisplayName()), clickedPlayer, Prituonny.onRemovePrituonny)
@@ -53,7 +53,7 @@ end
 
 Prituonny.OnCreatePlayer = function(playerIndex, player)
     local prituonnyList = ModData.getOrCreate("Prituonny")
-    if prituonnyList[player:getOnlineID()] then
+    if prituonnyList[player:getUsername()] then
         player:setX(Prituonny.x)
         player:setY(Prituonny.y)
         player:setZ(Prituonny.z)
@@ -70,16 +70,16 @@ function Commands.onSendPrituonny(player, args)
     clickedPlayer:setZ(Prituonny.z)
     clickedPlayer:setLx(Prituonny.x)
     clickedPlayer:setLy(Prituonny.y)
-    print("[onSendPrituonny] IsPrituonny: " .. tostring(prituonnyList[clickedPlayer:getOnlineID()]))
+    print("[onSendPrituonny] IsPrituonny: " .. tostring(prituonnyList[clickedPlayer:getUsername()]))
 end
 
 function Commands.onRemovePrituonny(player, args)
     local clickedPlayer = getPlayer()
     local prituonnyList = ModData.getOrCreate("Prituonny")
-    prituonnyList[clickedPlayer:getOnlineID()] = false
+    prituonnyList[clickedPlayer:getUsername()] = false
     ModData.add("Prituonny", prituonnyList)
     ModData.transmit("Prituonny")
-    print("[onRemovePrituonny] IsPrituonny: " .. tostring(prituonnyList[clickedPlayer:getOnlineID()]))
+    print("[onRemovePrituonny] IsPrituonny: " .. tostring(prituonnyList[clickedPlayer:getUsername()]))
 end
 
 Events.OnCreatePlayer.Add(Prituonny.OnCreatePlayer);
