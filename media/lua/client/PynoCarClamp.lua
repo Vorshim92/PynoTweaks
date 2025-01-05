@@ -55,21 +55,11 @@ function ISVehicleMenu.onSendCommandCheatClearCarClampModData(playerObj, vehicle
 end
 
 function ISVehicleMenu.showRadialMenuOutside(playerObj)
+	base_ISVehicleMenu_showRadialMenuOutside(playerObj)
     if playerObj:getVehicle() then return end
 
 	local playerIndex = playerObj:getPlayerNum()
 	local menu = getPlayerRadialMenu(playerIndex)
-
-	-- For keyboard, toggle visibility
-	if menu:isReallyVisible() then
-		if menu.joyfocus then
-			setJoypadFocus(playerIndex, nil)
-		end
-		menu:undisplay()
-		return
-	end
-
-	menu:clear()
 
 	local vehicle = ISVehicleMenu.getVehicleToInteractWith(playerObj)
 
@@ -99,63 +89,6 @@ function ISVehicleMenu.showRadialMenuOutside(playerObj)
 		if vehicleHasInstalledCarClamp and not usedKey then
 			menu:addSlice("No key for this CarClamp", getTexture("media/textures/item_NoKeyCarClamp.png"), ISVehicleMenu.onSendCommandNoKeyCarClamp, playerObj, vehicleInfo)
 		end
-
-		menu:addSlice(getText("ContextMenu_VehicleMechanics"), getTexture("media/ui/vehicles/vehicle_repair.png"), ISVehicleMenu.onMechanic, playerObj, vehicle)
-		
-		if vehicle:getScript() and vehicle:getScript():getPassengerCount() > 0 then
-			menu:addSlice(getText("IGUI_EnterVehicle"), getTexture("media/ui/vehicles/vehicle_changeseats.png"), ISVehicleMenu.onShowSeatUI, playerObj, vehicle )
-		end
-		
-		ISVehicleMenu.FillPartMenu(playerIndex, nil, menu, vehicle)
-	
-		local doorPart = vehicle:getUseablePart(playerObj)
-		if doorPart and doorPart:getDoor() and doorPart:getInventoryItem() then
-			local isHood = doorPart:getId() == "EngineDoor"
-			local isTrunk = doorPart:getId() == "TrunkDoor" or doorPart:getId() == "DoorRear"
-			if doorPart:getDoor():isOpen() then
-				local label = "ContextMenu_Close_door"
-				if isHood then label = "IGUI_CloseHood" end
-				if isTrunk then label = "IGUI_CloseTrunk" end
-				menu:addSlice(getText(label), getTexture("media/ui/vehicles/vehicle_exit.png"), ISVehicleMenu.onCloseDoor, playerObj, doorPart)
-			else
-				local label = "ContextMenu_Open_door"
-				if isHood then label = "IGUI_OpenHood" end
-				if isTrunk then label = "IGUI_OpenTrunk" end
-				menu:addSlice(getText(label), getTexture("media/ui/vehicles/vehicle_exit.png"), ISVehicleMenu.onOpenDoor, playerObj, doorPart)
-				if vehicle:canUnlockDoor(doorPart, playerObj) then
-					label = "ContextMenu_UnlockDoor"
-					if isHood then label = "IGUI_UnlockHood" end
-					if isTrunk then label = "IGUI_UnlockTrunk" end
-					menu:addSlice(getText(label), getTexture("media/ui/vehicles/vehicle_lockdoors.png"), ISVehicleMenu.onUnlockDoor, playerObj, doorPart)
-				elseif vehicle:canLockDoor(doorPart, playerObj) then
-					label = "ContextMenu_LockDoor"
-					if isHood then label = "IGUI_LockHood" end
-					if isTrunk then label = "IGUI_LockTrunk" end
-					menu:addSlice(getText(label), getTexture("media/ui/vehicles/vehicle_lockdoors.png"), ISVehicleMenu.onLockDoor, playerObj, doorPart)
-				end
-			end
-		end
-
-		local part = vehicle:getClosestWindow(playerObj);
-		if part then
-			local window = part:getWindow()
-			if not window:isDestroyed() and not window:isOpen() then
-				menu:addSlice(getText("ContextMenu_Vehicle_Smashwindow", getText("IGUI_VehiclePart" .. part:getId())),
-					getTexture("media/ui/vehicles/vehicle_smash_window.png"),
-					ISVehiclePartMenu.onSmashWindow, playerObj, part)
-			end
-		end
-
-		ISVehicleMenu.doTowingMenu(playerObj, vehicle, menu)
-	end
-	
-	menu:setX(getPlayerScreenLeft(playerIndex) + getPlayerScreenWidth(playerIndex) / 2 - menu:getWidth() / 2)
-	menu:setY(getPlayerScreenTop(playerIndex) + getPlayerScreenHeight(playerIndex) / 2 - menu:getHeight() / 2)
-	menu:addToUIManager()
-	if JoypadState.players[playerObj:getPlayerNum()+1] then
-		menu:setHideWhenButtonReleased(Joypad.DPadUp)
-		setJoypadFocus(playerObj:getPlayerNum(), menu)
-		playerObj:setJoypadIgnoreAimUntilCentered(true)
 	end
 end
 
