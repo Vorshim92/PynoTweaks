@@ -3,6 +3,11 @@ ContextMenu_IT = {
     ContextMenu_PynoTweaks_RemoveTrailer = "Smantella Trailer",
     ContextMenu_Remove = "Rimuovi",
     ContextMenu_FuelLimitationTitle = "Azione Disabilitata",
+    ContextMenu_FuelLimitationDescription = "Solo i giocatori della fazione <RGB:1,0,0> %1 <RGB:1,1,1> possono fare rifornimento dalle pompe di benzina.",
     ContextMenu_FuelLimitationDescriptionTier = "L'accesso alle pompe di benzina è riservato ai sopravvissuti con rango [ <RGB:1,0,0> %1 <RGB:1,1,1> ] o superiore.",
     ContextMenu_FuelLimitationDescriptionTierRadial = "Benzinaio riservato ai ranghi %1 o superiore.",
+    ContextMenu_SendPrituonny = "Manda %1 nella Prituonny",
+    ContextMenu_RemovePrituonny = "Libera %1 dalla Prituonny",
+    ContextMenu_SuperPrituonny = "Manda %1 nella Super Prituonny", 
+    ContextMenu_RemoveSuperPrituonny = "Libera %1 dalla Super Prituonny"
 }

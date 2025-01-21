@@ -5,4 +5,13 @@ Sandbox_IT = {
 	Sandbox_PynoTweaks_EnableFuelLimitation = "Limita Prelievo Carburante",
 	Sandbox_PynoTweaks_FuelLimitationFactionName = "Whitelist Fazione Prelievo Carburante",
 	Sandbox_PynoTweaks_SeedsRequiredMultiplier = "Moltiplicatore Semi Richiesti",
+	Sandbox_PynoTweaks_FuelLimitationFactionTier = "Limite di Fazione per Prelievo Carburante (Questyno)",
+	Sandbox_PynoTweaks_VehicleRecycling = "Riciclaggio Veicoli",
+	Sandbox_PynoTweaks_UninstallParts = "Le Parti Devono Essere Smontate Prima del Disassemblaggio",
+	Sandbox_PynoTweaks_UninstallParts_tooltip = "Le seguenti parti devono essere smontate prima del disassemblaggio: cofano, portellone, porte, finestre, sedili.",
+	Sandbox_PynoTweaks_UninstallPartsHoursSurvived = "Ore Sopravvissute per abilitare il Disassemblaggio",
+	Sandbox_PynoTweaks_UninstallPartsHoursSurvived_tooltip = "Il giocatore deve sopravvivere per questo numero di ore di gioco prima di poter disassemblare i veicoli.",
+	Sandbox_PynoTweaks_ActionTimeMultiplier = "Moltiplicatore Tempo di Disassemblaggio",
+	Sandbox_PynoTweaks_SyncRewards = "Sincronizza Uccisioni&Ore su /killyno (Ricompense di Sopravvivenza)",
+	Sandbox_PynoTweaks_SpecificAreaXY = "Area Specifica XY per PriTuonny",
 }

@@ -1,4 +1,0 @@
-IGUI_IT =
-{
-	IGUI_ItemCat_PynoTweaks = "Sostanza Drogante",
-}

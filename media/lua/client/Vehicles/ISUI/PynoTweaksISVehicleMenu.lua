@@ -1,76 +1,75 @@
 require "Vehicles/ISUI/ISVehicleMenu"
-
-local function predicatePetrol(item)
-	return (item:hasTag("Petrol") or item:getType() == "PetrolCan") and item:getUsedDelta() > 0
-end
-
-local function predicateEmptyPetrol(item)
-	return item:hasTag("EmptyPetrol") or item:getType() == "EmptyPetrolCan"
-end
-
-local function predicatePetrolNotFull(item)
-	return (item:hasTag("Petrol") or item:getType() == "PetrolCan") and item:getUsedDelta() < 1 
-end
-
-function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
-	local playerObj = getSpecificPlayer(playerIndex);
-	if playerObj:DistToProper(vehicle) >= 4 then
-		return
-	end
-	local typeToItem = VehicleUtils.getItems(playerIndex)
-	for i=1,vehicle:getPartCount() do
-		local part = vehicle:getPartByIndex(i-1)
-		if not vehicle:isEngineStarted() and part:isContainer() and part:getContainerContentType() == "Gasoline" then
-			if playerObj:getInventory():containsEvalRecurse(predicatePetrol) and part:getContainerContentAmount() < part:getContainerCapacity() then
-				if slice then
-					slice:addSlice(getText("ContextMenu_VehicleAddGas"), getTexture("media/ui/vehicles/vehicle_add_gas.png"), ISVehiclePartMenu.onAddGasoline, playerObj, part)
-				else
-					ISVehiclePartMenu.doAddFuelMenu(playerObj, part, context)
-					-- context:addOption(getText("ContextMenu_VehicleAddGas"), playerObj,ISVehiclePartMenu.onAddGasoline, part)
-				end
-			end
-			if (ISVehiclePartMenu.getGasCanNotFull(playerObj, typeToItem) or playerObj:getInventory():containsEvalRecurse(predicateEmptyPetrol) or playerObj:getInventory():containsEvalRecurse(predicatePetrolNotFull)) 
-			and part:getContainerContentAmount() > 0 then
-				if slice then
-					slice:addSlice(getText("ContextMenu_VehicleSiphonGas"), getTexture("media/ui/vehicles/vehicle_siphon_gas.png"), ISVehiclePartMenu.onTakeGasoline, playerObj, part)
-				else
-					ISVehiclePartMenu.doSiphonFuelMenu(playerObj, part, context)
-					-- context:addOption(getText("ContextMenu_VehicleSiphonGas"), playerObj, ISVehiclePartMenu.doFillFuelMenu, part, context)
-				end
-			end
-			local fuelStation = ISVehiclePartMenu.getNearbyFuelPump(vehicle)
-			if fuelStation then
-				local square = fuelStation:getSquare();
-				if square and ((SandboxVars.AllowExteriorGenerator and square:haveElectricity()) or (SandboxVars.ElecShutModifier > -1 and GameTime:getInstance():getNightsSurvived() < SandboxVars.ElecShutModifier)) then
-					if square and part:getContainerContentAmount() < part:getContainerCapacity() then
-						if slice then
-                            if SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
-                                local factions = playerObj:getModData().missionProgress.Factions
-                                if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
-                                    local tiername = getText("IGUI_Factions_Resistenza_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
-                                    slice:addSlice(getText("ContextMenu_FuelLimitationDescriptionTierRadial", tiername), getTexture("media/ui/vehicles/vehicle_refuel_from_pump.png"), nil, playerObj, part)
-                                    return
-                                end
-                            end
-                            slice:addSlice(getText("ContextMenu_VehicleRefuelFromPump"), getTexture("media/ui/vehicles/vehicle_refuel_from_pump.png"), ISVehiclePartMenu.onPumpGasoline, playerObj, part)
-						else
-							local option = context:addOption(getText("ContextMenu_VehicleRefuelFromPump"), playerObj, ISVehiclePartMenu.onPumpGasoline, part)
-                            if SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
-                                local factions = playerObj:getModData().missionProgress.Factions
-                                if not factions or not factions[1] or factions[1].tierlevel < SandboxVars.PynoTweaks.FuelLimitationFactionTier then
-                                    option.notAvailable = true
-                                    local tooltip = ISWorldObjectContextMenu.addToolTip()
-                                    local tiername = getText("IGUI_Factions_Resistenza_Tier" .. SandboxVars.PynoTweaks.FuelLimitationFactionTier)
-                                    tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
-                                    tooltip.description = getText("ContextMenu_FuelLimitationDescriptionTier", tiername)
-                                    option.toolTip = tooltip
-                                    return
-                                end
-                            end
-                        end
-					end
+local oldFillPartMenu = ISVehicleMenu.FillPartMenu
+local function Set (list)
+	local set = {}
+	for _, l in ipairs(list) do set[l] = true end
+	return set
+  end
+  
+-- menu:deleteMultiSliceTsar({getText("ContextMenu_Unlock_Doors"), getText("ContextMenu_Unlock_Doors"), getText("ContextMenu_Lock_Doors"), getText("ContextMenu_VehicleHeaterOn"), getText("ContextMenu_VehicleHeaterOff"), getText("ContextMenu_VehicleMechanics")})
+function ISRadialMenu:deleteMultiSlice(textTableForDelete)
+	if type(textTableForDelete) == "table" then
+		local textTableForDeleteSet = Set(textTableForDelete)
+		local oldSlices = self.slices
+		self.slices = {}
+		if self.javaObject then
+			self.javaObject:clear()
+		end
+		for sliceIndex, oldSlice in ipairs(oldSlices) do
+			if not textTableForDeleteSet[oldSlice.text] then
+				local slice = {}
+				slice.text = oldSlice.text
+				slice.texture = oldSlice.texture
+				slice.command = oldSlice.command
+				table.insert(self.slices, slice)
+				if self.javaObject then
+					self.javaObject:addSlice(oldSlice.text, oldSlice.texture)
 				end
 			end
 		end
 	end
+end
+
+
+function ISVehicleMenu.FillPartMenu(playerIndex, context, slice, vehicle)
+    -- Richiamiamo la funzione originale così riempie il menu come al solito
+    oldFillPartMenu(playerIndex, context, slice, vehicle)
+
+    -- Ora possiamo aggiungere/controllare/opzionalmente rimuovere alcune voci dal 'context' o dal 'slice'
+
+    local playerObj = getSpecificPlayer(playerIndex)
+    if not playerObj then return end
+
+    -- Esempio: se vuoi applicare la “limitation” di carburante
+    if SandboxVars.PynoTweaks and SandboxVars.PynoTweaks.FuelLimitationFactionTier 
+       and SandboxVars.PynoTweaks.FuelLimitationFactionTier > 0 then
+       
+        local factions = playerObj:getModData().missionProgress 
+                         and playerObj:getModData().missionProgress.Factions
+        local tierRequired = SandboxVars.PynoTweaks.FuelLimitationFactionTier
+
+        if not factions or not factions[1] or (factions[1].tierlevel < tierRequired) then
+            -- Se NON soddisfiamo il livello di fazione, disabilitiamo per esempio
+            -- l’opzione “Refuel From Pump” nel menu contestuale (context)
+            local refuelText = getText("ContextMenu_VehicleRefuelFromPump")
+            if context then
+                for i, option in ipairs(context.options) do
+                    if option.name == refuelText then
+                        -- Disabilitiamo l’opzione con un tooltip
+                        option.notAvailable = true
+                        local tooltip = ISWorldObjectContextMenu.addToolTip()
+                        local tierName = getText("IGUI_Factions_Resistenza_Tier" .. tierRequired)
+                        tooltip:setName(getText("ContextMenu_FuelLimitationTitle"))
+                        tooltip.description = getText("ContextMenu_FuelLimitationDescriptionTier", tierName)
+                        option.toolTip = tooltip
+                    end
+                end
+            end
+
+			if slice then
+				-- Se NON soddisfiamo il livello di fazione, disabilitamo anche l'eventuale slice se presente con deleteMultiSlice
+				slice:deleteMultiSlice({refuelText})
+			end
+        end
+    end
 end
