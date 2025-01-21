@@ -82,9 +82,9 @@ Prituonny.OnCreatePlayer = function(playerIndex, player)
         player:setZ(Prituonny.Z)
         player:setLx(Prituonny.CenterX)
         player:setLy(Prituonny.CenterY)
-    end
-    if prituonnyList[username].super == true then
-        Events.OnTick.Add(SuperPrituonny)
+        if prituonnyList[username].super == true then
+            Events.OnTick.Add(SuperPrituonny)
+        end
     end
 end
 
