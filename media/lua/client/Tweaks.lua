@@ -461,6 +461,10 @@ TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","MinDamage", 0.3);
 TweakItem("Base.CordlessDrill","ConditionMax", 10);
 
+-- consumo di acqua innaffiatoio e tanica benza con acqua
+TweakItem("Base.WateredCanFull","UseDelta", 0.0067);
+TweakItem("Base.PetrolCanWater","UseDelta", 0.1125);
+
 --[[pipebomb
 TweakItem("Base.Aerosolbomb","ExplosionPower", 0);
 TweakItem("Base.Aerosolbomb","ExplosionRange", 0);
