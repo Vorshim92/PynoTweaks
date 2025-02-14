@@ -2,7 +2,7 @@ require("ItemTweaker_Main");
 
 -- Max Condition
 -- Default: 100  Max: int (2,147,483,647)
-max_condition = 2000000000
+local max_condition = 2000000000
 
 --Light Bulbs--
 TweakItem("Base.LightBulb","ConditionMax",max_condition);
@@ -110,7 +110,7 @@ TweakItem("Base.Ginseng","FatigueChange", -5);
 
 ---- cappello dello zio sam
 
-TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 1.0);
+TweakItem("AuthenticZLite.Hat_UncleSam","Weight", 40.0);
 
 
 
@@ -382,27 +382,45 @@ TweakItem("Base.Lighter","ticksPerEquipUse",6200);
 TweakItem("Base.Matches","UseDelta", 0.25);
 
 --insetti
+--[[
 TweakItem("Base.AmericanLadyCaterpillar","Weight", 0.02);
+TweakItem("Base.AmericanLadyCaterpillar","HungerChange", -1);
 TweakItem("Base.BandedWoolyBearCaterpillar","Weight", 0.02);
+TweakItem("Base.BandedWoolyBearCaterpillar","HungerChange", -1);
 TweakItem("Base.Centipede","Weight", 0.02);
+TweakItem("Base.Centipede","HungerChange", -1);
 TweakItem("Base.Centipede2","Weight", 0.02);
+TweakItem("Base.Centipede2","HungerChange", -1);
 TweakItem("Base.Cockroach","Weight", 0.02);
+TweakItem("Base.Cockroach","HungerChange", -1);
 TweakItem("Base.Cricket","Weight", 0.02);
+TweakItem("Base.Cricket","HungerChange", -1);
 TweakItem("Base.Grasshopper","Weight", 0.02);
+TweakItem("Base.Grasshopper","HungerChange", -1);
 TweakItem("Base.Maggots","Weight", 0.02);
-TweakItem("Base.Centipede2","Weight", 0.02);
+TweakItem("Base.Maggots","HungerChange", -1);
 TweakItem("Base.Millipede","Weight", 0.02);
+TweakItem("Base.Millipede","HungerChange", -1);
 TweakItem("Base.Millipede2","Weight", 0.02);
+TweakItem("Base.Millipede2","HungerChange", -1);
 TweakItem("Base.MonarchCaterpillar","Weight", 0.02);
+TweakItem("Base.MonarchCaterpillar","HungerChange", -3);
 TweakItem("Base.Pillbug","Weight", 0.02);
+TweakItem("Base.Pillbug","HungerChange", -1);
 TweakItem("Base.Slug","Weight", 0.02);
+TweakItem("Base.Slug","HungerChange", -1);
 TweakItem("Base.Slug2","Weight", 0.02);
+TweakItem("Base.Slug2","HungerChange", 1);
 TweakItem("Base.SilkMothCaterpillar","Weight", 0.02);
+TweakItem("Base.SilkMothCaterpillar","HungerChange", -3);
 TweakItem("Base.Snail","Weight", 0.02);
+TweakItem("Base.Snail","HungerChange", -2);
 TweakItem("Base.Termites","Weight", 0.02);
 TweakItem("Base.SawflyLarva","Weight", 0.02);
 TweakItem("Base.SwallowtailCaterpillar","Weight", 0.02);
+TweakItem("Base.SwallowtailCaterpillar","HungerChange", -2);
 TweakItem("Base.Worm","Weight", 0.02);
+]]--
 
 
 --martello di pietra
@@ -484,9 +502,174 @@ TweakItem("Base.Molotov","ExplosionPower", 0);
 TweakItem("Base.Molotov","ExplosionRange", 0);
 --]]
 
+-------------------- VESTITI VANILLA -------------------------------------
 
+-------- Cappelli vanilla ------- BodyLocation = Hat,
+--[[ TweakItem("Base.WeldingMask","BodyLocation", "Hat"); 
+TweakItem("Base.Hat_Army","ScratchDefense", 100); 
+TweakItem("Base.Hat_Army","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCap","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCap","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCap_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCap_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY_Red","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapKY_Red","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapBlue","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapBlue","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapBlue_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapBlue_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapRed","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapRed","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapRed_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapRed_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapGreen","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapGreen","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapGreen_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapGreen_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapArmy","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapArmy","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballCapArmy_Reverse","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballCapArmy_Reverse","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_KY","CombatSpeedModifier",  1.0);
+TweakItem("Base.Hat_BaseballHelmet_KY","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_KY","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_Rangers","CombatSpeedModifier",  1.0);
+TweakItem("Base.Hat_BaseballHelmet_Rangers","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_Rangers","BiteDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_Z","CombatSpeedModifier",  1.0);
+TweakItem("Base.Hat_BaseballHelmet_Z","ScratchDefense", 100); 
+TweakItem("Base.Hat_BaseballHelmet_Z","BiteDefense", 100); 
+TweakItem("Base.Hat_Beany","ScratchDefense", 100); 
+TweakItem("Base.Hat_Beany","BiteDefense", 100); 
+TweakItem("Base.Hat_Beret","ScratchDefense", 100); 
+TweakItem("Base.Hat_Beret","BiteDefense", 100); 
+TweakItem("Base.Hat_BeretArmy","ScratchDefense", 100); 
+TweakItem("Base.Hat_BeretArmy","BiteDefense", 100); 
+TweakItem("Base.Hat_BicycleHelmet","ScratchDefense", 100); 
+TweakItem("Base.Hat_BicycleHelmet","ScratchDefense", 100); 
+TweakItem("Base.Hat_BicycleHelmet","BiteDefense", 100); 
+TweakItem("Base.Hat_ChefHat","ScratchDefense", 100); 
+TweakItem("Base.Hat_ChefHat","BiteDefense", 100); 
+TweakItem("Base.Hat_Cowboy","ScratchDefense", 100); 
+TweakItem("Base.Hat_Cowboy","BiteDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet","ScratchDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet","BiteDefense", 100); 
+TweakItem("Base.Hat_CrashHelmetFULL","ScratchDefense", 100); 
+TweakItem("Base.Hat_CrashHelmetFULL","BiteDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet_Police","ScratchDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet_Police","BiteDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet_Stars","ScratchDefense", 100); 
+TweakItem("Base.Hat_CrashHelmet_Stars","BiteDefense", 100); 
+TweakItem("Base.Hat_EarMuffs","ScratchDefense", 100); 
+TweakItem("Base.Hat_EarMuffs","BiteDefense", 100); 
+TweakItem("Base.Hat_EarMuff_Protectors","ScratchDefense", 100); 
+TweakItem("Base.Hat_EarMuff_Protectors","BiteDefense", 100); 
+TweakItem("Base.Hat_FastFood","ScratchDefense", 100); 
+TweakItem("Base.Hat_FastFood","BiteDefense", 100); 
+TweakItem("Base.Hat_FastFood_IceCream","ScratchDefense", 100); 
+TweakItem("Base.Hat_FastFood_IceCream","BiteDefense", 100); 
+TweakItem("Base.Hat_FastFood_Spiffo","ScratchDefense", 100); 
+TweakItem("Base.Hat_FastFood_Spiffo","BiteDefense", 100); 
+TweakItem("Base.Hat_Fedora","ScratchDefense", 100); 
+TweakItem("Base.Hat_Fedora","BiteDefense", 100); 
+TweakItem("Base.Hat_Fedora_Delmonte","ScratchDefense", 100); 
+TweakItem("Base.Hat_Fedora_Delmonte","BiteDefense", 100); 
+TweakItem("Base.Hat_Fireman","ScratchDefense", 100); 
+TweakItem("Base.Hat_Fireman","BiteDefense", 100); 
+TweakItem("Base.Hat_FootballHelmet","ScratchDefense", 100); 
+TweakItem("Base.Hat_FootballHelmet","BiteDefense", 100); 
 
+--- giacchetti vanilla ---
 
+TweakItem("Base.WeddingJacket", "CombatSpeedModifier", 0.95); 
+TweakItem("Base.WeddingJacket", "RunSpeedModifier", 0.97);
+TweakItem("Base.Ghillie_Top", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Ghillie_Top", "RunSpeedModifier", 0.97);
+TweakItem("Base.Suit_Jacket", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Suit_Jacket", "RunSpeedModifier", 1.0);
+TweakItem("Base.Suit_JacketTINT", "CombatSpeedModifier", 0.98);
+TweakItem("Base.Suit_JacketTINT", "RunSpeedModifier", 1.0);
+TweakItem("Base.JacketLong_Doctor", "CombatSpeedModifier", 0.99);
+TweakItem("Base.JacketLong_Doctor", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_CoatArmy", "RunSpeedModifier", 1.0);
+TweakItem("Base.JacketLong_Random", "CombatSpeedModifier", 0.98);
+TweakItem("Base.JacketLong_Random", "RunSpeedModifier", 1.0);
+TweakItem("Base.JacketLong_Santa", "CombatSpeedModifier", 0.98);
+TweakItem("Base.JacketLong_Santa", "RunSpeedModifier", 1.0);
+TweakItem("Base.JacketLong_SantaGreen", "CombatSpeedModifier", 0.98);
+TweakItem("Base.JacketLong_SantaGreen", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_ArmyCamoDesert", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_ArmyCamoDesert", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_ArmyCamoGreen", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_ArmyCamoGreen", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Black", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Black", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Chef", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Chef", "RunSpeedModifier", 0.99);
+TweakItem("Base.Jacket_Fireman", "CombatSpeedModifier", 0.97);
+TweakItem("Base.Jacket_Fireman", "RunSpeedModifier", 0.95);
+TweakItem("Base.Jacket_Padded", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Padded", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_PaddedDOWN", "CombatSpeedModifier", 0.99);
+TweakItem("Base.Jacket_PaddedDOWN", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Police", "CombatSpeedModifier", 0.99);
+TweakItem("Base.Jacket_Police", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Ranger", "CombatSpeedModifier", 1.0);
+TweakItem("Base.Jacket_Ranger", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_WhiteTINT", "RunSpeedModifier", 1.0);
+TweakItem("Base.PonchoGreen", "RunSpeedModifier", 1.0);
+TweakItem("Base.PonchoGreenDOWN", "RunSpeedModifier", 1.0);
+TweakItem("Base.PonchoYellow", "RunSpeedModifier", 1.0);
+TweakItem("Base.PonchoYellowDOWN", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_NavyBlue", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_LeatherWildRacoons", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_LeatherIronRodent", "RunSpeedModifier", 1.0);
+TweakItem("Base.Jacket_LeatherBarrelDogs", "RunSpeedModifier", 1.0);
+
+----- suit vanilla -----
+---TweakItem("Base.LongCoat_Bathrobe", "RunSpeedModifier", 0.9);
+
+TweakItem("Base.SpiffoSuit", "RunSpeedModifier", 0.98);
+TweakItem("Base.HazmatSuit", "CombatSpeedModifier", 0.90);
+TweakItem("Base.HazmatSuit", "RunSpeedModifier", 0.75);
+TweakItem("Base.Boilersuit", "RunSpeedModifier", 1.0);
+TweakItem("Base.Boilersuit_BlueRed", "RunSpeedModifier", 1.0);
+TweakItem("Base.Boilersuit_Yellow", "RunSpeedModifier", 1.0);
+TweakItem("Base.Boilersuit_Flying", "RunSpeedModifier", 1.0);
+TweakItem("Base.Boilersuit_Prisoner", "RunSpeedModifier", 1.0);
+TweakItem("Base.Boilersuit_PrisonerKhaki", "RunSpeedModifier", 1.0);
+TweakItem("Base.Dress_Long", "RunSpeedModifier", 1.0);
+TweakItem("Base.Dress_long_Straps", "RunSpeedModifier", 1.0);
+TweakItem("Base.Dress_Normal", "RunSpeedModifier", 1.0);
+TweakItem("Base.Dress_Straps", "RunSpeedModifier", 1.0);
+TweakItem("Base.WeddingDress", "RunSpeedModifier", 0.95);
+
+--- scarpe vanilla --
+
+TweakItem("Base.Shoes_ArmyBoots", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_ArmyBootsDesert", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_Black", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_BlackBoots", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_BlueTrainers", "RunSpeedModifier", 1.02);
+TweakItem("Base.Shoes_BlueTrainers", "ConditionMax ", 12);
+TweakItem("Base.Shoes_Brown", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_Random", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_RedTrainers", "RunSpeedModifier", 1.02);
+TweakItem("Base.Shoes_RedTrainers", "ConditionMax ", 12);
+TweakItem("Base.Shoes_RidingBoots", "RunSpeedModifier", 0.98);
+TweakItem("Base.Shoes_Slippers", "RunSpeedModifier", 0.7);
+TweakItem("Base.Shoes_TrainerTINT", "RunSpeedModifier", 1.02);
+TweakItem("Base.Shoes_TrainerTINT", "ConditionMax ", 12);
+TweakItem("Base.Shoes_Wellies", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_FlipFlop", "RunSpeedModifier", 0.98);
+TweakItem("Base.Shoes_Bowling", "RunSpeedModifier", 0.98);
+TweakItem("Base.Shoes_Fancy", "RunSpeedModifier", 1.0);
+TweakItem("Base.Shoes_Sandals", "RunSpeedModifier", 0.99);
+TweakItem("Base.Shoes_Strapped", "RunSpeedModifier", 1.0); ]]--
 
 
 
