@@ -676,7 +676,7 @@ module PynoTweaks{
 		Time:50.0
   	}
 
-	recipe Convert to 10 Server Points
+ /* recipe Convert to 10 Server Points
     {
         PynoTweaks.WITCoin=1,
 
@@ -694,6 +694,6 @@ module PynoTweaks{
 		RemoveResultItem:true,
 		Time:30.0,
 		OnCreate:PynoTweaks.GiveServerPoints500,
-	}
+	}  */
 	
 }
