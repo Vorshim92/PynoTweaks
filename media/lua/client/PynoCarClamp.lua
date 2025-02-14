@@ -1,12 +1,12 @@
 local base_ISVehicleMenu_showRadialMenuOutside = ISVehicleMenu.showRadialMenuOutside
 
-updateTime = 0
+local updateTime = 0
 
 CarClampStorage = CarClampStorage or {};
 CarClampStorage.Data = CarClampStorage.Data or {};
 CarClampStorage.ServerCommands = CarClampStorage.ServerCommands or {}
 
-carClampEventHandler = {}
+local carClampEventHandler = {}
 
 function ISVehicleMenu.onSendCommandAddCarClamp(playerObj, vehicleInfo)
 	playerObj:getInventory():RemoveOneOf("CarClamp");
@@ -167,17 +167,7 @@ local function processCarClampConstraints(vehicle, shouldPrintOutput)
 	end
 end
 
-function onEnterVehicle(character)
-	Events.OnPlayerUpdate.Add(onPlayerUpdate)
-end
-
-function onExitVehicle(character)
-	Events.OnPlayerUpdate.Remove(onPlayerUpdate)
-end
-
-Events.OnEnterVehicle.Add(onEnterVehicle)
-
-function onPlayerUpdate(playerObj)
+local function onPlayerUpdate(playerObj)
 	if updateTime + 150 < getTimestampMs() then
 		local vehicle = playerObj:getVehicle()
 		if vehicle and vehicle:getSpeed2D() > 0.1 then
@@ -185,3 +175,14 @@ function onPlayerUpdate(playerObj)
 		end
 	end	
 end
+
+local function onEnterVehicle(character)
+	Events.OnPlayerUpdate.Add(onPlayerUpdate)
+end
+
+local function onExitVehicle(character)
+	Events.OnPlayerUpdate.Remove(onPlayerUpdate)
+end
+
+Events.OnEnterVehicle.Add(onEnterVehicle)
+Events.OnExitVehicle.Add(onExitVehicle)
