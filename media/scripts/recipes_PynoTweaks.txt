@@ -270,9 +270,7 @@ module PynoTweaks{
 	
 	recipe Make Scrap Metal {
 		keep [Recipe.GetItemTypes.Hammer],
-		keep WeldingMask,
 		UnusableMetal=1,
-		BlowTorch=1,
 		
 		Result:ScrapMetal=2,
 		Time:250.0,

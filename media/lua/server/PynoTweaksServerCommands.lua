@@ -365,7 +365,7 @@ if isServer() then
             local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. "."
             local backupData = fetchJsonBkp(filepath)
 
-            if not backupData[modData_Name] then
+            if backupData and not backupData[modData_Name] then
                 packet.done = false
             else
 
@@ -406,12 +406,15 @@ if isServer() then
             local backupData = fetchJsonBkp(filepath)
             -- Check if the book can be transcribed
             packet.exists = false
-            if not backupData[bookType] then
-                -- The player hasn't transcribed this book yet
-                packet.exists = false
-            else
-                -- The player has already transcribed this book
-                packet.exists = true
+            if backupData then
+                if not backupData[bookType] then
+                    -- The player hasn't transcribed this book yet
+                    packet.exists = false
+                else
+                    -- The player has already transcribed this book
+                    packet.exists = true
+                    packet.checked = backupData[bookType]
+                end
             end
 
             if admin then
@@ -428,7 +431,7 @@ if isServer() then
             packet.done = false
             local filepath = "/Backup/EraseBackup/PlayerBKP_" .. id .. "."
             local backupData = fetchJsonBkp(filepath)
-            if not backupData[bookType] and not backupData[modData_Name] then
+            if backupData and not backupData[bookType] and not backupData[modData_Name] then
                 packet.done = false
             else
                 backupData[bookType] = nil
